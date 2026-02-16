@@ -1,0 +1,185 @@
+.projectsIntro {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+/* --- DYNAMIC BACKGROUND --- */
+.backgroundLayer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    filter: blur(80px);
+    /* Heavy blur for soft blobs */
+    transform-origin: center;
+}
+
+.blob1 {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(50, 50, 200, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: moveBlob1 20s infinite alternate ease-in-out;
+}
+
+.blob2 {
+    position: absolute;
+    bottom: 20%;
+    right: 20%;
+    width: 35vw;
+    height: 35vw;
+    background: radial-gradient(circle, rgba(200, 50, 100, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: moveBlob2 25s infinite alternate-reverse ease-in-out;
+}
+
+.blob3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(100, 50, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulseBlob 15s infinite ease-in-out;
+}
+
+@keyframes moveBlob1 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(10%, 10%);
+    }
+}
+
+@keyframes moveBlob2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-10%, -10%);
+    }
+}
+
+@keyframes pulseBlob {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Noise Overlay */
+.noiseOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    /* Removed grain as requested */
+    display: none;
+}
+
+/* --- TITLE --- */
+.titleWrapper {
+    z-index: 10;
+    position: relative;
+    mix-blend-mode: hard-light;
+    /* Makes text interact with bg */
+}
+
+.title {
+    font-size: 15vw;
+    /* Reduced from 18vw to prevent clipping */
+    font-weight: 900;
+    margin: 0;
+    padding: 0 20px;
+    /* Added padding to safe guard text edges */
+    line-height: 0.8;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    color: rgba(255, 255, 255, 0.95);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+    /* Gradient text fill */
+    /* Restore stronger gradient for fade effect */
+    background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1;
+    padding: 0 40px;
+    /* Increased padding slightly to be safe */
+}
+
+/* --- SCROLL INDICATOR --- */
+.scrollIndicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+    animation: scrollLine 2s infinite ease-in-out;
+}
+
+@keyframes scrollLine {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    50% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+
+    51% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 20vw;
+    }
+}

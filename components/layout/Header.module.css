@@ -1,0 +1,52 @@
+.header {
+    background-color: var(--foreground);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--background);
+    letter-spacing: -0.5px;
+}
+
+.navList {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.navLink {
+    color: var(--light-text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navLink:hover {
+    color: var(--background);
+}
+
+/* On cache les réseaux sociaux sur mobile pour l'instant, on gérera ça plus tard */
+.socials {
+    display: flex;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .navList {
+        display: none;
+    }
+}

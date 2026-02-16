@@ -1,0 +1,25 @@
+.wrapper {
+    display: block;
+    height: 1.25em;
+    width: 150%;
+    margin-left: -25%;
+    /* Centrage : décale de la moitié de l'excès (150%-100%)/2 = 25% */
+    /* Plus large pour dépasser la colonne .split vers le centre */
+    overflow: hidden;
+    /* Garde le clip pour le mécanisme du slider */
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.slide {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

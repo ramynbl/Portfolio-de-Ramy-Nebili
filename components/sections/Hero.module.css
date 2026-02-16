@@ -1,0 +1,153 @@
+.hero {
+    /* Prend toute la hauteur de l'écran moins la hauteur du header (80px) */
+    height: calc(100vh - var(--header-height));
+    display: flex;
+    position: relative;
+    padding: 0;
+    isolation: isolate;
+    /* Crée un nouveau contexte d'empilement pour isoler les z-index internes */
+}
+
+.split {
+    flex: 1 1 50%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+    transition: 0.3s;
+    overflow: visible;
+    /* Laisser le texte déborder vers le centre (sous l'avatar) */
+    position: relative;
+}
+
+/* Côté gauche : Blanc */
+.left {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+/* Côté droit : Noir */
+.right {
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
+.title {
+    font-size: 5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    /* Flotte au-dessus des fonds .split (z=auto) mais derrière l'avatar (z=100) */
+    position: relative;
+    z-index: 50;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+/* L'Avatar au centre */
+.avatarContainer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    /* Valeur très haute pour garantir la supériorité */
+    /* Au dessus du texte */
+    width: 60vh;
+    /* Largeur proportionnelle */
+    height: 85%;
+    /* Prend presque toute la hauteur en partant du bas */
+    border-radius: 0;
+    border: none;
+    overflow: visible;
+    box-shadow: none;
+    /* Plus d'ombre de boîte carrée */
+    /* Filtre optionnel pour l'ombre portée de la silhouette */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+.avatarImage {
+    object-fit: contain;
+    /* Affiche l'image entière sans couper */
+    object-position: bottom;
+    /* Collé au bas */
+}
+
+/* CTA Buttons */
+.btnHero {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 2px solid;
+    margin-top: 10px;
+}
+
+.btnLeft {
+    color: var(--foreground);
+    border-color: var(--foreground);
+    background: transparent;
+}
+
+.btnLeft:hover {
+    background-color: var(--foreground);
+    color: var(--background);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btnRight {
+    color: var(--background);
+    border-color: var(--background);
+    background: transparent;
+}
+
+.btnRight:hover {
+    background-color: var(--background);
+    color: var(--foreground);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        /* On empile sur mobile */
+        height: auto;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .avatarContainer {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        width: 80vw;
+        max-width: 350px;
+        height: 350px;
+        /* Hauteur fixe ou auto */
+        margin: 20px auto;
+        z-index: 50;
+    }
+
+    .avatarImage {
+        object-fit: contain;
+        object-position: center bottom;
+    }
+}

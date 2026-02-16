@@ -1,0 +1,60 @@
+/* components/layout/Footer.module.css */
+.footer {
+    background-color: var(--muted-bg);
+    color: var(--muted-text);
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+    /* Pousse le footer en bas si la page est courte */
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: 12px;
+    font-family: var(--font-heading);
+}
+
+.section p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+.link {
+    display: block;
+    color: var(--primary);
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.bottom {
+    font-size: 0.85rem;
+    color: var(--light-text);
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
