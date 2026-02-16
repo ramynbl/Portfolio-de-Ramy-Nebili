@@ -34,7 +34,6 @@ export default function About() {
                 <div className={styles.contentWrapper}>
                     {/* Colonne Image - Gauche sur Desktop */}
                     <motion.div
-                        style={{ y: yImage }}
                         className={styles.imageContainer}
                     >
                         <div className={styles.imageFrame}>
@@ -52,7 +51,6 @@ export default function About() {
 
                     {/* Colonne Texte - Droite sur Desktop */}
                     <motion.div
-                        style={{ y: yText }}
                         className={styles.textContainer}
                     >
                         <h3 className={styles.greeting}>Bonjour, je suis Ramy</h3>

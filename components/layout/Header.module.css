@@ -58,7 +58,7 @@
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--background);
+    color: #ffffff;
     letter-spacing: -0.5px;
 }
 
@@ -92,8 +92,8 @@
 }
 
 .socialIcon {
-    color: var(--background);
-    /* White/Light based on theme - usually background is light but header is foreground(black). So icon should be white.*/
+    color: #ffffff;
+    /* White/Light based on theme */
     /* Wait, header bg is var(--foreground) (black). So we want white icons. var(--background) is usually white. Correct.*/
     font-size: 1.5rem;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -123,7 +123,7 @@
         display: block;
         background: none;
         border: none;
-        color: var(--background);
+        color: #ffffff;
         font-size: 1.5rem;
         cursor: pointer;
         z-index: 1001;

@@ -1,6 +1,6 @@
 .aboutSection {
     position: relative;
-    padding: 100px 20px;
+    padding: 200px 20px;
     background-color: #000;
     color: #fff;
     overflow: hidden;
@@ -8,6 +8,8 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .container {
@@ -79,13 +81,10 @@
     position: absolute;
     inset: -20px;
     border-radius: 30px;
-    background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1));
-    /* Reduced opacity */
+    background: linear-gradient(45deg, rgba(59, 130, 246, 0.4), rgba(168, 85, 247, 0.4));
     z-index: -1;
-    filter: blur(30px);
-    /* Increased blur */
+    filter: blur(80px);
     opacity: 0.4;
-    /* Reduced overall opacity */
 }
 
 /* --- TEXT SIDE --- */
