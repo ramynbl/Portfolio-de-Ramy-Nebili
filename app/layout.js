@@ -16,8 +16,8 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-    title: "Portfolio de Ramy NEBILI",
-    description: "Développeur Web & Designer UI/UX",
+    title: "Portfolio - Ramy Nebili",
+    description: "Développeur Full Stack",
 };
 
 export default function RootLayout({ children }) {

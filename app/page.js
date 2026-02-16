@@ -1,21 +1,29 @@
 import Hero from "../components/sections/Hero";
+import About from "../components/sections/About";
 import Skills from "../components/sections/Skills";
 import ProjectsIntro from "../components/sections/ProjectsIntro";
 import AnimeFinder from "../components/sections/AnimeFinder";
+import ScrollReveal from "../components/ui/ScrollReveal";
 
 export default function Home() {
     return (
         <>
-            <Hero />
-            <Skills />
-            <ProjectsIntro />
-            <AnimeFinder />
+            <ScrollReveal>
+                <Hero />
+            </ScrollReveal>
 
-            {/* On ajoutera les autres sections ici plus tard :
-          <About />
-          <Projects /> 
-      */}
+            <ScrollReveal>
+                <About />
+            </ScrollReveal>
 
+            <ScrollReveal>
+                <Skills />
+            </ScrollReveal>
+
+            <ScrollReveal>
+                <ProjectsIntro />
+                <AnimeFinder />
+            </ScrollReveal>
         </>
     );
 }

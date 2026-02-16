@@ -17,7 +17,6 @@ export default function Skills() {
     const yCards = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
     // État du filtre
-    // État du filtre
     const [selectedCategory, setSelectedCategory] = useState("Tout");
 
     // État de la catégorie affichée (pour le sous-titre dynamique)
@@ -37,6 +36,13 @@ export default function Skills() {
         "Frontend Engineering": "Je développe des expériences fluides et performantes.",
         "Backend & Automation": "Je construis des APIs et des outils d'automatisation intelligents.",
         "Data & Infrastructure": "Je gère la persistance des données et le déploiement."
+    };
+
+    // Helper pour assurer la visibilité des couleurs sombres en mode sombre
+    const getSafeColor = (hex) => {
+        const darkColors = ['#000000', '#0B0D0E', '#150458', '#013243'];
+        if (darkColors.includes(hex)) return '#FFFFFF';
+        return hex;
     };
 
     // 1. Obtenir la liste de base (unique) selon le filtre
@@ -119,6 +125,13 @@ export default function Skills() {
     return (
         <section id="skills" className={styles.section} ref={sectionRef}>
 
+            {/* Dynamic Background */}
+            <div className={styles.backgroundLayer}>
+                <div className={styles.blob1}></div>
+                <div className={styles.blob2}></div>
+                <div className={styles.blob3}></div>
+            </div>
+
             <motion.div style={{ y: yHeader }} className={styles.headerContainer}>
                 <h2 className={styles.sectionTitle}>Mes Compétences</h2>
 
@@ -172,11 +185,13 @@ export default function Skills() {
                 >
                     {displaySkills.map((skill, index) => {
                         const Icon = skill.icon;
+                        const safeColor = getSafeColor(skill.color);
+
                         return (
                             <div
                                 key={`${skill.name}-${index}`}
                                 className={styles.cardWrapper}
-                                style={{ '--card-color': skill.color }}
+                                style={{ '--card-color': safeColor }}
                                 data-category={skill.category}
                                 ref={el => cardsRef.current[index] = el}
                             >
@@ -185,7 +200,7 @@ export default function Skills() {
                                     <div className={styles.cardGlow} />
 
                                     {/* Icône principale */}
-                                    <div className={styles.iconContainer} style={{ color: skill.color }}>
+                                    <div className={styles.iconContainer}>
                                         <Icon />
                                     </div>
 

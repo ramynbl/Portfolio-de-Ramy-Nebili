@@ -1,36 +1,94 @@
 .section {
     position: relative;
     min-height: 140vh;
-    /* Taller section */
     width: 100%;
-
-    /* FOND PREMIUM MINIMALISTE */
-    /* Base blanche chaude vers gris froid léger sur les bords */
-    background: radial-gradient(120% 120% at 50% 40%,
-            #ffffff 0%,
-            #f5f5f7 60%,
-            #eaeaf0 100%);
-
+    background: #000;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 100px 0;
+    color: white;
 }
 
-/* Texture de grain subtil (Noise) */
-.section::before {
-    content: "";
+/* --- DYNAMIC BACKGROUND --- */
+.backgroundLayer {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
-    opacity: 0.05;
-    /* Très faible opacité pour un grain à peine perceptible */
+    filter: blur(80px);
     pointer-events: none;
-    /* On utilise un background noir pour l'overlay noise sur fond clair */
-    background-color: #000;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.blob1 {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(50, 50, 200, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: moveBlob1 20s infinite alternate ease-in-out;
+}
+
+.blob2 {
+    position: absolute;
+    bottom: 20%;
+    right: 20%;
+    width: 45vw;
+    height: 45vw;
+    background: radial-gradient(circle, rgba(200, 50, 100, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: moveBlob2 25s infinite alternate-reverse ease-in-out;
+}
+
+.blob3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(100, 50, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulseBlob 15s infinite ease-in-out;
+}
+
+@keyframes moveBlob1 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(10%, 10%);
+    }
+}
+
+@keyframes moveBlob2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-10%, -10%);
+    }
+}
+
+@keyframes pulseBlob {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
 }
 
 .headerContainer {
@@ -38,7 +96,6 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
-    /* Réduit pour laisser place aux chips */
     text-align: center;
     position: relative;
     z-index: 10;
@@ -49,9 +106,7 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-    /* Plus serré */
     margin-top: 30px;
-    /* Plus d'espace au dessus */
     margin-bottom: 20px;
     flex-wrap: wrap;
     z-index: 20;
@@ -60,44 +115,40 @@
 }
 
 .chip {
-    padding: 6px 14px;
-    /* Plus petit */
-    border-radius: 20px;
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    /* Bordure très légère */
-    color: #6e6e73;
-    font-size: 0.8rem;
-    /* Plus compact */
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e5e5ea;
+    font-size: 0.85rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     outline: none;
 }
 
 .chip:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
 }
 
 .chipActive {
-    background: #1d1d1f;
-    color: #ffffff;
-    border-color: #1d1d1f;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     transform: scale(1.05);
+    font-weight: 600;
 }
 
-/* Surcharge spécifique pour l'état actif au survol */
 .chip.chipActive:hover {
-    background: #1d1d1f;
-    /* Reste noir */
+    background: #ffffff;
     transform: scale(1.05) translateY(-2px);
-    /* Garde le scale et ajoute le translate */
 }
 
-/* Wrapper pour le sous-titre dynamique */
 .dynamicSubtitleWrapper {
     height: 120px;
     display: flex;
@@ -118,23 +169,23 @@
     font-size: 5rem;
     font-weight: 800;
     margin: 0;
-    /* Noir/Gris très sombre pour le contraste sur fond clair */
-    color: #1d1d1f;
+    color: #ffffff;
     letter-spacing: -0.03em;
     margin-bottom: 10px;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
 .categoryTitle {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1d1d1f;
+    color: #ffffff;
     margin: 0;
     letter-spacing: -0.02em;
 }
 
 .categoryMessage {
     font-size: 1.2rem;
-    color: #86868b;
+    color: #d1d1d6;
     font-weight: 400;
     max-width: 800px;
     text-align: center;
@@ -142,47 +193,31 @@
     margin: 0;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
 .perspectiveContainer {
     width: 100%;
-    /* Perspective forte pour l'effet 3D */
     perspective: 2000px;
     display: flex;
     align-items: center;
     position: relative;
-    /* Scroll manuel activé */
     overflow-x: auto;
-    /* Cache la scrollbar */
     scrollbar-width: none;
     -ms-overflow-style: none;
-    /* Masque les bords retiré pour éviter l'effet blanc */
-    /* mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%); */
-    /* -webkit-mask: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%); */
+    z-index: 10;
 }
 
 .perspectiveContainer::-webkit-scrollbar {
     display: none;
 }
 
-
-
 .track {
     display: flex;
     gap: 0;
     width: max-content;
-    /* Animation de défilement infini */
     animation: scroll 80s linear infinite;
     transform-style: preserve-3d;
     padding: 100px 40px;
-    /* Un peu de padding horizontal */
 }
 
-/* Pause au survol pour permettre le scroll manuel / inspection */
 .track:hover {
     animation-play-state: paused;
 }
@@ -198,12 +233,10 @@
 }
 
 .cardWrapper {
-    /* Espace réservé pour chaque carte dans le flux */
     width: 280px;
     height: 380px;
     position: relative;
     flex-shrink: 0;
-    /* Chevauchement léger */
     margin: 0 -40px;
     perspective: 1000px;
 }
@@ -212,23 +245,12 @@
     width: 100%;
     height: 100%;
     border-radius: 24px;
-
-    /* BACKGROUND NOIR / DARK THEME */
     background: #1d1d1f;
-
-    /* Bordure subtile */
     border: 1px solid rgba(255, 255, 255, 0.1);
-
-    /* Ombres douces et reflets */
-    box-shadow:
-        0 10px 30px -5px rgba(0, 0, 0, 0.4),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-
-    /* Positionnement 3D initial : légèrement tourné */
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     transform: rotateY(25deg) translateZ(0) scale(0.95);
     transform-origin: center center;
     transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -240,14 +262,12 @@
     cursor: pointer;
 }
 
-/* Reflet coloré interne plus discret pour le dark mode */
 .card::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 24px;
     padding: 1px;
-    /* Petit dégradé blanc subtil en haut */
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 40%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -256,15 +276,12 @@
     pointer-events: none;
 }
 
-/* Lueur colorée dynamique (basée sur la variable CSS de la carte) */
 .cardGlow {
     position: absolute;
     width: 100%;
     height: 100%;
-    /* Gradient radial coloré au centre qui s'estompe vers le noir */
     background: radial-gradient(circle at 50% 30%, var(--card-color), transparent 60%);
     opacity: 0.1;
-    /* Très subtil sur fond noir */
     transition: opacity 0.5s ease;
     z-index: 0;
     pointer-events: none;
@@ -275,7 +292,6 @@
     z-index: 2;
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     font-size: 5rem;
-    /* On utilise la couleur originale de l'icône, pas de filtre gris */
     color: var(--card-color);
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
@@ -295,15 +311,13 @@
 .title {
     font-size: 1.5rem;
     font-weight: 700;
-    /* Blanc pour le titre */
     color: #ffffff;
     margin: 0;
 }
 
 .description {
     font-size: 0.9rem;
-    /* Gris clair pour le texte secondaire */
-    color: #e5e5ea;
+    color: #d1d1d6;
     line-height: 1.4;
     max-width: 90%;
 }
@@ -316,9 +330,9 @@
     letter-spacing: 0.05em;
     padding: 4px 12px;
     border-radius: 20px;
-    /* Fond semi-transparent blanc */
     background: rgba(255, 255, 255, 0.15);
     color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* --- HOVER STATES --- */
@@ -327,41 +341,33 @@
     transition: margin 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s ease;
 }
 
-/* La carte qui est survolée prend plus de place -> pousse les autres */
 .cardWrapper:hover {
     z-index: 100;
     margin: 0 50px !important;
-    /* Force l'écartement */
 }
 
-/* La carte elle-même se redresse et grossit */
 .cardWrapper:hover .card {
     transform: rotateY(0deg) scale(1.15) translateY(-20px);
-    /* On reste sombre au hover, un poil plus clair que le fond initial */
     background: #252529;
-    box-shadow:
-        0 30px 60px -10px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2);
     opacity: 1;
 }
 
-/* Effets sur les voisins immédiats pour accentuer l'effet de vague */
 .cardWrapper:hover+.cardWrapper {
     transform: translateX(30px) scale(0.9);
 }
 
-/* Support pour les navigateurs récents : pousse aussi celui d'avant */
 .cardWrapper:has(+ .cardWrapper:hover) {
     transform: translateX(-30px) scale(0.9);
 }
 
 .cardWrapper:hover .cardGlow {
-    opacity: 0.4;
+    opacity: 0.5;
 }
 
 .cardWrapper:hover .iconContainer {
     transform: translateY(-50px) scale(0.7);
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 0 25px rgba(var(--card-color-rgb), 0.5));
 }
 
 .cardWrapper:hover .content {
@@ -385,58 +391,44 @@
         overflow-x: hidden;
     }
 
-    /* Container du carousel */
     .perspectiveContainer {
         perspective: none;
         mask-image: none;
         overflow-x: auto;
-        /* Enable scroll */
         justify-content: flex-start;
-        /* Start from left */
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
-        /* SNAP CAROUSEL */
         padding: 40px 20px;
-        /* Padding for the carousel container */
         -webkit-mask: none;
         width: 100%;
         display: flex;
         flex-wrap: nowrap;
-        /* NO WRAPPING */
         gap: 20px;
-        /* Space between cards */
     }
 
-    /* Track devient le conteneur direct des cartes si utilisé, sinon perspectiveContainer */
     .track {
         width: max-content;
-        /* Allow content to determine width */
         animation: none;
         padding: 0;
         gap: 20px;
         display: flex;
         flex-wrap: nowrap;
-        /* NO WRAPPING */
         justify-content: flex-start;
         transform: none !important;
-        /* Disable infinite scroll transform */
     }
 
     .cardWrapper {
         width: 300px;
-        /* Fixed width for mobile card */
         flex-shrink: 0;
-        /* Don't shrink */
         height: 400px;
         scroll-snap-align: center;
-        /* Snap to center */
         perspective: none;
         margin: 0;
-        /* Remove negative margin */
     }
 
     .card {
         transform: none !important;
+        background: rgba(29, 29, 31, 0.8);
     }
 
     .card .iconContainer {
