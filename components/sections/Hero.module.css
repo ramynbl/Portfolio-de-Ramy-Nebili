@@ -161,6 +161,7 @@
     /* Plus d'ombre de boîte carrée */
     /* Filtre optionnel pour l'ombre portée de la silhouette */
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    pointer-events: none;
 }
 
 .avatarImage {

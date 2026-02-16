@@ -23,7 +23,7 @@ const ProjectsIntro = () => {
     const gradientRotate = useTransform(smoothProgress, [0, 1], [0, 45]);
 
     return (
-        <section id="projects-intro" className={styles.projectsIntro} ref={containerRef}>
+        <section className={styles.projectsIntro} ref={containerRef}>
             {/* Dynamic Background */}
             <motion.div
                 className={styles.backgroundLayer}

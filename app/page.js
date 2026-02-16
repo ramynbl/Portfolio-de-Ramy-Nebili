@@ -20,6 +20,8 @@ export default function Home() {
                 <Skills />
             </ScrollReveal>
 
+            {/* Static anchor for reliable scroll navigation */}
+            <div id="projects-intro" />
             <ScrollReveal>
                 <ProjectsIntro />
                 <AnimeFinder />
