@@ -125,29 +125,51 @@
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
-        /* On empile sur mobile */
         height: auto;
+        min-height: 100vh;
+        padding-top: 20px;
     }
 
-    .title {
-        font-size: 2.5rem;
+    .split {
+        max-width: 100% !important;
+        flex: auto;
+        width: 100%;
+        padding: 40px 20px;
+        /* Reduce padding slightly */
+    }
+
+    /* Stack Order: Avatar -> Designer -> Coder */
+    /* Or Designer -> Avatar -> Coder? usually Avatar first is good for "Who is this?" but Designer/Coder is the hook.*/
+    /* Let's Try: Avatar (Top/Center) -> Designer -> Coder */
+
+    .left {
+        order: 2;
+    }
+
+    .right {
+        order: 3;
     }
 
     .avatarContainer {
         position: relative;
-        bottom: auto;
         left: auto;
         transform: none;
-        width: 80vw;
-        max-width: 350px;
-        height: 350px;
-        /* Hauteur fixe ou auto */
-        margin: 20px auto;
+        width: 280px;
+        height: 380px;
+        /* Adjust for mobile */
+        margin: 0 auto;
         z-index: 50;
+        order: 1;
+        /* Put avatar on top */
     }
 
     .avatarImage {
         object-fit: contain;
-        object-position: center bottom;
+        object-position: bottom;
+    }
+
+    .title {
+        font-size: 3rem;
+        /* Slightly larger for mobile impact */
     }
 }

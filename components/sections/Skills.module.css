@@ -383,39 +383,54 @@
         overflow-x: hidden;
     }
 
+    /* Container du carousel */
     .perspectiveContainer {
         perspective: none;
         mask-image: none;
-        overflow-x: visible;
-        justify-content: center;
-        -webkit-overflow-scrolling: auto;
-        scroll-snap-type: none;
-        padding: 20px 10px;
+        overflow-x: auto;
+        /* Enable scroll */
+        justify-content: flex-start;
+        /* Start from left */
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        /* SNAP CAROUSEL */
+        padding: 40px 20px;
+        /* Padding for the carousel container */
         -webkit-mask: none;
         width: 100%;
         display: flex;
-        flex-wrap: wrap;
-        /* CONSTANTLY ENSURE WRAPPING */
+        flex-wrap: nowrap;
+        /* NO WRAPPING */
+        gap: 20px;
+        /* Space between cards */
     }
 
+    /* Track devient le conteneur direct des cartes si utilisé, sinon perspectiveContainer */
     .track {
-        width: 100%;
+        width: max-content;
+        /* Allow content to determine width */
         animation: none;
         padding: 0;
         gap: 20px;
         display: flex;
-        flex-wrap: wrap;
-        /* CONSTANTLY ENSURE WRAPPING */
-        justify-content: center;
+        flex-wrap: nowrap;
+        /* NO WRAPPING */
+        justify-content: flex-start;
+        transform: none !important;
+        /* Disable infinite scroll transform */
     }
 
     .cardWrapper {
-        width: 100%;
-        max-width: 320px;
-        height: 380px;
-        scroll-snap-align: none;
+        width: 300px;
+        /* Fixed width for mobile card */
+        flex-shrink: 0;
+        /* Don't shrink */
+        height: 400px;
+        scroll-snap-align: center;
+        /* Snap to center */
         perspective: none;
-        margin: 10px 0;
+        margin: 0;
+        /* Remove negative margin */
     }
 
     .card {
