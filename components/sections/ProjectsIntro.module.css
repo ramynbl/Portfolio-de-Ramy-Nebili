@@ -129,6 +129,7 @@
     -webkit-text-fill-color: transparent;
     opacity: 1;
     padding: 0 40px;
+    margin-top: -250px;
     /* Increased padding slightly to be safe */
 }
 

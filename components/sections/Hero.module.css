@@ -196,17 +196,18 @@
     box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
 }
 
+/* btnRight - Même style que le gauche (Blanc) car fond sombre maintenant */
 .btnRight {
-    color: var(--background);
-    border-color: var(--background);
+    color: #ffffff;
+    border-color: #ffffff;
     background: transparent;
 }
 
 .btnRight:hover {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: #ffffff;
+    color: #1D1D1F;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
 }
 
 /* Responsive */

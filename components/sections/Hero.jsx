@@ -42,7 +42,7 @@ export default function Hero() {
                     <TextSlider words={["< Coder >", "Innover", "Construire"]} />
                 </h1>
                 <p className={styles.subtitle}>Développement Front-end & Back-end</p>
-                <Link href="#projects" className={`${styles.btnHero} ${styles.btnRight}`}>Mes Projets</Link>
+                <Link href="#projects-intro" className={`${styles.btnHero} ${styles.btnRight}`}>Mes Projets</Link>
             </motion.div>
 
             {/* Avatar Central */}

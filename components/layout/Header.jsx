@@ -39,7 +39,7 @@ export default function Header() {
                     <ul className={styles.navList}>
                         <li><Link href="#about" className={styles.navLink}>À propos</Link></li>
                         <li><Link href="#skills" className={styles.navLink}>Compétences</Link></li>
-                        <li><Link href="#projects" className={styles.navLink}>Projets</Link></li>
+                        <li><Link href="#projects-intro" className={styles.navLink}>Projets</Link></li>
                         <li><Link href="#contact" className={styles.navLink}>Contact</Link></li>
                     </ul>
                 </nav>
