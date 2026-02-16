@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Header.module.css';
@@ -8,16 +8,30 @@ import { FaLinkedin, FaGithub, FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            const viewportHeight = window.innerHeight;
+
+            // Hide completely when passing the hero section (e.g., 90% of viewport)
+            setIsHidden(scrollY > viewportHeight * 0.9);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <header className={styles.header}>
+        <header className={`${styles.header} ${isHidden ? styles.hidden : ''}`}>
             <div className={`container ${styles.navContainer}`}>
 
                 {/* Logo */}
                 <div className={styles.logo}>
-                    Ramy NEBILI
+                    RN.
                 </div>
 
                 {/* Desktop Navigation */}

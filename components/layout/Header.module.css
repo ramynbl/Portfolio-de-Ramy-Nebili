@@ -1,16 +1,57 @@
 .header {
-    background-color: var(--foreground);
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--border-dark);
+    background-color: transparent;
+    padding: 0;
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 50px;
+    /* Glassmorphism */
+    background: rgba(29, 29, 31, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+    transition: all 0.3s ease;
+}
+
+.header:hover {
+    background: rgba(29, 29, 31, 0.85);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+
+.scrolled {
+    width: 60%;
+    /* Shrink width */
+    top: 10px;
+    padding: 0;
+    /* Already 0 but ensures it stays compacted */
+    background: rgba(29, 29, 31, 0.85);
+    /* Darker when scrolled */
+}
+
+/* Specific inner padding adjustment when scrolled */
+.scrolled .navContainer {
+    padding: 10px 20px;
+}
+
+.hidden {
+    transform: translateY(-200%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .navContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 30px;
+    /* Added padding inside the capsule */
 }
 
 .logo {
@@ -28,15 +69,19 @@
 }
 
 .navLink {
-    color: var(--light-text);
+    color: rgba(255, 255, 255, 0.8);
     font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 20px;
 }
 
 .navLink:hover {
-    color: var(--background);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    /* Capsule hover effect */
 }
 
 /* On cache les réseaux sociaux sur mobile pour l'instant, on gérera ça plus tard */
@@ -92,13 +137,14 @@
         right: 0;
         width: 100%;
         height: 100vh;
-        background-color: var(--foreground);
+        background-color: #000;
+        /* Solid black for mobile menu */
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 1000;
+        z-index: 999;
+        /* Behind the header/burger but covering page */
         overflow-y: hidden;
-        /* Prevent scrolling behind */
     }
 
     .mobileNavList {

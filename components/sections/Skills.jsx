@@ -1,11 +1,21 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { skillsData } from '../../data/skillsData';
 import styles from './Skills.module.css';
 
 export default function Skills() {
+    const sectionRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Parallax effects
+    const yHeader = useTransform(scrollYProgress, [0, 1], [0, -100]);
+    const yCards = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
     // État du filtre
     // État du filtre
     const [selectedCategory, setSelectedCategory] = useState("Tout");
@@ -107,9 +117,9 @@ export default function Skills() {
     }, [displaySkills]);
 
     return (
-        <section id="skills" className={styles.section}>
+        <section id="skills" className={styles.section} ref={sectionRef}>
 
-            <div className={styles.headerContainer}>
+            <motion.div style={{ y: yHeader }} className={styles.headerContainer}>
                 <h2 className={styles.sectionTitle}>Mes Compétences</h2>
 
                 <div className={styles.dynamicSubtitleWrapper}>
@@ -143,9 +153,9 @@ export default function Skills() {
                         </button>
                     ))}
                 </div>
-            </div>
+            </motion.div>
 
-            <div className={styles.perspectiveContainer} ref={containerRef}>
+            <motion.div className={styles.perspectiveContainer} ref={containerRef} style={{ y: yCards }}>
                 <div
                     className={styles.track}
                     style={!shouldScroll ? {
@@ -190,7 +200,7 @@ export default function Skills() {
                         );
                     })}
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

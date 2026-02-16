@@ -1,0 +1,180 @@
+.animeFinder {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Content on the right */
+    color: white;
+    background: #000;
+    /* Fallback if video fails to load */
+}
+
+/* Background Video */
+.bgVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Gradient Overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    /* Gradient from transparent (left) to dark (right) to let video shine but make text readable */
+    background: linear-gradient(to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.55) 30%,
+            rgba(0, 0, 0, 0.95) 70%,
+            #000 100%);
+    z-index: 1;
+}
+
+/* Content Container */
+.content {
+    position: relative;
+    z-index: 10;
+    padding-right: 10%;
+    /* Spacing from right edge */
+    text-align: right;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* Aligns flex children (buttons) to right */
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideIn 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.projectLabel {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    background: linear-gradient(to right, #fff, #ccc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+}
+
+.techStack {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.techBadge {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    backdrop-filter: blur(5px);
+}
+
+/* Links / CTAs */
+.links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.iconLink {
+    color: white;
+    font-size: 1.8rem;
+    transition: transform 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconLink:hover {
+    transform: scale(1.1);
+    color: #4facfe;
+    /* Light blue accent */
+}
+
+.ctaButton {
+    padding: 12px 30px;
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.ctaButton:hover {
+    background: white;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Helper for mobile responsiveness */
+@media (max-width: 768px) {
+    .animeFinder {
+        align-items: flex-end;
+        /* Bottom align content on mobile */
+        justify-content: center;
+    }
+
+    .overlay {
+        /* Vertical gradient for mobile */
+        background: linear-gradient(to top,
+                #000 0%,
+                rgba(0, 0, 0, 0.8) 50%,
+                rgba(0, 0, 0, 0.4) 80%,
+                transparent 100%);
+    }
+
+    .content {
+        padding: 40px 20px;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .techStack {
+        justify-content: center;
+    }
+}
