@@ -125,6 +125,7 @@
     /* Restore stronger gradient for fade effect */
     background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.2) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 1;
     padding: 0 40px;

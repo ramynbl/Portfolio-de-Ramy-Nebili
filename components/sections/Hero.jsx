@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import TextSlider from '../ui/TextSlider';
 import styles from './Hero.module.css';
 
@@ -7,34 +10,58 @@ export default function Hero() {
     return (
         <section className={styles.hero}>
 
+            {/* Background Layer */}
+            <div className={styles.backgroundLayer}>
+                <div className={styles.blob1}></div>
+                <div className={styles.blob2}></div>
+                <div className={styles.blob3}></div>
+            </div>
+
             {/* Côté Gauche : Designer */}
-            <div className={`${styles.split} ${styles.left}`}>
+            <motion.div
+                className={`${styles.split} ${styles.left}`}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            >
                 <h1 className={styles.title}>
                     <TextSlider words={["Designer", "Créateur", "Visuel"]} />
                 </h1>
                 <p className={styles.subtitle}>UI / UX & Conception visuelle</p>
                 <Link href="#about" className={`${styles.btnHero} ${styles.btnLeft}`}>En savoir plus</Link>
-            </div>
+            </motion.div>
 
             {/* Côté Droit : Coder */}
-            <div className={`${styles.split} ${styles.right}`}>
+            <motion.div
+                className={`${styles.split} ${styles.right}`}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            >
                 <h1 className={styles.title}>
                     <TextSlider words={["< Coder >", "Innover", "Construire"]} />
                 </h1>
                 <p className={styles.subtitle}>Développement Front-end & Back-end</p>
                 <Link href="#projects" className={`${styles.btnHero} ${styles.btnRight}`}>Mes Projets</Link>
-            </div>
+            </motion.div>
 
             {/* Avatar Central */}
             <div className={styles.avatarContainer}>
-                {/* Utilisation de Image de Next.js pour la performance */}
-                <Image
-                    src="/image/avatar-2.png" // Assure-toi que l'image est bien dans le dossier public/image/
-                    alt="Ramy Nebili Avatar"
-                    fill // Remplit le conteneur parent
-                    className={styles.avatarImage}
-                    priority // Charge cette image en priorité (car au-dessus de la ligne de flottaison)
-                />
+                <motion.div
+                    style={{ position: 'relative', width: '100%', height: '100%' }}
+                    initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                >
+                    {/* Utilisation de Image de Next.js pour la performance */}
+                    <Image
+                        src="/image/avatar-2.png" // Assure-toi que l'image est bien dans le dossier public/image/
+                        alt="Ramy Nebili Avatar"
+                        fill // Remplit le conteneur parent
+                        className={styles.avatarImage}
+                        priority // Charge cette image en priorité (car au-dessus de la ligne de flottaison)
+                    />
+                </motion.div>
             </div>
 
         </section>

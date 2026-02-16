@@ -7,7 +7,7 @@ export const skillsData = [
     { name: 'Illustrator', icon: SiAdobeillustrator, color: '#FF9A00', desc: 'Création vectorielle, Illustration, Logo et assets vectoriels', status: 'Maîtrise', category: 'Design System & UI' },
     { name: 'Photoshop', icon: SiAdobephotoshop, color: '#31A8FF', desc: 'Retouche et composition d\'image', status: 'Maîtrise', category: 'Design System & UI' },
     { name: 'After Effects', icon: SiAdobeaftereffects, color: '#9999FF', desc: 'Animation d’interfaces (Motion)', status: 'Notions', category: 'Design System & UI' },
-    { name: 'Spline (via Blender icon)', icon: SiBlender, color: '#FF3366', desc: 'Design 3D pour le web', status: 'Notions', category: 'Design System & UI' },
+    { name: 'Blender', icon: SiBlender, color: '#FF3366', desc: 'Design 3D pour le web', status: 'Notions', category: 'Design System & UI' },
     { name: 'Adobe XD', icon: SiAdobexd, color: '#FF61F6', desc: 'Alternative à Figma pour le prototypage', status: 'Exploration', category: 'Design System & UI' },
     { name: 'Framer', icon: SiFramer, color: '#0055FF', desc: 'Design interactif et prototypage haute fidélité', status: 'Exploration', category: 'Design System & UI' },
 
