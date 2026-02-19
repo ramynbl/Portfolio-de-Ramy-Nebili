@@ -1,0 +1,5 @@
+.projectsSection {
+    position: relative;
+    width: 100%;
+    /* Ensure no overflow:hidden here or on parents, otherwise sticky breaks */
+}

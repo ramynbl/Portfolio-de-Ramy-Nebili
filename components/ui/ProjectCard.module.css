@@ -1,0 +1,250 @@
+.cardContainer {
+    height: 100vh;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: #000;
+    justify-content: center;
+    /* Centered by default, content will shift based on orientation */
+}
+
+/* Background Asset */
+.bgAsset {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Gradient Overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+/* Orientation specific overlays */
+.right .overlay {
+    background: linear-gradient(to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.55) 30%,
+            rgba(0, 0, 0, 0.95) 70%,
+            #000 100%);
+}
+
+.left .overlay {
+    background: linear-gradient(to left,
+            transparent 0%,
+            rgba(0, 0, 0, 0.55) 30%,
+            rgba(0, 0, 0, 0.95) 70%,
+            #000 100%);
+}
+
+/* Content Container */
+.content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1200px;
+    /* Standard wrapper width */
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right .content {
+    align-items: flex-end;
+    text-align: right;
+    margin-left: auto;
+    /* Push to right */
+}
+
+.left .content {
+    align-items: flex-start;
+    text-align: left;
+    margin-right: auto;
+    /* Push to left */
+}
+
+.textContent {
+    max-width: 600px;
+    opacity: 0;
+    animation: slideIn 1s ease-out forwards;
+    animation-delay: 0.2s;
+    /* Adjust translate direction based on orientation if needed, 
+       but a simple fade+up/down is often safer for both. 
+       Let's stick to the existing side slide for consistency. */
+}
+
+.right .textContent {
+    transform: translateX(50px);
+}
+
+.left .textContent {
+    transform: translateX(-50px);
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.projectLabel {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-bottom: 15px;
+    /* Fix for descenders being cut off */
+    /* Gradient set inline or handled via class if fixed */
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+}
+
+.techStack {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.right .techStack {
+    justify-content: flex-end;
+}
+
+.left .techStack {
+    justify-content: flex-start;
+}
+
+.techBadge {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    backdrop-filter: blur(5px);
+}
+
+/* Links / CTAs */
+.links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.iconLink {
+    color: white;
+    font-size: 1.8rem;
+    transition: transform 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconLink:hover {
+    transform: scale(1.1);
+}
+
+.ctaButton {
+    padding: 12px 30px;
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.ctaButton:hover {
+    background: white;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .cardContainer {
+        height: auto;
+        /* Stack naturally on mobile if preferred, or maintain vh */
+        min-height: 100vh;
+        align-items: flex-end;
+        /* Bottom align similar to existing */
+    }
+
+    .overlay {
+        /* Vertical gradient for mobile, override per orientation if needed, 
+           but usually bottom-up is best for text readability on mobile */
+        background: linear-gradient(to top,
+                #000 0%,
+                rgba(0, 0, 0, 0.8) 50%,
+                rgba(0, 0, 0, 0.4) 80%,
+                transparent 100%) !important;
+    }
+
+    .content {
+        padding: 40px 20px 80px 20px;
+        /* Extra bottom padding */
+        text-align: center !important;
+        align-items: center !important;
+        margin: 0 !important;
+    }
+
+    .right .content,
+    .left .content {
+        align-items: center;
+        text-align: center;
+        margin: 0;
+    }
+
+    .textContent {
+        transform: translateY(20px);
+        /* Simple fade up on mobile */
+        max-width: 100%;
+    }
+
+    .right .textContent,
+    .left .textContent {
+        transform: translateY(20px);
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .techStack {
+        justify-content: center !important;
+    }
+
+    .links {
+        justify-content: center;
+    }
+}

@@ -2,7 +2,7 @@ import Hero from "../components/sections/Hero";
 import About from "../components/sections/About";
 import Skills from "../components/sections/Skills";
 import ProjectsIntro from "../components/sections/ProjectsIntro";
-import AnimeFinder from "../components/sections/AnimeFinder";
+import ProjectsSection from "../components/sections/ProjectsSection";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
             <div id="projects-intro" />
             <ScrollReveal>
                 <ProjectsIntro />
-                <AnimeFinder />
+                <ProjectsSection />
             </ScrollReveal>
         </>
     );
