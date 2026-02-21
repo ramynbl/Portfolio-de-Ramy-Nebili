@@ -158,6 +158,14 @@
     gap: 20px;
 }
 
+.right .links {
+    justify-content: flex-end;
+}
+
+.left .links {
+    justify-content: flex-start;
+}
+
 .iconLink {
     color: white;
     font-size: 1.8rem;

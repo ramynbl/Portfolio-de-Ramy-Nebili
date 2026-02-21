@@ -36,5 +36,24 @@ export const projectsData = [
             accent: '#fff' // White accent
         },
         orientation: 'left' // Content on the left
+    },
+    {
+        id: 'arktic',
+        title: 'Arktic Website',
+        category: 'Projet Associatif',
+        description: 'Un bot Discord pensé pour améliorer ses études : rappels automatiques, commandes pratiques, et petites automatisations utiles. Développé en Node.js pour répondre à des besoins personnels d\'organisation.',
+        techStack: ['Node.js', 'React', 'Vite', 'Tailwind CSS', 'Express', 'MySQL', 'Drizzle ORM', 'ManusAI', 'Railway'],
+        image: '/image/arktic.mp4',
+        video: null,
+        links: {
+            github: 'https://github.com/ramynbl/arktic',
+            live: 'https://arktic.up.railway.app/',
+            details: '/arktic-details'
+        },
+        theme: {
+            gradient: 'linear-gradient(to right, #fff, #ccc)',
+            accent: '#fff' // White accent
+        },
+        orientation: 'right' // Content on the left
     }
 ];
