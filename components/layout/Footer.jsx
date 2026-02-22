@@ -18,7 +18,8 @@ export default function Footer() {
                 <div className={styles.section}>
                     <h3>Navigation</h3>
                     <Link href="#about" className={styles.link}>À propos</Link>
-                    <Link href="#projects" className={styles.link}>Projets</Link>
+                    <Link href="#projects-intro" className={styles.link}>Projets</Link>
+                    <Link href="#skills" className={styles.link}>Compétences</Link>
                     <Link href="#contact" className={styles.link}>Contact</Link>
                 </div>
 

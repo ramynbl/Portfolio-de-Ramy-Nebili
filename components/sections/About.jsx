@@ -32,26 +32,9 @@ export default function About() {
                 </motion.h2>
 
                 <div className={styles.contentWrapper}>
-                    {/* Colonne Image - Gauche sur Desktop */}
+                    {/* Colonne Gauche - Texte & CTA */}
                     <motion.div
-                        className={styles.imageContainer}
-                    >
-                        <div className={styles.imageFrame}>
-                            <Image
-                                src="/image/portrait.png"
-                                alt="Ramy Nebili Portrait"
-                                width={400}
-                                height={500}
-                                className={styles.portrait}
-                                priority
-                            />
-                        </div>
-                        <div className={styles.imageDecor}></div>
-                    </motion.div>
-
-                    {/* Colonne Texte - Droite sur Desktop */}
-                    <motion.div
-                        className={styles.textContainer}
+                        className={styles.leftColumn}
                     >
                         <h3 className={styles.greeting}>Bonjour, je suis Ramy</h3>
 
@@ -64,6 +47,27 @@ export default function About() {
                             </p>
                         </div>
 
+                        <div className={styles.ctaContainer}>
+                            <a href="/cv.pdf" download className={styles.primaryBtn}>
+                                <FiDownload /> Télécharger CV
+                            </a>
+                            <a href="#contact" className={styles.secondaryBtn}>
+                                <FiMail /> Me contacter
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/ramynebili/" target="_blank" rel="noopener noreferrer" className={styles.iconBtn} aria-label="LinkedIn">
+                                <SiLinkedin />
+                            </a>
+                            <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" className={styles.iconBtn} aria-label="GitHub">
+                                <SiGithub />
+                            </a>
+                        </div>
+                    </motion.div>
+
+                    {/* Colonne Droite - Expériences */}
+                    <motion.div
+                        className={styles.rightColumn}
+                    >
                         <div className={styles.experienceList}>
                             <div className={styles.experienceItem}>
                                 <div className={styles.expIcon}><FiCode /></div>
@@ -88,22 +92,6 @@ export default function About() {
                                     <p>Communication visuelle et webdesign • 2013-2016</p>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className={styles.ctaContainer}>
-                            <a href="/cv.pdf" download className={styles.primaryBtn}>
-                                <FiDownload /> Télécharger CV
-                            </a>
-                            <a href="#contact" className={styles.secondaryBtn}>
-                                <FiMail /> Me contacter
-                            </a>
-
-                            <a href="https://www.linkedin.com/in/ramynebili/" target="_blank" rel="noopener noreferrer" className={styles.iconBtn} aria-label="LinkedIn">
-                                <SiLinkedin />
-                            </a>
-                            <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" className={styles.iconBtn} aria-label="GitHub">
-                                <SiGithub />
-                            </a>
                         </div>
                     </motion.div>
                 </div>

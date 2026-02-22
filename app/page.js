@@ -4,6 +4,8 @@ import Skills from "../components/sections/Skills";
 import ProjectsIntro from "../components/sections/ProjectsIntro";
 import ProjectsSection from "../components/sections/ProjectsSection";
 import ScrollReveal from "../components/ui/ScrollReveal";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 export default function Home() {
     return (
@@ -16,16 +18,17 @@ export default function Home() {
                 <About />
             </ScrollReveal>
 
-            <ScrollReveal>
-                <Skills />
-            </ScrollReveal>
-
             {/* Static anchor for reliable scroll navigation */}
             <div id="projects-intro" />
             <ScrollReveal>
                 <ProjectsIntro />
                 <ProjectsSection />
             </ScrollReveal>
+
+            <ScrollReveal>
+                <Skills />
+            </ScrollReveal>
+
         </>
     );
 }
