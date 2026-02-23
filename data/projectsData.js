@@ -1,10 +1,11 @@
 export const projectsData = [
+
     {
         id: 'anime-finder',
         title: 'Anime Finder',
         category: 'Projet Data & Dev',
         description: 'Une plateforme de recommandation intelligente qui dépasse la simple moyenne. Notre algorithme calcule un <strong>Score Éditorial</strong> basé sur la régularité et la stabilité des notes d\'épisodes, pour identifier les véritables pépites du catalogue.',
-        techStack: ['Python', 'FastAPI', 'Data Science', 'Streamlit', 'JavaScript', 'HTML', 'CSS'],
+        techStack: ['Python', 'Pandas', 'NumPy', 'FastAPI', 'Jupyter Notebook', 'Streamlit', 'JavaScript', 'HTML', 'CSS', 'Vercel', 'Railway'],
         image: null,
         video: '/image/anime.mp4',
         links: {
@@ -23,7 +24,7 @@ export const projectsData = [
         title: 'Study Ping',
         category: 'Projet Personnel',
         description: 'Un bot Discord pensé pour améliorer ses études : rappels automatiques, commandes pratiques, et petites automatisations utiles. Développé en Node.js pour répondre à des besoins personnels d\'organisation.',
-        techStack: ['Node.js', 'Discord.js', 'Cron/Scheduler', 'Git/GitHub'],
+        techStack: ['Node.js', 'Discord.js', 'JavaScript', 'Node-Cron', 'Node-iCal', 'Day.js', 'Git/GitHub', 'Railway'],
         image: '/image/bot.png',
         video: null,
         links: {
@@ -41,9 +42,9 @@ export const projectsData = [
         id: 'arktic',
         title: 'Arktic Website',
         category: 'Projet Associatif',
-        description: 'Un bot Discord pensé pour améliorer ses études : rappels automatiques, commandes pratiques, et petites automatisations utiles. Développé en Node.js pour répondre à des besoins personnels d\'organisation.',
+        description: 'Création de la plateforme web d\'Arktic, une association étudiante mêlant tech et escalade. Le site propose une vitrine moderne (\"Code, Climb, Chill\") couplée à un système d\'inscription en temps réel pour gérer les événements sportifs.',
         techStack: ['Node.js', 'React', 'Vite', 'Tailwind CSS', 'Express', 'MySQL', 'Drizzle ORM', 'ManusAI', 'Railway'],
-        image: '/image/arktic.mp4',
+        image: '/image/arktic.png',
         video: null,
         links: {
             github: 'https://github.com/ramynbl/arktic',

@@ -68,53 +68,30 @@ export default function Skills() {
             return;
         }
 
-        let animationFrameId;
-
-        const checkCenterCategory = () => {
-            if (!containerRef.current) return;
-
-            // Centre du conteneur (viewport)
-            const containerRect = containerRef.current.getBoundingClientRect();
-            const centerX = containerRect.left + containerRect.width / 2;
-
-            let closestCard = null;
-            let minDistance = Infinity;
-
-            // On cherche la carte la plus proche du centre
-            // On itère sur toutes les références de cartes
-            cardsRef.current.forEach((card) => {
-                if (!card) return;
-                const rect = card.getBoundingClientRect();
-
-                // Optimisation : ignorer les cartes loin
-                if (rect.right < 0 || rect.left > window.innerWidth) return;
-
-                const cardCenterX = rect.left + rect.width / 2;
-                const distance = Math.abs(cardCenterX - centerX);
-
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestCard = card;
-                }
-            });
-
-            if (closestCard) {
-                const category = closestCard.getAttribute('data-category');
-                // On met à jour seulement si la catégorie détectée est différente et valide
-                if (category && category !== activeCategory) {
-                    setActiveCategory(category);
-                }
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const category = entry.target.getAttribute('data-category');
+                        if (category && category !== activeCategory) {
+                            setActiveCategory(category);
+                        }
+                    }
+                });
+            },
+            {
+                root: null,
+                rootMargin: "0px -45% 0px -45%", // Zone de détection très étroite au centre horizontal
+                threshold: 0
             }
+        );
 
-            animationFrameId = requestAnimationFrame(checkCenterCategory);
-        };
+        // On observe toutes les cartes valides
+        cardsRef.current.forEach((card) => {
+            if (card) observer.observe(card);
+        });
 
-        // Démarrer la boucle de détection seulement si "Tout"
-        if (selectedCategory === "Tout") {
-            animationFrameId = requestAnimationFrame(checkCenterCategory);
-        }
-
-        return () => cancelAnimationFrame(animationFrameId);
+        return () => observer.disconnect();
     }, [activeCategory, selectedCategory]);
 
     // Cleanup des refs quand la liste change
@@ -173,12 +150,11 @@ export default function Skills() {
                     className={styles.track}
                     style={!shouldScroll ? {
                         animation: 'none',
-                        justifyContent: 'center',
-                        width: '100%', // Centrer dans le viewport
-                        padding: '100px 40px', // Uniforme
+                        justifyContent: 'flex-start', // Permet le scroll
+                        width: 'max-content', // Essentiel pour que l'overflow marche sur trackpad
+                        padding: '100px 40px',
                         gap: '40px'
                     } : {
-                        // Si scroll, on laisse l'animation CSS par défaut mais on force le padding et la largeur
                         width: 'max-content',
                         padding: '100px 40px'
                     }}

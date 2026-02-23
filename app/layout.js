@@ -1,6 +1,7 @@
 import { Lexend, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 // Configuration des fonts
 const lexend = Lexend({
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
             <body>
                 <Header />  {/* <-- C'est ici que la magie opère */}
                 <main>{children}</main>
-                {/* Le Footer viendra ici plus tard */}
+                <Footer />
             </body>
         </html>
     );

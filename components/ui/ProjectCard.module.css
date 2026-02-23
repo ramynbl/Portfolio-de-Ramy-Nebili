@@ -32,17 +32,19 @@
 
 /* Orientation specific overlays */
 .right .overlay {
-    background: linear-gradient(to right,
+    /* "to bottom right" ou "135deg" (diagonale vers le bas à droite) \ */
+    background: linear-gradient(135deg,
             transparent 0%,
-            rgba(0, 0, 0, 0.55) 30%,
+            rgba(0, 0, 0, 0.7) 30%,
             rgba(0, 0, 0, 0.95) 70%,
             #000 100%);
 }
 
 .left .overlay {
-    background: linear-gradient(to left,
+    /* "-135deg" ou "to bottom left" (diagonale vers le bas à gauche) / */
+    background: linear-gradient(-135deg,
             transparent 0%,
-            rgba(0, 0, 0, 0.55) 30%,
+            rgba(0, 0, 0, 0.7) 30%,
             rgba(0, 0, 0, 0.95) 70%,
             #000 100%);
 }
@@ -70,6 +72,7 @@
     align-items: flex-start;
     text-align: left;
     margin-right: auto;
+    margin-left: 5%;
     /* Push to left */
 }
 

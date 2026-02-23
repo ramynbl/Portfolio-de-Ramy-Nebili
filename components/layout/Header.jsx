@@ -9,6 +9,7 @@ import { FaLinkedin, FaGithub, FaBars, FaTimes, FaDownload } from 'react-icons/f
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isSidebar, setIsSidebar] = useState(false);
+    const [activeSection, setActiveSection] = useState('');
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -25,6 +26,32 @@ export default function Header() {
         // Initial check
         handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Intersection Observer for highlighting active section
+    useEffect(() => {
+        // Observe home, about, projects-intro anchor, projects (cards), skills
+        const ids = ['home', 'about', 'projects-intro', 'projects', 'skills'];
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Map 'projects' (cards section) back to 'projects-intro' dot
+                        const sectionId = entry.target.id === 'projects' ? 'projects-intro' : entry.target.id;
+                        setActiveSection(sectionId);
+                    }
+                });
+            },
+            { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+        );
+
+        ids.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+
+        return () => observer.disconnect();
     }, []);
 
     // Close mobile menu if sidebar activates (scrolling down)
@@ -54,6 +81,7 @@ export default function Header() {
                         {/* Desktop Navigation */}
                         <nav className={styles.desktopNav}>
                             <ul className={styles.navList}>
+                                <li><Link href="#home" className={styles.navLink}>Accueil</Link></li>
                                 <li><Link href="#about" className={styles.navLink}>À propos</Link></li>
                                 <li><Link href="#projects-intro" className={styles.navLink}>Projets</Link></li>
                                 <li><Link href="#skills" className={styles.navLink}>Compétences</Link></li>
@@ -89,10 +117,11 @@ export default function Header() {
                     >
                         {/* Sidebar Navigation */}
                         <nav className={styles.sidebarNav}>
-                            <Link href="#about" className={styles.navDot} aria-label="À propos" title="À propos"></Link>
-                            <Link href="#projects-intro" className={styles.navDot} aria-label="Projets" title="Projets"></Link>
-                            <Link href="#skills" className={styles.navDot} aria-label="Compétences" title="Compétences"></Link>
-                            <Link href="#contact" className={styles.navDot} aria-label="Contact" title="Contact"></Link>
+                            <Link href="#home" className={`${styles.navDot} ${activeSection === 'home' ? styles.active : ''}`} aria-label="Accueil" title="Accueil"></Link>
+                            <Link href="#about" className={`${styles.navDot} ${activeSection === 'about' ? styles.active : ''}`} aria-label="À propos" title="À propos"></Link>
+                            <Link href="#projects-intro" className={`${styles.navDot} ${activeSection === 'projects-intro' ? styles.active : ''}`} aria-label="Projets" title="Projets"></Link>
+                            <Link href="#skills" className={`${styles.navDot} ${activeSection === 'skills' ? styles.active : ''}`} aria-label="Compétences" title="Compétences"></Link>
+                            <Link href="#contact" className={`${styles.navDot} ${activeSection === 'contact' ? styles.active : ''}`} aria-label="Contact" title="Contact"></Link>
                         </nav>
 
                         {/* Sidebar Socials & CV */}
@@ -122,6 +151,7 @@ export default function Header() {
                         className={styles.mobileMenu}
                     >
                         <ul className={styles.mobileNavList}>
+                            <li><Link href="#home" className={styles.mobileNavLink} onClick={toggleMenu}>Accueil</Link></li>
                             <li><Link href="#about" className={styles.mobileNavLink} onClick={toggleMenu}>À propos</Link></li>
                             <li><Link href="#projects-intro" className={styles.mobileNavLink} onClick={toggleMenu}>Projets</Link></li>
                             <li><Link href="#skills" className={styles.mobileNavLink} onClick={toggleMenu}>Compétences</Link></li>

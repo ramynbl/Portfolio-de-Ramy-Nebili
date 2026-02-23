@@ -5,25 +5,28 @@ import ProjectsIntro from "../components/sections/ProjectsIntro";
 import ProjectsSection from "../components/sections/ProjectsSection";
 import ScrollReveal from "../components/ui/ScrollReveal";
 import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
 
 export default function Home() {
     return (
         <>
-            <ScrollReveal>
-                <Hero />
-            </ScrollReveal>
+            <div id="home">
+                <ScrollReveal>
+                    <Hero />
+                </ScrollReveal>
+            </div>
 
             <ScrollReveal>
                 <About />
             </ScrollReveal>
 
-            {/* Static anchor for reliable scroll navigation */}
-            <div id="projects-intro" />
             <ScrollReveal>
                 <ProjectsIntro />
-                <ProjectsSection />
             </ScrollReveal>
+            <div id="projects">
+                <ScrollReveal>
+                    <ProjectsSection />
+                </ScrollReveal>
+            </div>
 
             <ScrollReveal>
                 <Skills />
