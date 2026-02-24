@@ -1,0 +1,44 @@
+.glassChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    /* For icons */
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    /* slightly higher than .03 so it's visible on dark backgrounds without extra elements */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e5e5ea;
+    font-size: 0.85rem;
+    font-weight: 500;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button.glassChip {
+    cursor: pointer;
+}
+
+.glassChip:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.glassChip.active {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.glassChip.active:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: scale(1.05) translateY(-2px);
+}

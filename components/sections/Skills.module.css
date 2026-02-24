@@ -120,40 +120,7 @@
     padding: 0 20px;
 }
 
-.chip {
-    padding: 8px 18px;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #e5e5ea;
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    backdrop-filter: blur(10px);
-    outline: none;
-}
-
-.chip:hover {
-    background: rgba(255, 255, 255, 0.25);
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
-}
-
-.chipActive {
-    background: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
-    font-weight: 600;
-}
-
-.chip.chipActive:hover {
-    background: #ffffff;
-    transform: scale(1.05) translateY(-2px);
-}
+/* .chip styles removed in favor of GlassChip component */
 
 .dynamicSubtitleWrapper {
     height: 120px;

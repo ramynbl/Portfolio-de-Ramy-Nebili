@@ -9,17 +9,17 @@
     transform: translateX(-50%);
     z-index: 1000;
     border-radius: 50px;
-    /* Glassmorphism */
-    background: rgba(29, 29, 31, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Glassmorphism unifié */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .header:hover {
-    background: rgba(29, 29, 31, 0.85);
+    background: rgba(255, 255, 255, 0.06);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
 }
 

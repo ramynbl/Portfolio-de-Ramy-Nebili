@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { skillsData } from '../../data/skillsData';
+import GlassChip from '../ui/GlassChip';
 import styles from './Skills.module.css';
 
 export default function Skills() {
@@ -134,13 +135,13 @@ export default function Skills() {
 
                 <div className={styles.filterContainer}>
                     {categories.map((cat) => (
-                        <button
+                        <GlassChip
                             key={cat}
                             onClick={() => setSelectedCategory(cat)}
-                            className={`${styles.chip} ${selectedCategory === cat ? styles.chipActive : ''}`}
+                            active={selectedCategory === cat}
                         >
                             {cat}
-                        </button>
+                        </GlassChip>
                     ))}
                 </div>
             </motion.div>

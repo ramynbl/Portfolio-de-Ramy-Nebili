@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import GlassChip from './GlassChip';
 import styles from './ProjectCard.module.css';
 
 const ProjectCard = ({ project, index }) => {
@@ -55,7 +56,7 @@ const ProjectCard = ({ project, index }) => {
                     {/* Tech Stack Tags */}
                     <div className={styles.techStack}>
                         {project.techStack.map((tech, i) => (
-                            <span key={i} className={styles.techBadge}>{tech}</span>
+                            <GlassChip key={i}>{tech}</GlassChip>
                         ))}
                     </div>
 

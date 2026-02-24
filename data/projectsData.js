@@ -14,7 +14,7 @@ export const projectsData = [
             details: '/anime-finder-details'
         },
         theme: {
-            gradient: 'linear-gradient(to right, #fff, #ccc)',
+            gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
             accent: '#4facfe'
         },
         orientation: 'right' // Content on the right
@@ -33,7 +33,7 @@ export const projectsData = [
             details: '/hetic-bot-details'
         },
         theme: {
-            gradient: 'linear-gradient(to right, #fff, #ccc)',
+            gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
             accent: '#fff' // White accent
         },
         orientation: 'left' // Content on the left
@@ -52,7 +52,7 @@ export const projectsData = [
             details: '/arktic-details'
         },
         theme: {
-            gradient: 'linear-gradient(to right, #fff, #ccc)',
+            gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
             accent: '#fff' // White accent
         },
         orientation: 'right' // Content on the left
