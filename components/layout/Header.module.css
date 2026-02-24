@@ -124,6 +124,9 @@
     font-weight: 700;
     color: #ffffff;
     letter-spacing: -0.5px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .navList {
@@ -229,6 +232,8 @@
 .rightSection {
     display: flex;
     align-items: center;
+    flex: 1;
+    justify-content: flex-end;
 }
 
 .burgerBtn {

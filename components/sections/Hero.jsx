@@ -25,9 +25,9 @@ export default function Hero() {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
                 <h1 className={styles.title}>
-                    <TextSlider words={["Designer", "Créateur", "Visuel"]} />
+                    <TextSlider words={["Front-end", "Interface", "Visuel", "Intégrer"]} />
                 </h1>
-                <p className={styles.subtitle}>UI / UX & Conception visuelle</p>
+                <p className={styles.subtitle}>Expériences Utilisateurs & Interfaces Modernes</p>
                 <Link href="#about" className={`${styles.btnHero} ${styles.btnLeft}`}>En savoir plus</Link>
             </motion.div>
 
@@ -39,7 +39,7 @@ export default function Hero() {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
                 <h1 className={styles.title}>
-                    <TextSlider words={["< Coder >", "Innover", "Construire"]} />
+                    <TextSlider words={["< Coder >", "Innover", "Construire", "Automatiser"]} />
                 </h1>
                 <p className={styles.subtitle}>Développement Front-end & Back-end</p>
                 <Link href="#projects-intro" className={`${styles.btnHero} ${styles.btnRight}`}>Mes Projets</Link>
