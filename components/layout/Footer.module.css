@@ -2,7 +2,8 @@
 .footer {
     background-color: var(--background);
     color: var(--muted-text);
-    padding: 0 0 40px;
+    padding: 50px 0 40px;
+    /* J'ai remis un espace en haut (100px) ! */
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     margin-top: auto;
@@ -52,38 +53,6 @@
     }
 }
 
-/* --- MARQUEE --- */
-.marqueeContainer {
-    width: 100vw;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 30px 0;
-    margin-bottom: 60px;
-    background: rgba(255, 255, 255, 0.01);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.marqueeText {
-    display: inline-block;
-    font-size: 6rem;
-    font-weight: 800;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-    font-family: var(--font-heading);
-    text-transform: uppercase;
-    animation: marquee 30s linear infinite;
-    padding-left: 20px;
-}
-
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-}
 
 /* --- LAYOUT & CENTERING --- */
 .content {
@@ -294,9 +263,6 @@
 }
 
 @media (max-width: 768px) {
-    .marqueeText {
-        font-size: 4rem;
-    }
 
     .content {
         gap: 50px;

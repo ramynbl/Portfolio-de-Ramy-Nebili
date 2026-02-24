@@ -1,0 +1,337 @@
+.section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background: var(--background);
+}
+
+/* Background Blobs for consistency */
+.blob1,
+.blob2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.blob1 {
+    top: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: #0a84ff;
+}
+
+.blob2 {
+    bottom: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: #5e5ce6;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- UPPER ROW : Grid 2 Columns --- */
+.upperRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+    align-items: start;
+}
+
+/* Left Column Styling */
+.titleSection {
+    margin-bottom: 24px;
+}
+
+.titleMain {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subText {
+    font-size: 1.1rem;
+    color: var(--light-text);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 90%;
+}
+
+.featuresList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--light-text);
+    font-size: 1rem;
+}
+
+.featureIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--foreground);
+    font-size: 0.8rem;
+}
+
+/* Socials Links */
+.socialsContainer {
+    display: flex;
+    gap: 16px;
+}
+
+.socialLink {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.socialLink::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 1;
+}
+
+.socialLink:nth-child(1):hover::after {
+    background: #0a66c2;
+    /* LinkedIn Blue */
+    width: 100%;
+    height: 100%;
+}
+
+.socialLink:nth-child(2):hover::after {
+    background: #ffffff;
+    /* GitHub White */
+    width: 100%;
+    height: 100%;
+}
+
+.socialLink:nth-child(3):hover::after {
+    background: #ffffff;
+    /* CV Download */
+    width: 100%;
+    height: 100%;
+}
+
+.socialLink:hover svg {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.socialLink:nth-child(2):hover svg,
+.socialLink:nth-child(3):hover svg {
+    color: #000;
+}
+
+.socialLink svg {
+    transition: all 0.4s ease;
+    z-index: 2;
+    position: relative;
+}
+
+/* Right Column - Form */
+.formContainer {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputField,
+.textareaField {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px 20px;
+    color: var(--foreground);
+    font-size: 1rem;
+    font-family: var(--font-body), sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.inputField::placeholder,
+.textareaField::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.inputField:focus,
+.textareaField:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.textareaField {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.submitBtn {
+    width: 100%;
+    background: var(--foreground);
+    color: var(--background);
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+    background: #e0e0e0;
+}
+
+
+/* --- BOTTOM ROW : Grid 3 Cards --- */
+.bottomCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.infoCard {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.infoCard:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+}
+
+.cardIcon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--foreground);
+    font-size: 1.2rem;
+}
+
+.cardContent h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--foreground);
+}
+
+.cardContent p {
+    font-size: 0.95rem;
+    color: var(--light-text);
+    line-height: 1.5;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 968px) {
+    .upperRow {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .titleMain {
+        font-size: 3rem;
+    }
+
+    .subText {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .formGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .bottomCards {
+        grid-template-columns: 1fr;
+    }
+
+    .titleMain {
+        font-size: 2.5rem;
+    }
+
+    .formContainer {
+        padding: 30px 20px;
+    }
+}

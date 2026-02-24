@@ -11,13 +11,6 @@ export default function Footer() {
             <div className={styles.blob1}></div>
             <div className={styles.blob2}></div>
 
-            {/* Marquee défilant géant */}
-            <div className={styles.marqueeContainer}>
-                <div className={styles.marqueeText}>
-                    LET'S WORK TOGETHER • LET'S WORK TOGETHER • LET'S WORK TOGETHER • LET'S WORK TOGETHER •
-                    LET'S WORK TOGETHER • LET'S WORK TOGETHER • LET'S WORK TOGETHER • LET'S WORK TOGETHER •
-                </div>
-            </div>
 
             <div className={`container ${styles.content}`}>
                 {/* Section 1 - Bio & CV */}

@@ -66,11 +66,11 @@ const ProjectCard = ({ project, index }) => {
                                 href={project.links.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={styles.iconLink}
+                                className={styles.socialLink}
                                 aria-label="Voir le code sur GitHub"
                                 style={{ '--hover-color': project.theme.accent }}
                             >
-                                <FaGithub size={30} />
+                                <FaGithub className={styles.socialIcon} />
                             </a>
                         )}
 
@@ -79,11 +79,11 @@ const ProjectCard = ({ project, index }) => {
                                 href={project.links.live}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={styles.iconLink}
+                                className={styles.socialLink}
                                 aria-label="Voir l'application en ligne"
                                 style={{ '--hover-color': project.theme.accent }}
                             >
-                                <FaExternalLinkAlt size={25} />
+                                <FaExternalLinkAlt className={styles.socialIcon} />
                             </a>
                         )}
 

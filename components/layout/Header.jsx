@@ -92,11 +92,14 @@ export default function Header() {
                         {/* Socials & Burger */}
                         <div className={styles.rightSection}>
                             <div className={styles.socials}>
-                                <a href="https://www.linkedin.com/in/ramy-nebili/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <a href="https://www.linkedin.com/in/ramy-nebili/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialLink}>
                                     <FaLinkedin className={styles.socialIcon} />
                                 </a>
-                                <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialLink}>
                                     <FaGithub className={styles.socialIcon} />
+                                </a>
+                                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Télécharger mon CV" download title="Télécharger le CV">
+                                    <FaDownload className={styles.socialIcon} />
                                 </a>
                             </div>
 
@@ -126,13 +129,13 @@ export default function Header() {
 
                         {/* Sidebar Socials & CV */}
                         <div className={styles.sidebarSocials}>
-                            <a href="https://www.linkedin.com/in/ramy-nebili/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/ramy-nebili/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialLink}>
                                 <FaLinkedin className={styles.socialIcon} />
                             </a>
-                            <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialLink}>
                                 <FaGithub className={styles.socialIcon} />
                             </a>
-                            <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" aria-label="Télécharger mon CV" download title="Télécharger le CV">
+                            <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" aria-label="Télécharger mon CV" download title="Télécharger le CV" className={styles.socialLink}>
                                 <FaDownload className={styles.socialIcon} />
                             </a>
                         </div>

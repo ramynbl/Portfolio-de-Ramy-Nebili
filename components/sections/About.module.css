@@ -24,7 +24,7 @@
     font-weight: 800;
     text-align: center;
     margin-bottom: 50px;
-    background: linear-gradient(180deg, #fff, #a1a1aa);
+    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -165,25 +165,67 @@
     border-color: #fff;
 }
 
-.iconBtn {
+.socialLink {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
+    /* Same inner logic as iconBtn */
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-    text-decoration: none;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.iconBtn:hover {
+.socialLink::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
     background: #fff;
+    /* Default cover */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 1;
+}
+
+/* Hover Colors - About */
+.socialLink:nth-child(3):hover::after {
+    background: #0077b5;
+    /* LinkedIn */
+    width: 100%;
+    height: 100%;
+}
+
+.socialLink:nth-child(4):hover::after {
+    background: #ffffff;
+    /* GitHub */
+    width: 100%;
+    height: 100%;
+}
+
+.socialLink:hover .socialIcon {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.socialLink:nth-child(4):hover .socialIcon {
     color: #000;
-    transform: rotate(10deg);
+    /* GitHub logo becomes black on white circle */
+}
+
+.socialIcon {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.4s ease;
+    z-index: 2;
 }
 
 /* --- RESPONSIVE --- */

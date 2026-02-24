@@ -55,11 +55,11 @@ export default function About() {
                                 <FiMail /> Me contacter
                             </a>
 
-                            <a href="https://www.linkedin.com/in/ramynebili/" target="_blank" rel="noopener noreferrer" className={styles.iconBtn} aria-label="LinkedIn">
-                                <SiLinkedin />
+                            <a href="https://www.linkedin.com/in/ramynebili/" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn">
+                                <SiLinkedin className={styles.socialIcon} />
                             </a>
-                            <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" className={styles.iconBtn} aria-label="GitHub">
-                                <SiGithub />
+                            <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="GitHub">
+                                <SiGithub className={styles.socialIcon} />
                             </a>
                         </div>
                     </motion.div>
