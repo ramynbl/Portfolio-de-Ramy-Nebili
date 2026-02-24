@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import GlassChip from './GlassChip';
 import styles from './ProjectCard.module.css';
 
@@ -80,11 +80,9 @@ const ProjectCard = ({ project, index }) => {
                                 href={project.links.live}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={styles.socialLink}
-                                aria-label="Voir l'application en ligne"
-                                style={{ '--hover-color': project.theme.accent }}
+                                className={styles.ctaButton}
                             >
-                                <FaExternalLinkAlt className={styles.socialIcon} />
+                                Live view
                             </a>
                         )}
 
