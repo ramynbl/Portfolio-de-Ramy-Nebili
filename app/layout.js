@@ -1,4 +1,4 @@
-import { Lexend, Outfit } from "next/font/google";
+import { Lexend } from "next/font/google";
 import "./globals.css";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
@@ -10,11 +10,7 @@ const lexend = Lexend({
     display: "swap",
 });
 
-const outfit = Outfit({
-    subsets: ["latin"],
-    variable: "--font-outfit",
-    display: "swap",
-});
+
 
 export const metadata = {
     title: "Portfolio - Ramy Nebili",
@@ -23,7 +19,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="fr" className={`${lexend.variable} ${outfit.variable}`}>
+        <html lang="fr" className={`${lexend.variable}`}>
             <body>
                 <Header />  {/* <-- C'est ici que la magie opère */}
                 <main>{children}</main>

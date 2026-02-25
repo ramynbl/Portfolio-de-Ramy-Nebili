@@ -1,4 +1,6 @@
 /* app/globals.css */
+@import url('https://fonts.cdnfonts.com/css/google-sans');
+
 :root {
     /* --- PALETTE DE COULEURS --- */
     --background: #000000;
@@ -28,7 +30,7 @@
 
     /* --- TYPOGRAPHIE --- */
     --font-heading: var(--font-lexend);
-    --font-body: var(--font-outfit);
+    --font-body: 'Product Sans', 'Google Sans', sans-serif;
 }
 
 body {
@@ -40,7 +42,17 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+button,
+.button,
+a[class*="btn"],
+a[class*="Btn"],
+a[class*="CTA"],
+[class*="chip"],
+[class*="Chip"],
+[class*="category"],
+[class*="projectLabel"],
+[class*="overline"] {
     font-family: var(--font-heading), sans-serif;
 }
 
