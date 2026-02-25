@@ -56,5 +56,25 @@ export const projectsData = [
             accent: '#fff' // White accent
         },
         orientation: 'right' // Content on the left
+    },
+    {
+        id: 'kevin-ai',
+        title: 'Kevin AI',
+        category: 'Projet Personnel',
+        description: 'Création de Kevin.ai, une application web fullstack interactive mettant en scène une intelligence artificielle dotée d\'une personnalité atypique (sarcastique et dépressive). L\'application propose une interface de chat moderne et immersive aux tons sombres ("Glassmorphism"), couplée à un prompt engineering avancé via l\'API Google Gemini, intégrant mémoire contextuelle, effet "machine à écrire" et synthèse vocale.',
+        techStack: ['Node.js', 'Express', 'JavaScript', 'Tailwind CSS', 'HTML', 'Google Gemini API'],
+        thumbnail: '/image/kevin.png',
+        image: null,
+        video: '/image/kevin.mp4',
+        links: {
+            github: 'https://github.com/ramynbl/kevin-ai',
+            live: 'https://kevin-ai.onrender.com/',
+            details: '/kevin-ai-details'
+        },
+        theme: {
+            gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
+            accent: '#fff' // White accent
+        },
+        orientation: 'left' // Content on the left
     }
 ];

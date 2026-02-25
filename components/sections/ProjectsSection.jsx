@@ -4,11 +4,13 @@ import { projectsData } from '../../data/projectsData';
 import ProjectCard from '../ui/ProjectCard';
 import styles from './ProjectsSection.module.css';
 
-export default function ProjectsSection() {
+export default function ProjectsSection({ limit }) {
+    const displayedProjects = limit ? projectsData.slice(0, limit) : projectsData;
+
     return (
         <section className={styles.projectsSection}>
             <div className={styles.cardsWrapper}>
-                {projectsData.map((project, index) => {
+                {displayedProjects.map((project, index) => {
                     return (
                         <ProjectCard
                             key={project.id}
