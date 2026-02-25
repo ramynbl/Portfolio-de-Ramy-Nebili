@@ -28,7 +28,7 @@ export default function Hero() {
                     <TextSlider words={["Front-end", "Interface", "Visuel", "Intégrer"]} />
                 </h1>
                 <p className={styles.subtitle}>Expériences Utilisateurs & Interfaces Modernes</p>
-                <Link href="#about" className={`${styles.btnHero} ${styles.btnLeft}`}>En savoir plus</Link>
+                <Link href="/about" className={`${styles.btnHero} ${styles.btnLeft}`}>En savoir plus</Link>
             </motion.div>
 
             {/* Côté Droit : Coder */}

@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { FiDownload, FiMail, FiBriefcase, FiAward, FiCode } from 'react-icons/fi';
@@ -51,7 +52,11 @@ export default function About() {
                         </div>
 
                         <div className={styles.ctaContainer}>
-                            <a href="/cv.pdf" download className={styles.primaryBtn}>
+                            <Link href="/about" className={styles.primaryBtn}>
+                                En savoir plus &rarr;
+                            </Link>
+
+                            <a href="/cv.pdf" download className={styles.secondaryBtn}>
                                 <FiDownload /> Télécharger CV
                             </a>
                             <a href="#contact" className={styles.secondaryBtn}>

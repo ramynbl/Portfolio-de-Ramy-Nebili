@@ -82,7 +82,7 @@ export default function Header() {
                         <nav className={styles.desktopNav}>
                             <ul className={styles.navList}>
                                 <li><Link href="/" className={styles.navLink}>Accueil</Link></li>
-                                <li><Link href="/#about" className={styles.navLink}>À propos</Link></li>
+                                <li><Link href="/about" className={styles.navLink}>À propos</Link></li>
                                 <li><Link href="/projects" className={styles.navLink}>Projets</Link></li>
                                 <li><Link href="/#skills" className={styles.navLink}>Compétences</Link></li>
                                 <li><Link href="/#contact" className={styles.navLink}>Contact</Link></li>
@@ -121,7 +121,7 @@ export default function Header() {
                         {/* Sidebar Navigation */}
                         <nav className={styles.sidebarNav}>
                             <Link href="/" className={`${styles.navDot} ${activeSection === 'home' ? styles.active : ''}`} aria-label="Accueil" title="Accueil"></Link>
-                            <Link href="/#about" className={`${styles.navDot} ${activeSection === 'about' ? styles.active : ''}`} aria-label="À propos" title="À propos"></Link>
+                            <Link href="/about" className={`${styles.navDot} ${activeSection === 'about' ? styles.active : ''}`} aria-label="À propos" title="À propos"></Link>
                             <Link href="/projects" className={`${styles.navDot} ${activeSection === 'projects-intro' ? styles.active : ''}`} aria-label="Projets" title="Projets"></Link>
                             <Link href="/#skills" className={`${styles.navDot} ${activeSection === 'skills' ? styles.active : ''}`} aria-label="Compétences" title="Compétences"></Link>
                             <Link href="/#contact" className={`${styles.navDot} ${activeSection === 'contact' ? styles.active : ''}`} aria-label="Contact" title="Contact"></Link>
@@ -155,7 +155,7 @@ export default function Header() {
                     >
                         <ul className={styles.mobileNavList}>
                             <li><Link href="/" className={styles.mobileNavLink} onClick={toggleMenu}>Accueil</Link></li>
-                            <li><Link href="/#about" className={styles.mobileNavLink} onClick={toggleMenu}>À propos</Link></li>
+                            <li><Link href="/about" className={styles.mobileNavLink} onClick={toggleMenu}>À propos</Link></li>
                             <li><Link href="/projects" className={styles.mobileNavLink} onClick={toggleMenu}>Projets</Link></li>
                             <li><Link href="/#skills" className={styles.mobileNavLink} onClick={toggleMenu}>Compétences</Link></li>
                             <li><Link href="/#contact" className={styles.mobileNavLink} onClick={toggleMenu}>Contact</Link></li>

@@ -28,9 +28,9 @@ export default function Footer() {
                 <div className={styles.section}>
                     <h3>Navigation</h3>
                     <div className={styles.navLinks}>
-                        <Link href="/#home" className={styles.link}>Accueil</Link>
-                        <Link href="/#about" className={styles.link}>À propos</Link>
-                        <Link href="/#projects-intro" className={styles.link}>Projets</Link>
+                        <Link href="/" className={styles.link}>Accueil</Link>
+                        <Link href="/about" className={styles.link}>À propos</Link>
+                        <Link href="/projects" className={styles.link}>Projets</Link>
                         <Link href="/#skills" className={styles.link}>Compétences</Link>
                         <Link href="/#contact" className={styles.link}>Contact</Link>
                     </div>
