@@ -70,7 +70,27 @@ export default function OtherProjects() {
                                 <p className={styles.description}>
                                     {/* Remove strong tags for plain text preview */}
                                     {project.description.replace(/<[^>]+>/g, '').substring(0, 100)}...
+                                    {project.links?.details && (
+                                        <Link href={project.links.details} className={styles.readMoreLink} onClick={(e) => e.stopPropagation()}>
+                                            En savoir plus...
+                                        </Link>
+                                    )}
                                 </p>
+
+                                {/* New Interaction Buttons */}
+                                {project.links?.live && (
+                                    <div className={styles.cardActions}>
+                                        <a
+                                            href={project.links.live}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={styles.cardLinkLive}
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            Live demo
+                                        </a>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ))}

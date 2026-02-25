@@ -11,7 +11,7 @@ export const projectsData = [
         links: {
             github: 'https://github.com/ramynbl/projet-anime-data',
             live: 'https://projet-anime-data.vercel.app/',
-            details: '/anime-finder-details'
+            details: '/projects/anime-finder'
         },
         theme: {
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
@@ -30,7 +30,7 @@ export const projectsData = [
         links: {
             github: 'https://github.com/ramynbl/hetic-bot',
             live: null,
-            details: '/hetic-bot-details'
+            details: '/projects/study-ping'
         },
         theme: {
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
@@ -49,7 +49,7 @@ export const projectsData = [
         links: {
             github: 'https://github.com/ramynbl/arktic',
             live: 'https://arktic.up.railway.app/',
-            details: '/arktic-details'
+            details: '/projects/arktic'
         },
         theme: {
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
@@ -69,7 +69,7 @@ export const projectsData = [
         links: {
             github: 'https://github.com/ramynbl/kevin-ai',
             live: 'https://kevin-ai.onrender.com/',
-            details: '/kevin-ai-details'
+            details: '/projects/kevin-ai'
         },
         theme: {
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
