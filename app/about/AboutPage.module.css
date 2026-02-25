@@ -3,7 +3,6 @@
     background-color: var(--background);
     color: var(--foreground);
     min-height: 100vh;
-    overflow-x: hidden;
     padding-top: 100px;
     font-family: var(--font-body), sans-serif;
 }
@@ -118,6 +117,53 @@
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
+}
+
+.objectiveBlock {
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: row;
+    /* Horizontal layout */
+    align-items: center;
+    /* Center vertically */
+    gap: 30px;
+    border-left: 4px solid var(--primary, #3b82f6);
+    margin-top: 60px;
+}
+
+.objectiveHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    /* Prevent header from shrinking */
+    min-width: 200px;
+    /* Give it some base space */
+}
+
+.objectiveIcon {
+    font-size: 2rem;
+    color: var(--primary, #3b82f6);
+}
+
+.objectiveHeader h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    white-space: nowrap;
+    /* Keep the title on one line */
+}
+
+.objectiveBlock p {
+    font-size: 1.05rem;
+    color: #e4e4e7;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.objectiveBlock strong {
+    color: #fff;
 }
 
 .title {
@@ -299,43 +345,62 @@
     font-weight: 600;
 }
 
-.skillsMeters {
+.skillsContainer {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    padding: 40px;
 }
 
-.skillRow {
+.skillCategoryBlock {
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
-.skillInfo {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.95rem;
+.skillCategoryTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
     color: #fff;
-    font-weight: 600;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
 }
 
-.progressBar {
-    height: 8px;
+.chipContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.chip {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    color: #e4e4e7;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.chip:hover {
     background: rgba(255, 255, 255, 0.1);
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    color: #fff;
 }
 
-.progressInner {
-    height: 100%;
-    background: linear-gradient(90deg, #3b82f6, #a855f7);
-    position: absolute;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+.chipFocus {
+    background: rgba(59, 130, 246, 0.1);
+    /* Primary blue tint */
+    border-color: rgba(59, 130, 246, 0.3);
+    color: #fff;
+}
+
+.chipFocus:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.5);
 }
 
 
@@ -497,6 +562,12 @@
     .heroImageContainer {
         height: 400px;
         aspect-ratio: auto;
+    }
+
+    .objectiveBlock {
+        flex-direction: column;
+        /* Stack vertically on small screens */
+        align-items: flex-start;
     }
 }
 

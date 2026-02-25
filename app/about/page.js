@@ -72,6 +72,17 @@ export default function AboutPage() {
                             />
                         </div>
                     </div>
+
+                    {/* Objective Block */}
+                    <div className={`${styles.objectiveBlock} ${styles.glassCard}`}>
+                        <div className={styles.objectiveHeader}>
+                            <FiTarget className={styles.objectiveIcon} />
+                            <h3>Objectif Actuel</h3>
+                        </div>
+                        <p>
+                            Apprendre en continu. Je cherche activement une <strong>alternance</strong>, un <strong>stage</strong> ou des missions <strong>freelances</strong> pour monter en compétences sur React et Next.js.
+                        </p>
+                    </div>
                 </div>
             </section>
 
@@ -177,34 +188,25 @@ export default function AboutPage() {
                             </p>
                         </div>
 
-                        <div className={`${styles.skillsMeters} ${styles.glassCard}`}>
-                            <div className={styles.skillRow}>
-                                <div className={styles.skillInfo}>
-                                    <span>React & Next.js</span>
-                                    <span>Focus 2024</span>
+                        <div className={`${styles.skillsContainer}`}>
+                            <div className={`${styles.skillCategoryBlock} ${styles.glassCard}`}>
+                                <h3 className={styles.skillCategoryTitle}>Stack actuelle</h3>
+                                <div className={styles.chipContainer}>
+                                    <span className={styles.chip}>React / Next.js</span>
+                                    <span className={styles.chip}>Node.js / Express</span>
+                                    <span className={styles.chip}>JavaScript</span>
+                                    <span className={styles.chip}>Architecture REST</span>
+                                    <span className={styles.chip}>Gestion d’état</span>
+                                    <span className={styles.chip}>Optimisation performance</span>
                                 </div>
-                                <div className={styles.progressBar}><div className={styles.progressInner} style={{ width: '90%' }}></div></div>
                             </div>
-                            <div className={styles.skillRow}>
-                                <div className={styles.skillInfo}>
-                                    <span>Node.js / Express</span>
-                                    <span>80%</span>
+
+                            <div className={`${styles.skillCategoryBlock} ${styles.glassCard}`}>
+                                <h3 className={styles.skillCategoryTitle}>Focus 2026</h3>
+                                <div className={styles.chipContainer}>
+                                    <span className={`${styles.chip} ${styles.chipFocus}`}>Maîtriser React/Next.js à fond</span>
+                                    <span className={`${styles.chip} ${styles.chipFocus}`}>TypeScript</span>
                                 </div>
-                                <div className={styles.progressBar}><div className={styles.progressInner} style={{ width: '80%' }}></div></div>
-                            </div>
-                            <div className={styles.skillRow}>
-                                <div className={styles.skillInfo}>
-                                    <span>UI / Pixel Perfect</span>
-                                    <span>95%</span>
-                                </div>
-                                <div className={styles.progressBar}><div className={styles.progressInner} style={{ width: '95%' }}></div></div>
-                            </div>
-                            <div className={styles.skillRow}>
-                                <div className={styles.skillInfo}>
-                                    <span>Project Management</span>
-                                    <span>85%</span>
-                                </div>
-                                <div className={styles.progressBar}><div className={styles.progressInner} style={{ width: '85%' }}></div></div>
                             </div>
                         </div>
                     </div>
@@ -215,11 +217,7 @@ export default function AboutPage() {
             <section className={styles.hobbiesSection}>
                 <div className={styles.container}>
                     <div className={styles.hobbiesGrid}>
-                        <div className={`${styles.hobbyBlock} ${styles.glassCard}`}>
-                            <div className={styles.hobbyIcon}><FiTarget /></div>
-                            <h3>Objectif Actuel</h3>
-                            <p>Apprendre en continu. Je cherche activement une alternance, un stage ou des missions freelances pour monter en compétences sur React et Next.js.</p>
-                        </div>
+                        {/* Objectif actuel has been fully moved up to the Hero section */}
                         <div className={`${styles.hobbyBlock} ${styles.glassCard}`}>
                             <div className={styles.hobbyIcon}><FiUsers /></div>
                             <h3>Vie Associative</h3>
