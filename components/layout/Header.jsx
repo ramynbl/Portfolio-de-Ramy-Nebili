@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Header.module.css';
 import { FaLinkedin, FaGithub, FaBars, FaTimes, FaDownload } from 'react-icons/fa';
+import SocialIcon from '../ui/SocialIcon';
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -92,15 +93,29 @@ export default function Header() {
                         {/* Socials & Burger */}
                         <div className={styles.rightSection}>
                             <div className={styles.socials}>
-                                <a href="https://www.linkedin.com/in/ramy-nebili/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialLink}>
-                                    <FaLinkedin className={styles.socialIcon} />
-                                </a>
-                                <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialLink}>
-                                    <FaGithub className={styles.socialIcon} />
-                                </a>
-                                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Télécharger mon CV" download title="Télécharger le CV">
-                                    <FaDownload className={styles.socialIcon} />
-                                </a>
+                                <SocialIcon
+                                    href="https://www.linkedin.com/in/ramy-nebili/"
+                                    icon={<FaLinkedin />}
+                                    ariaLabel="LinkedIn"
+                                    networkType="linkedin"
+                                    className={styles.headerSocialIcon} // Class for sizes in header
+                                />
+                                <SocialIcon
+                                    href="https://github.com/ramynbl"
+                                    icon={<FaGithub />}
+                                    ariaLabel="GitHub"
+                                    networkType="github"
+                                    className={styles.headerSocialIcon}
+                                />
+                                <SocialIcon
+                                    href="/CV.pdf"
+                                    icon={<FaDownload />}
+                                    ariaLabel="Télécharger mon CV"
+                                    networkType="download"
+                                    download={true}
+                                    title="Télécharger le CV"
+                                    className={styles.headerSocialIcon}
+                                />
                             </div>
 
                             {/* Burger Icon */}
@@ -129,15 +144,29 @@ export default function Header() {
 
                         {/* Sidebar Socials & CV */}
                         <div className={styles.sidebarSocials}>
-                            <a href="https://www.linkedin.com/in/ramy-nebili/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialLink}>
-                                <FaLinkedin className={styles.socialIcon} />
-                            </a>
-                            <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialLink}>
-                                <FaGithub className={styles.socialIcon} />
-                            </a>
-                            <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" aria-label="Télécharger mon CV" download title="Télécharger le CV" className={styles.socialLink}>
-                                <FaDownload className={styles.socialIcon} />
-                            </a>
+                            <SocialIcon
+                                href="https://www.linkedin.com/in/ramy-nebili/"
+                                icon={<FaLinkedin />}
+                                ariaLabel="LinkedIn"
+                                networkType="linkedin"
+                                className={styles.headerSocialIcon}
+                            />
+                            <SocialIcon
+                                href="https://github.com/ramynbl"
+                                icon={<FaGithub />}
+                                ariaLabel="GitHub"
+                                networkType="github"
+                                className={styles.headerSocialIcon}
+                            />
+                            <SocialIcon
+                                href="/CV.pdf"
+                                icon={<FaDownload />}
+                                ariaLabel="Télécharger mon CV"
+                                networkType="download"
+                                download={true}
+                                title="Télécharger le CV"
+                                className={styles.headerSocialIcon}
+                            />
                         </div>
                     </motion.div>
                 )}

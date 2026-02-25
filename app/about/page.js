@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiTarget, FiUsers, FiFilm, FiSmile } from 'react-icons/fi';
+import SocialIcon from '../../components/ui/SocialIcon';
 import styles from './AboutPage.module.css';
 
 export const metadata = {
@@ -43,19 +44,27 @@ export default function AboutPage() {
                                     Télécharger le CV
                                 </a>
                                 <div className={styles.socialLinks}>
-                                    <a href="https://github.com/RamyNbl" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
-                                        <FiGithub />
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/ramynebili/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
-                                        <FiLinkedin />
-                                    </a>
+                                    <SocialIcon
+                                        href="https://github.com/RamyNbl"
+                                        icon={<FiGithub />}
+                                        ariaLabel="GitHub"
+                                        networkType="github"
+                                        className={styles.aboutSocialIcon}
+                                    />
+                                    <SocialIcon
+                                        href="https://www.linkedin.com/in/ramynebili/"
+                                        icon={<FiLinkedin />}
+                                        ariaLabel="LinkedIn"
+                                        networkType="linkedin"
+                                        className={styles.aboutSocialIcon}
+                                    />
                                 </div>
                             </div>
                         </div>
 
                         <div className={styles.heroImageContainer}>
                             <Image
-                                src="/image/ramy.png"
+                                src="/image/ramy-carre.png"
                                 alt="Portrait de Ramy Nebili"
                                 fill
                                 className={styles.profileImage}
@@ -247,7 +256,7 @@ export default function AboutPage() {
                             </blockquote>
                             <div className={styles.quoteAuthor}>
                                 <div className={styles.authorAvatar}>
-                                    <Image src="/image/ramy.png" alt="Ramy Nebili" fill className={styles.avatarImg} />
+                                    <Image src="/image/ramy-miniature.jpeg" alt="Ramy Nebili" fill className={styles.avatarImg} />
                                 </div>
                                 <div className={styles.authorInfo}>
                                     <strong>Ramy Nebili</strong>

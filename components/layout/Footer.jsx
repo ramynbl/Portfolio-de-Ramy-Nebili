@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FaLinkedin, FaGithub, FaDownload } from 'react-icons/fa';
+import SocialIcon from '../ui/SocialIcon';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -40,12 +41,20 @@ export default function Footer() {
                 <div className={styles.section}>
                     <h3>Réseaux</h3>
                     <div className={styles.socials}>
-                        <a href="https://linkedin.com/in/ramy-nebili" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialLink}>
-                            <FaLinkedin className={styles.socialIcon} />
-                        </a>
-                        <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialLink}>
-                            <FaGithub className={styles.socialIcon} />
-                        </a>
+                        <SocialIcon
+                            href="https://linkedin.com/in/ramy-nebili"
+                            icon={<FaLinkedin />}
+                            ariaLabel="LinkedIn"
+                            networkType="linkedin"
+                            className={styles.footerSocialIcon}
+                        />
+                        <SocialIcon
+                            href="https://github.com/ramynbl"
+                            icon={<FaGithub />}
+                            ariaLabel="GitHub"
+                            networkType="github"
+                            className={styles.footerSocialIcon}
+                        />
                     </div>
                 </div>
             </div>

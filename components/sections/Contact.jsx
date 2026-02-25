@@ -2,6 +2,7 @@
 
 import { FaLinkedin, FaGithub, FaCheck, FaDownload } from 'react-icons/fa';
 import { FiMail, FiPhone, FiCalendar } from 'react-icons/fi';
+import SocialIcon from '../ui/SocialIcon';
 import styles from './Contact.module.css';
 
 export default function Contact() {
@@ -39,15 +40,29 @@ export default function Contact() {
                         </ul>
 
                         <div className={styles.socialsContainer}>
-                            <a href="https://linkedin.com/in/ramy-nebili" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialLink}>
-                                <FaLinkedin />
-                            </a>
-                            <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialLink}>
-                                <FaGithub />
-                            </a>
-                            <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" aria-label="Télécharger mon CV" download title="Télécharger le CV" className={styles.socialLink}>
-                                <FaDownload />
-                            </a>
+                            <SocialIcon
+                                href="https://linkedin.com/in/ramy-nebili"
+                                icon={<FaLinkedin />}
+                                ariaLabel="LinkedIn"
+                                networkType="linkedin"
+                                className={styles.contactSocialIcon}
+                            />
+                            <SocialIcon
+                                href="https://github.com/ramynbl"
+                                icon={<FaGithub />}
+                                ariaLabel="GitHub"
+                                networkType="github"
+                                className={styles.contactSocialIcon}
+                            />
+                            <SocialIcon
+                                href="/CV.pdf"
+                                icon={<FaDownload />}
+                                ariaLabel="Télécharger mon CV"
+                                networkType="download"
+                                download={true}
+                                title="Télécharger le CV"
+                                className={styles.contactSocialIcon}
+                            />
                         </div>
                     </div>
 

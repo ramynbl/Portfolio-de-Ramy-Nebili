@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { FiDownload, FiMail, FiBriefcase, FiAward, FiCode } from 'react-icons/fi';
+import SocialIcon from '../ui/SocialIcon';
 import styles from './About.module.css';
 
 export default function About() {
@@ -55,20 +56,6 @@ export default function About() {
                             <Link href="/about" className={styles.primaryBtn}>
                                 En savoir plus &rarr;
                             </Link>
-
-                            <a href="/cv.pdf" download className={styles.secondaryBtn}>
-                                <FiDownload /> Télécharger CV
-                            </a>
-                            <a href="#contact" className={styles.secondaryBtn}>
-                                <FiMail /> Me contacter
-                            </a>
-
-                            <a href="https://www.linkedin.com/in/ramynebili/" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn">
-                                <SiLinkedin className={styles.socialIcon} />
-                            </a>
-                            <a href="https://github.com/ramynbl" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="GitHub">
-                                <SiGithub className={styles.socialIcon} />
-                            </a>
                         </div>
                     </motion.div>
 
@@ -100,6 +87,30 @@ export default function About() {
                                     <p>Communication visuelle et webdesign • 2013-2016</p>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className={styles.rightCtaContainer}>
+                            <a href="/cv.pdf" download className={styles.secondaryBtn}>
+                                <FiDownload /> Télécharger CV
+                            </a>
+                            <a href="#contact" className={styles.secondaryBtn}>
+                                <FiMail /> Me contacter
+                            </a>
+
+                            <SocialIcon
+                                href="https://www.linkedin.com/in/ramynebili/"
+                                icon={<SiLinkedin />}
+                                ariaLabel="LinkedIn"
+                                networkType="linkedin"
+                                className={styles.aboutSocialIcon}
+                            />
+                            <SocialIcon
+                                href="https://github.com/ramynbl"
+                                icon={<SiGithub />}
+                                ariaLabel="GitHub"
+                                networkType="github"
+                                className={styles.aboutSocialIcon}
+                            />
                         </div>
                     </motion.div>
                 </div>

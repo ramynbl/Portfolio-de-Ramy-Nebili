@@ -1,0 +1,78 @@
+.socialLink {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    /* Default size */
+    height: 48px;
+    /* Default size */
+    font-size: 1.2em;
+    /* Default icon size */
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.socialLink::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 1;
+}
+
+/* Base hover behavior: circle expansion */
+.socialLink:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.linkedin:hover::after {
+    background: #0a66c2;
+}
+
+.github:hover::after {
+    background: #ffffff;
+}
+
+.download:hover::after {
+    background: var(--primary, #0071e3);
+}
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    z-index: 2;
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.socialLink:hover .iconWrapper {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Specific icon color overrides on hover */
+.github:hover .iconWrapper {
+    color: #000;
+}
+
+.iconWrapper svg {
+    width: 1em;
+    height: 1em;
+    display: block;
+}
