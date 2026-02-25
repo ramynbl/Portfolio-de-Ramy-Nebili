@@ -22,7 +22,7 @@ export default function AboutPage() {
                 <div className={styles.container}>
                     <div className={styles.heroGrid}>
                         <div className={styles.heroContent}>
-                            <span className={styles.overline}>À Propos</span>
+                            <span className={`${styles.overline} ${styles.gradientLight}`}>À Propos</span>
                             <h1 className={`${styles.title} ${styles.gradientTitle}`}>La technique<br />au service du sens.</h1>
 
                             <div className={styles.heroText}>
@@ -77,7 +77,7 @@ export default function AboutPage() {
                     <div className={`${styles.objectiveBlock} ${styles.glassCard}`}>
                         <div className={styles.objectiveHeader}>
                             <FiTarget className={styles.objectiveIcon} />
-                            <h3>Objectif Actuel</h3>
+                            <h3 className={`${styles.objectiveTitle} ${styles.gradientLight}`}>Objectif Actuel</h3>
                         </div>
                         <p>
                             Apprendre en continu. Je cherche activement une <strong>alternance</strong>, un <strong>stage</strong> ou des missions <strong>freelances</strong> pour monter en compétences sur React et Next.js.
@@ -89,7 +89,7 @@ export default function AboutPage() {
             {/* Resume / Experience & Education Section */}
             <section className={styles.resumeSection}>
                 <div className={styles.container}>
-                    <span className={styles.overline}>EXPERIENCE & EDUCATION</span>
+                    <span className={`${styles.overline} ${styles.gradientLight}`}>EXPERIENCE & EDUCATION</span>
                     <h2 className={`${styles.sectionTitle} ${styles.gradientTitle}`}>Mon Parcours</h2>
 
                     <div className={styles.resumeGrid}>
@@ -161,7 +161,7 @@ export default function AboutPage() {
             {/* Vision & Skills Section */}
             <section className={styles.visionSection}>
                 <div className={styles.container}>
-                    <span className={styles.overline}>MY TOP</span>
+                    <span className={`${styles.overline} ${styles.gradientLight}`}>MY TOP</span>
                     <h2 className={`${styles.sectionTitle} ${styles.gradientTitle}`}>Ma Vision.</h2>
 
                     <div className={styles.visionGrid}>
@@ -248,7 +248,7 @@ export default function AboutPage() {
                             </Link>
                         </div>
                         <div className={`${styles.quoteBlock} ${styles.glassCard}`}>
-                            <span className={styles.overline}>MA PHILOSOPHIE</span>
+                            <span className={`${styles.overline} ${styles.gradientLight}`}>MA PHILOSOPHIE</span>
                             <blockquote className={styles.quoteText}>
                                 "Remember why you started."
                             </blockquote>

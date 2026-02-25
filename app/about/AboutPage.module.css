@@ -72,7 +72,8 @@
 }
 
 .overline {
-    display: block;
+    display: inline-block;
+    position: relative;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 2px;
@@ -80,6 +81,20 @@
     color: #3b82f6;
     /* Matching existing greeting blue */
     margin-bottom: 20px;
+    padding-bottom: 8px;
+    /* Space for the underline */
+}
+
+.overline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* Align left */
+    width: 30px;
+    height: 2px;
+    background-color: var(--primary, #0071e3);
+    border-radius: 2px;
 }
 
 .gradientTitle {
@@ -95,15 +110,16 @@
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 12px;
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    /* Keeps the subtle shadow for About page layout */
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .glassCard:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
 }
 
 /* Hero Section */
@@ -157,7 +173,7 @@
 
 .objectiveBlock p {
     font-size: 1.05rem;
-    color: #e4e4e7;
+    color: var(--light-text);
     line-height: 1.6;
     margin: 0;
 }
@@ -167,16 +183,16 @@
 }
 
 .title {
-    font-size: 3.71rem;
-    font-weight: 800;
+    font-size: 3.5rem;
+    font-weight: 700;
     line-height: 1.1;
     margin-bottom: 30px;
 }
 
 .heroText {
     font-size: 1.1rem;
-    line-height: 1.7;
-    color: #e4e4e7;
+    line-height: 1.6;
+    color: var(--light-text);
     margin-bottom: 40px;
     max-width: 90%;
 }
@@ -265,7 +281,7 @@
     font-weight: 700;
     color: #fff;
     margin-bottom: 40px;
-    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    background: linear-gradient(90deg, #ffffff, var(--primary, #0071e3));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -298,8 +314,8 @@
 
 .itemHeader h4 {
     font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
+    font-weight: 500;
+    color: var(--foreground);
     margin: 0;
 }
 
@@ -311,7 +327,8 @@
 
 .itemCompany {
     font-size: 0.95rem;
-    color: #94a3b8;
+    color: var(--light-text);
+    line-height: 1.5;
     margin: 0;
 }
 
@@ -332,8 +349,8 @@
 
 .visionText {
     font-size: 1.1rem;
-    line-height: 1.8;
-    color: #e4e4e7;
+    line-height: 1.6;
+    color: var(--light-text);
 }
 
 .visionText p {
@@ -437,15 +454,15 @@
 
 .hobbyBlock h3 {
     font-size: 1.1rem;
-    font-weight: 700;
-    color: #fff;
+    font-weight: 500;
+    color: var(--foreground);
     margin: 0;
 }
 
 .hobbyBlock p {
     font-size: 0.95rem;
-    color: #94a3b8;
-    line-height: 1.6;
+    color: var(--light-text);
+    line-height: 1.5;
     margin: 0;
 }
 
@@ -586,4 +603,19 @@
     .quoteBlock {
         padding: 30px;
     }
+}
+
+/* Added utility classes */
+.gradientSubtitle {
+    background: linear-gradient(90deg, #ffffff, var(--primary, #0071e3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradientLight {
+    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
