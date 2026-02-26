@@ -11,6 +11,9 @@ const lexend = Lexend({
 export const metadata = {
     title: "Portfolio - Ramy Nebili",
     description: "Développeur Full Stack",
+    icons: {
+        icon: "/image/r-blanc.png",
+    },
 };
 
 export default function RootLayout({ children }) {
