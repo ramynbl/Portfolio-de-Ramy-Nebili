@@ -229,7 +229,8 @@
     .mobileNavLink {
         font-family: var(--font-heading);
         font-size: 2rem;
-        color: var(--background);
+        color: var(--foreground);
+        /* Fixed invisble text (was var(--background) on a black background) */
         text-decoration: none;
         font-weight: 700;
         transition: opacity 0.3s;

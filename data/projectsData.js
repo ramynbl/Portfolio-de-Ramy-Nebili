@@ -8,6 +8,7 @@ export const projectsData = [
         techStack: ['Python', 'Pandas', 'NumPy', 'FastAPI', 'Jupyter Notebook', 'Streamlit', 'JavaScript', 'HTML', 'CSS'],
         image: null,
         video: '/image/anime.mp4',
+        imageMobile: '/image/anime-mobile.jpg',
         links: {
             github: 'https://github.com/ramynbl/projet-anime-data',
             live: 'https://projet-anime-data.vercel.app/',
@@ -45,6 +46,7 @@ export const projectsData = [
         description: 'Création de la plateforme web d\'Arktic, une association étudiante mêlant tech et escalade. Le site propose une vitrine moderne (\"Code, Climb, Chill\") couplée à un système d\'inscription en temps réel pour gérer les événements sportifs.',
         techStack: ['Node.js', 'React', 'Vite', 'Tailwind CSS', 'Express', 'MySQL', 'Drizzle ORM', 'ManusAI'],
         image: '/image/arktic.png',
+        imageMobile: '/image/arktic-mobile.jpg',
         video: null,
         links: {
             github: 'https://github.com/ramynbl/arktic',
@@ -68,7 +70,7 @@ export const projectsData = [
         video: '/image/kevin.mp4',
         links: {
             github: 'https://github.com/ramynbl/kevin-ai',
-            live: 'https://kevin-ai.onrender.com/',
+            live: 'https://kevin-ai.up.railway.app/',
             details: '/projects/kevin-ai'
         },
         theme: {
