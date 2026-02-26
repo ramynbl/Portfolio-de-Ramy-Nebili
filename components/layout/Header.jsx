@@ -15,24 +15,30 @@ export default function Header() {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            const viewportHeight = window.innerHeight;
+        let ticking = false;
 
-            // Transform into sidebar when passing the hero section
-            // Only active on desktop (width > 768px)
-            if (window.innerWidth > 768) {
-                setIsSidebar(scrollY > viewportHeight * 0.9);
-            } else {
-                // Ensure sidebar logic is fully disabled on mobile
-                setIsSidebar(false);
+        const handleScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    const viewportHeight = window.innerHeight;
+
+                    if (window.innerWidth > 768) {
+                        setIsSidebar(scrollY > viewportHeight * 0.9);
+                    } else {
+                        setIsSidebar(false);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleScroll);
-        // Initial check
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleScroll, { passive: true });
+
         handleScroll();
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleScroll);
@@ -84,12 +90,10 @@ export default function Header() {
                         transition={{ duration: 0.2 }}
                         className={`container ${styles.navContainer}`}
                     >
-                        {/* Logo */}
                         <div className={styles.logo}>
                             RN.
                         </div>
 
-                        {/* Desktop Navigation */}
                         <nav className={styles.desktopNav}>
                             <ul className={styles.navList}>
                                 <li><Link href="/" className={styles.navLink}>Accueil</Link></li>
@@ -100,7 +104,6 @@ export default function Header() {
                             </ul>
                         </nav>
 
-                        {/* Socials & Burger */}
                         <div className={styles.rightSection}>
                             <div className={styles.socials}>
                                 <SocialIcon
@@ -128,7 +131,6 @@ export default function Header() {
                                 />
                             </div>
 
-                            {/* Burger Icon */}
                             <button className={styles.burgerBtn} onClick={toggleMenu} aria-label="Toggle menu">
                                 {isOpen ? <FaTimes /> : <FaBars />}
                             </button>
@@ -143,7 +145,6 @@ export default function Header() {
                         transition={{ duration: 0.2 }}
                         className={styles.sidebarContainer}
                     >
-                        {/* Sidebar Navigation */}
                         <nav className={styles.sidebarNav}>
                             <Link href="/" className={`${styles.navDot} ${activeSection === 'home' ? styles.active : ''}`} aria-label="Accueil" title="Accueil"></Link>
                             <Link href="/about" className={`${styles.navDot} ${activeSection === 'about' ? styles.active : ''}`} aria-label="À propos" title="À propos"></Link>
@@ -152,7 +153,6 @@ export default function Header() {
                             <Link href="/#contact" className={`${styles.navDot} ${activeSection === 'contact' ? styles.active : ''}`} aria-label="Contact" title="Contact"></Link>
                         </nav>
 
-                        {/* Sidebar Socials & CV */}
                         <div className={styles.sidebarSocials}>
                             <SocialIcon
                                 href="https://www.linkedin.com/in/ramy-nebili/"
@@ -182,7 +182,6 @@ export default function Header() {
                 )}
             </AnimatePresence>
 
-            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.nav

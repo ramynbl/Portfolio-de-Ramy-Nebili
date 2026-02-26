@@ -18,7 +18,7 @@ export const projectsData = [
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
             accent: '#4facfe'
         },
-        orientation: 'right' // Content on the right
+        orientation: 'right'
     },
     {
         id: 'study-ping',
@@ -35,9 +35,9 @@ export const projectsData = [
         },
         theme: {
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
-            accent: '#fff' // White accent
+            accent: '#fff'
         },
-        orientation: 'left' // Content on the left
+        orientation: 'left'
     },
     {
         id: 'arktic',
@@ -55,9 +55,9 @@ export const projectsData = [
         },
         theme: {
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
-            accent: '#fff' // White accent
+            accent: '#fff'
         },
-        orientation: 'right' // Content on the left
+        orientation: 'right'
     },
     {
         id: 'kevin-ai',
@@ -75,8 +75,8 @@ export const projectsData = [
         },
         theme: {
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
-            accent: '#fff' // White accent
+            accent: '#fff'
         },
-        orientation: 'left' // Content on the left
+        orientation: 'left'
     }
 ];

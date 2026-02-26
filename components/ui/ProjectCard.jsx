@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,66 +8,66 @@ import GlassChip from './GlassChip';
 import styles from './ProjectCard.module.css';
 
 const ProjectCard = ({ project, index }) => {
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= 768);
-
-        // Exécuter au chargement
-        handleResize();
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
     const isRight = project.orientation === 'right';
     const orientationClass = isRight ? styles.right : styles.left;
 
-    // Détermine le média actif (privilégie la version mobile si on est sur mobile et qu'elle existe)
-    let activeVideo = project.video;
-    let activeImage = project.image;
-    let useVideo = !!project.video;
-
-    if (isMobile) {
-        if (project.videoMobile) {
-            activeVideo = project.videoMobile;
-            useVideo = true;
-        } else if (project.imageMobile) {
-            activeImage = project.imageMobile;
-            useVideo = false; // Désactive la vidéo de bureau si on a une image mobile spécifiquement !
-        }
-    }
-
     return (
         <div className={`${styles.cardContainer} ${orientationClass}`}>
-            {/* Background Asset */}
-            {useVideo ? (
+
+            {project.video && (
                 <video
-                    className={styles.bgAsset}
-                    src={activeVideo}
+                    className={`${styles.bgAsset} ${project.imageMobile || project.videoMobile ? styles.desktopOnly : ''}`}
                     autoPlay
                     loop
                     muted
                     playsInline
-                />
-            ) : (
-                <div className={styles.bgAsset}>
-                    {activeImage && (
-                        <Image
-                            src={activeImage}
-                            alt={project.title}
-                            fill
-                            style={{ objectFit: 'cover' }}
-                            priority
-                        />
+                >
+                    {(!project.imageMobile && !project.videoMobile) ? (
+                        <source src={project.video} type="video/mp4" />
+                    ) : (
+                        <source src={project.video} media="(min-width: 769px)" type="video/mp4" />
                     )}
+                </video>
+            )}
+
+            {project.videoMobile && (
+                <video
+                    className={`${styles.bgAsset} ${styles.mobileOnly}`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                >
+                    <source src={project.videoMobile} media="(max-width: 768px)" type="video/mp4" />
+                </video>
+            )}
+
+            {project.image && (
+                <div className={`${styles.bgAsset} ${project.imageMobile || project.videoMobile ? styles.desktopOnly : ''}`}>
+                    <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        priority
+                    />
                 </div>
             )}
 
-            {/* Gradient Overlay */}
+            {project.imageMobile && (
+                <div className={`${styles.bgAsset} ${styles.mobileOnly}`}>
+                    <Image
+                        src={project.imageMobile}
+                        alt={project.title}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        priority
+                    />
+                </div>
+            )}
+
             <div className={styles.overlay}></div>
 
-            {/* Content */}
             <div className={styles.content}>
                 <div className={styles.textContent}>
                     <span className={styles.projectLabel}>{project.category}</span>
@@ -83,14 +82,12 @@ const ProjectCard = ({ project, index }) => {
                         dangerouslySetInnerHTML={{ __html: project.description }}
                     />
 
-                    {/* Tech Stack Tags */}
                     <div className={styles.techStack}>
                         {project.techStack.map((tech, i) => (
                             <GlassChip key={i}>{tech}</GlassChip>
                         ))}
                     </div>
 
-                    {/* CTAs */}
                     <div className={styles.links}>
                         {project.links.github && (
                             <a
