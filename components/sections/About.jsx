@@ -16,7 +16,6 @@ export default function About() {
         offset: ["start end", "end start"]
     });
 
-    // Parallax logic: Enhanced movement for clear visibility
     const yImage = useTransform(scrollYProgress, [0, 1], [150, -150]);
     const yText = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
@@ -34,7 +33,6 @@ export default function About() {
                 </motion.h2>
 
                 <div className={styles.contentWrapper}>
-                    {/* Colonne Gauche - Texte & CTA */}
                     <motion.div
                         className={styles.leftColumn}
                     >
@@ -59,7 +57,6 @@ export default function About() {
                         </div>
                     </motion.div>
 
-                    {/* Colonne Droite - Expériences */}
                     <motion.div
                         className={styles.rightColumn}
                     >

@@ -9,15 +9,12 @@ import styles from './Hero.module.css';
 export default function Hero() {
     return (
         <section className={styles.hero}>
-
-            {/* Background Layer */}
             <div className={styles.backgroundLayer}>
                 <div className={styles.blob1}></div>
                 <div className={styles.blob2}></div>
                 <div className={styles.blob3}></div>
             </div>
 
-            {/* Côté Gauche : Designer */}
             <motion.div
                 className={`${styles.split} ${styles.left}`}
                 initial={{ opacity: 0, x: -50 }}
@@ -31,7 +28,6 @@ export default function Hero() {
                 <Link href="/about" className={`${styles.btnHero} ${styles.btnLeft}`}>En savoir plus</Link>
             </motion.div>
 
-            {/* Côté Droit : Coder */}
             <motion.div
                 className={`${styles.split} ${styles.right}`}
                 initial={{ opacity: 0, x: 50 }}
@@ -48,7 +44,6 @@ export default function Hero() {
                 </div>
             </motion.div>
 
-            {/* Avatar Central */}
             <div className={styles.avatarContainer}>
                 <motion.div
                     style={{ position: 'relative', width: '100%', height: '100%' }}
@@ -56,13 +51,12 @@ export default function Hero() {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
                 >
-                    {/* Utilisation de Image de Next.js pour la performance */}
                     <Image
-                        src="/image/avatar-2.png" // Assure-toi que l'image est bien dans le dossier public/image/
+                        src="/image/avatar-2.png"
                         alt="Ramy Nebili Avatar"
-                        fill // Remplit le conteneur parent
+                        fill
                         className={styles.avatarImage}
-                        priority // Charge cette image en priorité (car au-dessus de la ligne de flottaison)
+                        priority
                     />
                 </motion.div>
             </div>

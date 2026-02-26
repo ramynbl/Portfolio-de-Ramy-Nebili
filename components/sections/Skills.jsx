@@ -13,24 +13,17 @@ export default function Skills() {
         offset: ["start end", "end start"]
     });
 
-    // Parallax effects
     const yHeader = useTransform(scrollYProgress, [0, 1], [0, -100]);
     const yCards = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
-    // État du filtre
     const [selectedCategory, setSelectedCategory] = useState("Tout");
-
-    // État de la catégorie affichée (pour le sous-titre dynamique)
     const [activeCategory, setActiveCategory] = useState("Tout");
 
-    // Refs pour accéder aux cartes et au conteneur
     const containerRef = useRef(null);
     const cardsRef = useRef([]);
 
-    // Catégories définies (ordre spécifique)
     const categories = ["Tout", "Design System & UI", "Frontend Engineering", "Backend & Automation", "Data & Infrastructure"];
 
-    // Messages par catégorie
     const categoryMessages = {
         "Tout": "Des outils que j’explore, maîtrise et combine pour créer des expériences complètes.",
         "Design System & UI": "Je conçois des interfaces avec une rigueur de graphiste.",
@@ -39,31 +32,23 @@ export default function Skills() {
         "Data & Infrastructure": "Je gère la persistance des données et le déploiement."
     };
 
-    // Helper pour assurer la visibilité des couleurs sombres en mode sombre
     const getSafeColor = (hex) => {
         const darkColors = ['#000000', '#0B0D0E', '#150458', '#013243'];
         if (darkColors.includes(hex)) return '#FFFFFF';
         return hex;
     };
 
-    // 1. Obtenir la liste de base (unique) selon le filtre
     const baseList = selectedCategory === "Tout"
         ? skillsData
         : skillsData.filter(skill => skill.category === selectedCategory);
 
-    // 2. Décider si on doit scroller (plus de 6 éléments)
-    // Pour "Tout", c'est toujours vrai car > 20 éléments.
-    // Si filtré et > 6 éléments, on active le scroll infini.
     const shouldScroll = baseList.length > 6;
 
-    // 3. Préparer la liste finale (dupliquée x3 pour le scroll infini, ou unique pour statique)
     const displaySkills = shouldScroll
         ? [...baseList, ...baseList, ...baseList]
         : baseList;
 
-    // Détection de la catégorie visible au centre
     useEffect(() => {
-        // En mode filtre, on force la catégorie active à celle sélectionnée
         if (selectedCategory !== "Tout") {
             setActiveCategory(selectedCategory);
             return;
@@ -82,12 +67,11 @@ export default function Skills() {
             },
             {
                 root: null,
-                rootMargin: "0px -45% 0px -45%", // Zone de détection très étroite au centre horizontal
+                rootMargin: "0px -45% 0px -45%",
                 threshold: 0
             }
         );
 
-        // On observe toutes les cartes valides
         cardsRef.current.forEach((card) => {
             if (card) observer.observe(card);
         });
@@ -95,15 +79,12 @@ export default function Skills() {
         return () => observer.disconnect();
     }, [activeCategory, selectedCategory]);
 
-    // Cleanup des refs quand la liste change
     useEffect(() => {
         cardsRef.current = [];
     }, [displaySkills]);
 
     return (
         <section id="skills" className={styles.section} ref={sectionRef}>
-
-            {/* Dynamic Background */}
             <div className={styles.backgroundLayer}>
                 <div className={styles.blob1}></div>
                 <div className={styles.blob2}></div>
@@ -173,15 +154,12 @@ export default function Skills() {
                                 ref={el => cardsRef.current[index] = el}
                             >
                                 <div className={styles.card}>
-                                    {/* Lueur d'arrière-plan */}
                                     <div className={styles.cardGlow} />
 
-                                    {/* Icône principale */}
                                     <div className={styles.iconContainer}>
                                         <Icon />
                                     </div>
 
-                                    {/* Contenu au survol */}
                                     <div className={styles.content}>
                                         <h3 className={styles.title}>{skill.name}</h3>
                                         <p className={styles.description}>{skill.desc}</p>
