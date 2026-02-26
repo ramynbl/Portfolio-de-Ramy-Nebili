@@ -45,7 +45,7 @@ export default function About() {
                                 Développeur <span className={styles.highlight}>Full Stack JavaScript</span> en reconversion, je combine une double culture technique et design.
                             </p>
                             <p>
-                                Actuellement en Bachelor Développement Web à HETIC, je recherche une <span className={styles.highlight}>alternance</span> ou <span className={styles.highlight}>un stage</span>pour mettre à profit ma passion pour Node.js, React et la conception d'interfaces soignées.
+                                Actuellement en Bachelor Développement Web à HETIC, je recherche une <span className={styles.highlight}>alternance</span> ou <span className={styles.highlight}>un stage</span> pour mettre à profit ma passion pour Node.js, React et la conception d'interfaces soignées.
                             </p>
                             <p>
                                 Je suis également à l'écoute d'opportunités pour des missions <span className={styles.highlight}>freelance</span>.
