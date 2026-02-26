@@ -287,6 +287,7 @@
     .right .textContent,
     .left .textContent {
         transform: translateY(20px);
+
     }
 
     .title {
@@ -299,5 +300,9 @@
 
     .links {
         justify-content: center;
+    }
+
+    .ctaButton {
+        font-size: 0.75rem;
     }
 }

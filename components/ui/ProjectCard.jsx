@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,16 +9,43 @@ import GlassChip from './GlassChip';
 import styles from './ProjectCard.module.css';
 
 const ProjectCard = ({ project, index }) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 768);
+
+        // Exécuter au chargement
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const isRight = project.orientation === 'right';
     const orientationClass = isRight ? styles.right : styles.left;
+
+    // Détermine le média actif (privilégie la version mobile si on est sur mobile et qu'elle existe)
+    let activeVideo = project.video;
+    let activeImage = project.image;
+    let useVideo = !!project.video;
+
+    if (isMobile) {
+        if (project.videoMobile) {
+            activeVideo = project.videoMobile;
+            useVideo = true;
+        } else if (project.imageMobile) {
+            activeImage = project.imageMobile;
+            useVideo = false; // Désactive la vidéo de bureau si on a une image mobile spécifiquement !
+        }
+    }
 
     return (
         <div className={`${styles.cardContainer} ${orientationClass}`}>
             {/* Background Asset */}
-            {project.video ? (
+            {useVideo ? (
                 <video
                     className={styles.bgAsset}
-                    src={project.video}
+                    src={activeVideo}
                     autoPlay
                     loop
                     muted
@@ -25,13 +53,15 @@ const ProjectCard = ({ project, index }) => {
                 />
             ) : (
                 <div className={styles.bgAsset}>
-                    <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                        priority
-                    />
+                    {activeImage && (
+                        <Image
+                            src={activeImage}
+                            alt={project.title}
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            priority
+                        />
+                    )}
                 </div>
             )}
 

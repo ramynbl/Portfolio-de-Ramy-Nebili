@@ -20,13 +20,23 @@ export default function Header() {
             const viewportHeight = window.innerHeight;
 
             // Transform into sidebar when passing the hero section
-            setIsSidebar(scrollY > viewportHeight * 0.9);
+            // Only active on desktop (width > 768px)
+            if (window.innerWidth > 768) {
+                setIsSidebar(scrollY > viewportHeight * 0.9);
+            } else {
+                // Ensure sidebar logic is fully disabled on mobile
+                setIsSidebar(false);
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
         // Initial check
         handleScroll();
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
     }, []);
 
     // Intersection Observer for highlighting active section

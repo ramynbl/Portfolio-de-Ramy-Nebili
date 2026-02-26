@@ -42,7 +42,10 @@ export default function Hero() {
                     <TextSlider words={["< Coder >", "Innover", "Construire", "Automatiser"]} />
                 </h1>
                 <p className={styles.subtitle}>Développement Front-end & Back-end</p>
-                <Link href="/projects" className={`${styles.btnHero} ${styles.btnRight}`}>Mes Projets</Link>
+                <div className={styles.buttonsGroup}>
+                    <Link href="/about" className={`${styles.btnHero} ${styles.btnLeft} ${styles.mobileOnlyBtn}`}>En savoir plus</Link>
+                    <Link href="/projects" className={`${styles.btnHero} ${styles.btnRight}`}>Mes Projets</Link>
+                </div>
             </motion.div>
 
             {/* Avatar Central */}

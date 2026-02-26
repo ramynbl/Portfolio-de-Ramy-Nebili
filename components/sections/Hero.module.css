@@ -212,46 +212,63 @@
     box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
 }
 
+.buttonsGroup {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.mobileOnlyBtn {
+    display: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
         height: auto;
         min-height: 100vh;
-        padding-top: 20px;
+        padding-top: 80px;
+        /* Space for the header */
     }
 
     .split {
         max-width: 100% !important;
         flex: auto;
         width: 100%;
-        padding: 40px 20px;
-        /* Reduce padding slightly */
+        padding: 40px 20px 20px 20px;
     }
 
-    /* Stack Order: Avatar -> Designer -> Coder */
-    /* Or Designer -> Avatar -> Coder? usually Avatar first is good for "Who is this?" but Designer/Coder is the hook.*/
-    /* Let's Try: Avatar (Top/Center) -> Designer -> Coder */
-
     .left {
-        order: 2;
+        display: none !important;
+        /* Hide left completely on mobile */
     }
 
     .right {
-        order: 3;
+        order: 1;
+        /* Make right block the top item */
+    }
+
+    .mobileOnlyBtn {
+        display: inline-block !important;
+        /* Make sure the duplicate button shows */
     }
 
     .avatarContainer {
         position: relative;
         left: auto;
         transform: none;
-        width: 280px;
-        height: 380px;
-        /* Adjust for mobile */
-        margin: 0 auto;
+        width: 100%;
+        max-width: 380px;
+        height: 60vh;
+        min-height: 480px;
+        /* Gives some decent height for the avatar to stand out on mobile */
+        margin: 20px auto 0 auto;
         z-index: 50;
-        order: 1;
-        /* Put avatar on top */
+        order: 2;
+        /* Avatar is under the right block */
     }
 
     .avatarImage {
@@ -259,8 +276,22 @@
         object-position: bottom;
     }
 
+    /* Standard responsive fonts */
     .title {
         font-size: 3rem;
-        /* Slightly larger for mobile impact */
+        margin-bottom: 10px;
+        letter-spacing: -1px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .btnHero {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        margin-top: 0;
+        /* Let buttonsGroup handle it */
     }
 }
