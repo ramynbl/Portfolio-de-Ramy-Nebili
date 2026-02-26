@@ -363,6 +363,10 @@
         word-wrap: break-word;
     }
 
+    .categoryTitle {
+        font-size: 1.5rem;
+    }
+
     .section {
         height: auto;
         min-height: 80vh;
