@@ -7,40 +7,44 @@ import OtherProjects from "../components/sections/OtherProjects";
 import Contact from "../components/sections/Contact";
 import ScrollReveal from "../components/ui/ScrollReveal";
 import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 export default function Home() {
     return (
         <>
-            <div id="home">
-                <ScrollReveal>
-                    <Hero />
-                </ScrollReveal>
-            </div>
-
-            <ScrollReveal>
-                <About />
-            </ScrollReveal>
-
-            <ScrollReveal>
-                <ProjectsIntro />
-            </ScrollReveal>
-            <div id="projects">
-                <ScrollReveal>
-                    <ProjectsSection limit={3} />
-                </ScrollReveal>
-            </div>
-
-            <ScrollReveal>
-                <div style={{ backgroundColor: '#000' }}>
-                    <OtherProjects />
-                    <Skills />
+            <Header />
+            <main>
+                <div id="home">
+                    <ScrollReveal>
+                        <Hero />
+                    </ScrollReveal>
                 </div>
-            </ScrollReveal>
 
-            <ScrollReveal>
-                <Contact />
-            </ScrollReveal>
+                <ScrollReveal>
+                    <About />
+                </ScrollReveal>
 
+                <ScrollReveal>
+                    <ProjectsIntro />
+                </ScrollReveal>
+                <div id="projects">
+                    <ScrollReveal>
+                        <ProjectsSection limit={3} />
+                    </ScrollReveal>
+                </div>
+
+                <ScrollReveal>
+                    <div style={{ backgroundColor: '#000' }}>
+                        <OtherProjects />
+                        <Skills />
+                    </div>
+                </ScrollReveal>
+
+                <ScrollReveal>
+                    <Contact />
+                </ScrollReveal>
+            </main>
+            <Footer />
         </>
     );
 }

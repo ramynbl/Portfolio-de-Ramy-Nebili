@@ -1,89 +1,96 @@
+'use client';
+
+import { use } from 'react';
 import Link from 'next/link';
-import { LuConstruction } from 'react-icons/lu';
 import { FiArrowLeft } from 'react-icons/fi';
+import { FaGithub } from 'react-icons/fa';
+import { MdConstruction } from 'react-icons/md';
+import { GiBarrier } from 'react-icons/gi';
 import { projectsData } from '../../../data/projectsData';
 import styles from './Construction.module.css';
 
-export function generateMetadata({ params }) {
-    const project = projectsData.find(p => p.id === params.slug);
-
-    if (!project) {
-        return { title: 'Projet introuvable' };
-    }
-
-    return {
-        title: `${project.title} - En construction`,
-        description: `Page en construction pour le projet ${project.title}.`,
-    };
-}
-
 export default function ProjectPage({ params }) {
-    const project = projectsData.find(p => p.id === params.slug);
+    const { slug } = use(params);
+    const project = projectsData.find(p => p.id === slug);
 
     if (!project) {
         return (
-            <main className={styles.main}>
+            <div className={styles.main}>
+                <div className={styles.bgLayer}>
+                    <div className={styles.blob1} />
+                    <div className={styles.blob2} />
+                    <div className={styles.blob3} />
+                </div>
                 <div className={styles.container}>
-                    <h1 className={styles.title}>Projet introuvable</h1>
+                    <h1 className={styles.projectTitle}>Projet introuvable</h1>
                     <Link href="/projects" className={styles.backButton}>
                         <FiArrowLeft /> Retour aux projets
                     </Link>
                 </div>
-            </main>
+            </div>
         );
     }
 
     return (
-        <main className={styles.main}>
-            {/* Background Blobs for consistency */}
-            <div className={styles.blob1}></div>
-            <div className={styles.blob2}></div>
+        <div className={styles.main}>
+            {/* Background identique à ProjectsIntro */}
+            <div className={styles.bgLayer}>
+                <div className={styles.blob1} />
+                <div className={styles.blob2} />
+                <div className={styles.blob3} />
+            </div>
 
+            {/* 404 géant en arrière-plan */}
+            <div className={styles.bigNumber} aria-hidden="true">404</div>
+
+            {/* Contenu centré par-dessus */}
             <div className={styles.container}>
+
+                {/* Titre + sous-titre */}
+                <div className={styles.header}>
+                    <h1 className={styles.projectTitle}>{project.title}</h1>
+                    <div className={styles.subtitleRow}>
+                        <GiBarrier className={styles.barrierIcon} />
+                        <MdConstruction className={styles.constructionIcon} />
+                        <span className={styles.subtitle}>Page en cours de construction</span>
+                        <MdConstruction className={styles.constructionIcon} />
+                        <GiBarrier className={styles.barrierIcon} />
+                    </div>
+                    <p className={styles.description}>
+                        Revenez bientôt, ça vaut le coup d'œil !
+                    </p>
+                </div>
+
+                {/* CTAs Live View + GitHub */}
+                <div className={styles.ctaRow}>
+                    {project.links?.github && (
+                        <a
+                            href={project.links.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.socialLink}
+                            aria-label="Voir le code sur GitHub"
+                        >
+                            <FaGithub className={styles.socialIcon} />
+                        </a>
+                    )}
+                    {project.links?.live && (
+                        <a
+                            href={project.links.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.ctaButton}
+                        >
+                            Live view
+                        </a>
+                    )}
+                </div>
+
+                {/* Bouton retour — en dessous des CTAs */}
                 <Link href="/projects" className={styles.backButton}>
                     <FiArrowLeft /> Retour aux projets
                 </Link>
-
-                <div className={`${styles.constructionCard} ${styles.glassCard}`}>
-                    <div className={styles.iconContainer}>
-                        <LuConstruction className={styles.constructionIcon} />
-                    </div>
-
-                    <h1 className={styles.title}>
-                        <span className={styles.projectTitle}>{project.title}</span><br />
-                        <span className={styles.subtitle}>En construction</span>
-                    </h1>
-
-                    <p className={styles.description}>
-                        Je travaille actuellement sur la mise en page détaillée de ce projet.
-                        Revenez bientôt pour en découvrir plus sur mon processus de création,
-                        les défis techniques surmontés et les résultats obtenus !
-                    </p>
-
-                    <div className={styles.actions}>
-                        {project.links?.live && (
-                            <a
-                                href={project.links.live}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.primaryButton}
-                            >
-                                Voir le site en direct
-                            </a>
-                        )}
-                        {project.links?.github && (
-                            <a
-                                href={project.links.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.secondaryButton}
-                            >
-                                Voir le code source
-                            </a>
-                        )}
-                    </div>
-                </div>
             </div>
-        </main>
+        </div>
     );
 }

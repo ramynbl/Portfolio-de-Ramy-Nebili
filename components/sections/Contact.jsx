@@ -69,16 +69,21 @@ export default function Contact() {
                     {/* Right Column: Contact Form */}
                     <div className={styles.rightCol}>
                         <div className={styles.formContainer}>
-                            <form action="#" method="POST" onSubmit={(e) => e.preventDefault()}>
+                            <form action="https://formsubmit.co/ramynebili@gmail.com" method="POST">
+                                {/* Configuration FormSubmit */}
+                                <input type="hidden" name="_subject" value="Nouveau message depuis ton Portfolio !" />
+                                <input type="text" name="_honey" style={{ display: 'none' }} />
+                                <input type="hidden" name="_captcha" value="false" />
+
                                 <div className={styles.formGrid}>
                                     <div className={styles.inputGroup}>
-                                        <input type="text" placeholder="Nom" required className={styles.inputField} />
+                                        <input type="text" name="nom" placeholder="Nom" required className={styles.inputField} />
                                     </div>
                                     <div className={styles.inputGroup}>
-                                        <input type="email" placeholder="Email" required className={styles.inputField} />
+                                        <input type="email" name="email" placeholder="Email" required className={styles.inputField} />
                                     </div>
                                     <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
-                                        <textarea placeholder="Message" required className={styles.textareaField}></textarea>
+                                        <textarea name="message" placeholder="Message" required className={styles.textareaField}></textarea>
                                     </div>
                                 </div>
                                 <button type="submit" className={styles.submitBtn}>

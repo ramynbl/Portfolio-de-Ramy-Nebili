@@ -1,7 +1,5 @@
 import { Lexend } from "next/font/google";
 import "./globals.css";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
 
 // Configuration des fonts
 const lexend = Lexend({
@@ -9,8 +7,6 @@ const lexend = Lexend({
     variable: "--font-lexend",
     display: "swap",
 });
-
-
 
 export const metadata = {
     title: "Portfolio - Ramy Nebili",
@@ -21,9 +17,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="fr" className={`${lexend.variable}`}>
             <body>
-                <Header />  {/* <-- C'est ici que la magie opère */}
-                <main>{children}</main>
-                <Footer />
+                {children}
             </body>
         </html>
     );
