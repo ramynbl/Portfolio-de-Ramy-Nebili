@@ -1,4 +1,4 @@
-import { SiReact, SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiVite, SiHtml5, SiCss3, SiNodedotjs, SiExpress, SiFastapi, SiPython, SiDiscord, SiJupyter, SiPandas, SiNumpy, SiSqlite, SiVercel, SiNetlify, SiRender, SiRailway, SiFigma, SiAdobeindesign, SiAdobeillustrator, SiAdobephotoshop, SiAdobeaftereffects, SiBlender, SiAdobexd, SiFramer } from 'react-icons/si';
+import { SiReact, SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiVite, SiHtml5, SiCss3, SiNodedotjs, SiExpress, SiFastapi, SiPython, SiDiscord, SiJupyter, SiPandas, SiNumpy, SiSqlite, SiMysql, SiDocker, SiGit, SiVercel, SiNetlify, SiRender, SiRailway, SiFigma, SiAdobeindesign, SiAdobeillustrator, SiAdobephotoshop, SiAdobeaftereffects, SiBlender, SiAdobexd, SiFramer } from 'react-icons/si';
 
 export const skillsData = [
     // --- DESIGN SYSTEM & UI ---
@@ -35,8 +35,11 @@ export const skillsData = [
     { name: 'Pandas', icon: SiPandas, color: '#150458', desc: 'Analyse de données Python', status: 'Notions', category: 'Data & Infrastructure' },
     { name: 'NumPy', icon: SiNumpy, color: '#013243', desc: 'Calcul scientifique', status: 'Notions', category: 'Data & Infrastructure' },
     { name: 'SQLite', icon: SiSqlite, color: '#003B57', desc: 'Base de données légère', status: 'Notions', category: 'Data & Infrastructure' },
+    { name: 'MySQL', icon: SiMysql, color: '#003B57', desc: 'Base de données SQL', status: 'Notions', category: 'Data & Infrastructure' },
     { name: 'Vercel', icon: SiVercel, color: '#000000', desc: 'Déploiement frontend optimisé', status: 'Favori', category: 'Data & Infrastructure' },
     { name: 'Netlify', icon: SiNetlify, color: '#00C7B7', desc: 'CI/CD et hosting', status: 'Utilisé souvent', category: 'Data & Infrastructure' },
     { name: 'Render', icon: SiRender, color: '#46E3B7', desc: 'Cloud hosting unifié', status: 'Utilisé souvent', category: 'Data & Infrastructure' },
     { name: 'Railway', icon: SiRailway, color: '#0B0D0E', desc: 'Infrastructure on rails', status: 'Utilisé souvent', category: 'Data & Infrastructure' },
+    { name: 'Docker', icon: SiDocker, color: '#0015b7ff', desc: 'Environnements de développement isolés', status: 'Utilisé en projet', category: 'Data & Infrastructure' },
+    { name: 'Git', icon: SiGit, color: '#e03c00ff', desc: 'Gestion de version', status: 'Utilisé en projet', category: 'Data & Infrastructure' },
 ];
