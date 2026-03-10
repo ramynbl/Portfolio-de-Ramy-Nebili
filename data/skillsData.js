@@ -1,4 +1,5 @@
-import { SiReact, SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiVite, SiHtml5, SiCss3, SiNodedotjs, SiExpress, SiFastapi, SiPython, SiDiscord, SiJupyter, SiPandas, SiNumpy, SiSqlite, SiMysql, SiDocker, SiGit, SiPrisma, SiVercel, SiNetlify, SiRender, SiRailway, SiFigma, SiAdobeindesign, SiAdobeillustrator, SiAdobephotoshop, SiAdobeaftereffects, SiBlender, SiAdobexd, SiFramer } from 'react-icons/si';
+import { SiReact, SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiVite, SiHtml5, SiCss3, SiNodedotjs, SiExpress, SiFastapi, SiPython, SiDiscord, SiJupyter, SiPandas, SiNumpy, SiSqlite, SiMysql, SiDocker, SiGit, SiPrisma, SiVercel, SiNetlify, SiRender, SiRailway, SiFigma, SiAdobeindesign, SiAdobeillustrator, SiAdobephotoshop, SiAdobeaftereffects, SiBlender, SiAdobexd, SiFramer } 
+from 'react-icons/si';
 
 export const skillsData = [
     // --- DESIGN SYSTEM & UI ---
