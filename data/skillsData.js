@@ -1,4 +1,4 @@
-import { SiReact, SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiVite, SiHtml5, SiCss3, SiNodedotjs, SiExpress, SiFastapi, SiPython, SiDiscord, SiJupyter, SiPandas, SiNumpy, SiSqlite, SiMysql, SiDocker, SiGit, SiVercel, SiNetlify, SiRender, SiRailway, SiFigma, SiAdobeindesign, SiAdobeillustrator, SiAdobephotoshop, SiAdobeaftereffects, SiBlender, SiAdobexd, SiFramer } from 'react-icons/si';
+import { SiReact, SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiVite, SiHtml5, SiCss3, SiNodedotjs, SiExpress, SiFastapi, SiPython, SiDiscord, SiJupyter, SiPandas, SiNumpy, SiSqlite, SiMysql, SiDocker, SiGit, SiPrisma, SiVercel, SiNetlify, SiRender, SiRailway, SiFigma, SiAdobeindesign, SiAdobeillustrator, SiAdobephotoshop, SiAdobeaftereffects, SiBlender, SiAdobexd, SiFramer } from 'react-icons/si';
 
 export const skillsData = [
     // --- DESIGN SYSTEM & UI ---
@@ -42,4 +42,5 @@ export const skillsData = [
     { name: 'Railway', icon: SiRailway, color: '#0B0D0E', desc: 'Infrastructure on rails', status: 'Utilisé souvent', category: 'Data & Infrastructure' },
     { name: 'Docker', icon: SiDocker, color: '#0015b7ff', desc: 'Environnements de développement isolés', status: 'Utilisé en projet', category: 'Data & Infrastructure' },
     { name: 'Git', icon: SiGit, color: '#e03c00ff', desc: 'Gestion de version', status: 'Utilisé en projet', category: 'Data & Infrastructure' },
+    { name: 'Prisma', icon: SiPrisma, color: '#16A394', desc: 'ORM pour Node.js et TypeScript', status: 'Utilisé en projet', category: 'Data & Infrastructure' },
 ];
