@@ -1,25 +1,26 @@
 export const projectsData = [
 
     {
-        id: 'anime-finder',
-        title: 'Anime Finder',
-        category: 'Projet Data & Dev',
-        description: 'Une plateforme de recommandation intelligente qui dépasse la simple moyenne. Notre algorithme calcule un <strong>Score Éditorial</strong> basé sur la régularité et la stabilité des notes d\'épisodes, pour identifier les véritables pépites du catalogue.',
-        techStack: ['Python', 'Pandas', 'NumPy', 'FastAPI', 'Jupyter Notebook', 'Streamlit', 'JavaScript', 'HTML', 'CSS'],
+        id: 'Wiki.Learn',
+        title: 'Wiki.Learn',
+        category: 'Projet de groupe',
+        description: 'Une plateforme d\'<strong>apprentissage interactive</strong> et <strong>ludique</strong> qui transforme la navigation sur <strong>Wikipédia</strong> en une <strong>aventure immersive</strong>. En utilisant les dernières technologies <strong>React</strong>, <strong>WikiLearn</strong> propose une expérience <strong>haute-fidélité</strong> portée par des <strong>animations fluides</strong>, une <strong>gestion d\'état réactive</strong> et un <strong>sound design dynamique</strong>.',
+        techStack: ['Figma', 'Illustrator', 'Next.js', 'React.js', 'CSS modules', 'JSON', 'JavaScript', 'use-sound', 'Zustand', 'Framer-motion'],
         image: null,
-        video: '/image/anime.mp4',
-        imageMobile: '/image/anime-mobile.jpg',
+        video: '/image/wiki-learn.mp4',
+        imageMobile: '/image/wiki-learn-mobile.png',
         links: {
-            github: 'https://github.com/ramynbl/projet-anime-data',
-            live: 'https://projet-anime-data.vercel.app/',
-            details: '/projects/anime-finder'
+            github: 'https://github.com/ramynbl/wiki-learn',
+            live: 'https://wiki-learn.vercel.app/',
+            details: '/projects/wiki-learn'
         },
         theme: {
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
             accent: '#4facfe'
         },
-        orientation: 'right'
+        orientation: 'left'
     },
+
     {
         id: 'study-ping',
         title: 'Study Ping',
@@ -59,6 +60,29 @@ export const projectsData = [
         },
         orientation: 'right'
     },
+
+    {
+        id: 'anime-finder',
+        title: 'Anime Finder',
+        category: 'Projet Data & Dev',
+        description: 'Une plateforme de recommandation intelligente qui dépasse la simple moyenne. Notre algorithme calcule un <strong>Score Éditorial</strong> basé sur la régularité et la stabilité des notes d\'épisodes, pour identifier les véritables pépites du catalogue.',
+        techStack: ['Python', 'Pandas', 'NumPy', 'FastAPI', 'Jupyter Notebook', 'Streamlit', 'JavaScript', 'HTML', 'CSS'],
+        thumbnail: '/image/anime-thumbnail.png',
+        image: null,
+        video: '/image/anime.mp4',
+        imageMobile: '/image/anime-mobile.jpg',
+        links: {
+            github: 'https://github.com/ramynbl/projet-anime-data',
+            live: 'https://projet-anime-data.vercel.app/',
+            details: '/projects/anime-finder'
+        },
+        theme: {
+            gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
+            accent: '#4facfe'
+        },
+        orientation: 'right'
+    },
+
     {
         id: 'kevin-ai',
         title: 'Kevin AI',
