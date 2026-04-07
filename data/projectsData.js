@@ -18,7 +18,7 @@ export const projectsData = [
             gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
             accent: '#4facfe'
         },
-        orientation: 'left'
+        orientation: 'right'
     },
 
     {
@@ -102,5 +102,25 @@ export const projectsData = [
             accent: '#fff'
         },
         orientation: 'left'
+    },
+    {
+        id: 'FitViz',
+        title: 'FitViz',
+        category: 'Projet No Code',
+        description: 'Une plateforme SaaS de Virtual Try-On entièrement générée par l\'IA. De l\'architecture logicielle (Antigravity et Claude Code) aux assets visuels (Nano Banana et VEO) en passant par le contenu (ChatGPT). Une application interactive et fonctionnelle connectée aux APIs d\'IA les plus avancées',
+        techStack: ['Antigravity', 'Claude Code', 'Next.js', 'Nano Banana', 'VEO', 'Replicate API', 'Hugging Face API', 'ChatGPT'],
+        thumbnail: '/image/fitviz.png',
+        image: '/image/fitviz.png',
+        video: null,
+        links: {
+            github: 'https://github.com/ramynbl/FitViz',
+            live: 'https://fit-viz.vercel.app/',
+            details: '/projects/fitviz'
+        },
+        theme: {
+            gradient: 'linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5))',
+            accent: '#fff'
+        },
+        orientation: 'right'
     }
 ];
