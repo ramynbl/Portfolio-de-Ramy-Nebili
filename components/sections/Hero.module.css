@@ -1,26 +1,23 @@
 .hero {
-    /* Prend toute la hauteur de l'écran */
     height: 100vh;
+    height: 100dvh;
     display: flex;
     position: relative;
     padding: 0;
     isolation: isolate;
-    /* Crée un nouveau contexte d'empilement pour isoler les z-index internes */
-    background: #000;
+    background: var(--bg);
     overflow: hidden;
-    color: white;
+    color: var(--text);
 }
 
-/* --- DYNAMIC BACKGROUND --- */
+/* --- Fond dynamique --- */
 .backgroundLayer {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    /* Behind content */
-    filter: blur(80px);
-    /* Heavy blur for soft blobs */
+    filter: blur(var(--blob-blur));
     transform-origin: center;
     pointer-events: none;
 }
@@ -30,9 +27,8 @@
     top: 20%;
     left: 20%;
     width: 60vw;
-    /* Larger for hero */
     height: 60vw;
-    background: radial-gradient(circle, rgba(50, 50, 200, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blob-1) 0%, transparent 70%);
     border-radius: 50%;
     animation: moveBlob1 20s infinite alternate ease-in-out;
 }
@@ -43,7 +39,7 @@
     right: 20%;
     width: 55vw;
     height: 55vw;
-    background: radial-gradient(circle, rgba(200, 50, 100, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blob-2) 0%, transparent 70%);
     border-radius: 50%;
     animation: moveBlob2 25s infinite alternate-reverse ease-in-out;
 }
@@ -54,44 +50,25 @@
     left: 50%;
     width: 70vw;
     height: 70vw;
-    background: radial-gradient(circle, rgba(100, 50, 255, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blob-3) 0%, transparent 70%);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: pulseBlob 15s infinite ease-in-out;
 }
 
 @keyframes moveBlob1 {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(10%, 10%);
-    }
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(10%, 10%); }
 }
 
 @keyframes moveBlob2 {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(-10%, -10%);
-    }
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-10%, -10%); }
 }
 
 @keyframes pulseBlob {
-
-    0%,
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.5;
-    }
-
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 0.8;
-    }
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
 }
 
 .split {
@@ -105,31 +82,21 @@
     text-align: center;
     transition: 0.3s;
     overflow: visible;
-    /* Laisser le texte déborder vers le centre (sous l'avatar) */
     position: relative;
-}
-
-/* Côté gauche : Transparent */
-.left {
-    background-color: transparent;
-    color: #ffffff;
     z-index: 10;
-}
-
-/* Côté droit : Transparent */
-.right {
-    background-color: transparent;
-    color: #ffffff;
-    z-index: 10;
+    color: var(--text);
 }
 
 .title {
+    /* Largeur définie : le slider (150 % + marge négative) se calcule par rapport au volet,
+       pas par rapport à la somme des mots, sinon il déborde de l'écran. */
+    width: 100%;
+    font-family: var(--font-heading), sans-serif;
     font-size: 5rem;
     font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.1;
     letter-spacing: -2px;
-    /* Flotte au-dessus des fonds .split (z=auto) mais derrière l'avatar (z=100) */
     position: relative;
     z-index: 50;
 }
@@ -138,41 +105,30 @@
     font-family: var(--font-heading), sans-serif;
     font-size: 1.2rem;
     font-weight: 500;
-    opacity: 0.8;
+    color: var(--text-2);
     margin-bottom: 30px;
 }
 
-/* L'Avatar au centre */
+/* --- Avatar central --- */
 .avatarContainer {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
-    /* Valeur très haute pour garantir la supériorité */
-    /* Au dessus du texte */
     width: 60vh;
-    /* Largeur proportionnelle */
     height: 85%;
-    /* Prend presque toute la hauteur en partant du bas */
-    border-radius: 0;
-    border: none;
     overflow: visible;
-    box-shadow: none;
-    /* Plus d'ombre de boîte carrée */
-    /* Filtre optionnel pour l'ombre portée de la silhouette */
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
     pointer-events: none;
 }
 
 .avatarImage {
     object-fit: contain;
-    /* Affiche l'image entière sans couper */
     object-position: bottom;
-    /* Collé au bas */
 }
 
-/* CTA Buttons */
+/* --- Boutons --- */
 .btnHero {
     display: inline-block;
     padding: 12px 30px;
@@ -181,35 +137,17 @@
     font-weight: 600;
     font-size: 1.1rem;
     transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border: 2px solid;
+    border: 2px solid var(--text);
+    color: var(--text);
+    background: transparent;
     margin-top: 10px;
 }
 
-.btnLeft {
-    color: #ffffff;
-    border-color: #ffffff;
-    background: transparent;
-}
-
-.btnLeft:hover {
-    background-color: #ffffff;
-    color: #1D1D1F;
+.btnHero:hover {
+    background-color: var(--solid-bg);
+    color: var(--solid-text);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-}
-
-/* btnRight - Même style que le gauche (Blanc) car fond sombre maintenant */
-.btnRight {
-    color: #ffffff;
-    border-color: #ffffff;
-    background: transparent;
-}
-
-.btnRight:hover {
-    background-color: #ffffff;
-    color: #1D1D1F;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 20px var(--solid-shadow);
 }
 
 .buttonsGroup {
@@ -224,36 +162,31 @@
     display: none;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
         height: auto;
-        min-height: 100vh;
+        min-height: 100dvh;
         padding-top: 80px;
-        /* Space for the header */
     }
 
     .split {
-        max-width: 100% !important;
+        max-width: 100%;
         flex: auto;
         width: 100%;
         padding: 40px 20px 20px 20px;
     }
 
     .left {
-        display: none !important;
-        /* Hide left completely on mobile */
+        display: none;
     }
 
     .right {
         order: 1;
-        /* Make right block the top item */
     }
 
     .mobileOnlyBtn {
-        display: inline-block !important;
-        /* Make sure the duplicate button shows */
+        display: inline-block;
     }
 
     .avatarContainer {
@@ -264,19 +197,11 @@
         max-width: 380px;
         height: 60vh;
         min-height: 480px;
-        /* Gives some decent height for the avatar to stand out on mobile */
         margin: 20px auto 0 auto;
         z-index: 50;
         order: 2;
-        /* Avatar is under the right block */
     }
 
-    .avatarImage {
-        object-fit: contain;
-        object-position: bottom;
-    }
-
-    /* Standard responsive fonts */
     .title {
         font-size: 3rem;
         margin-bottom: 10px;
@@ -292,6 +217,5 @@
         padding: 10px 20px;
         font-size: 0.95rem;
         margin-top: 0;
-        /* Let buttonsGroup handle it */
     }
 }

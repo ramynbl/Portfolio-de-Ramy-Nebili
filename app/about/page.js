@@ -1,17 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiTarget, FiUsers, FiFilm, FiSmile } from 'react-icons/fi';
-import SocialIcon from '../../components/ui/SocialIcon';
-import Header from '../../components/layout/Header';
-import Footer from '../../components/layout/Footer';
+import { FiGithub, FiLinkedin, FiTarget, FiUsers, FiFilm, FiSmile } from 'react-icons/fi';
+import SocialIcon from '@/components/ui/SocialIcon';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import { getProfile } from '@/lib/content';
 import styles from './AboutPage.module.css';
 
 export const metadata = {
-    title: 'À propos | Ramy Nebili',
-    description: "Découvrez mon parcours, mes compétences et ma vision du développement web.",
+    title: 'À propos',
+    description: "Parcours, expertises et façon de travailler de Ramy Nebili : design, web et communication.",
 };
 
-export default function AboutPage() {
+// ⚠️ Mise en page et contenu refondus à l'étape 4. Ici : tokens + données centralisées.
+export default async function AboutPage() {
+    const profile = await getProfile();
+    const cv = profile.cvs[0];
+
     return (
         <>
             <Header />
@@ -44,19 +49,21 @@ export default function AboutPage() {
                                 </div>
 
                                 <div className={styles.ctaGroup}>
-                                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className={styles.emailBtn}>
-                                        Télécharger le CV
-                                    </a>
+                                    {cv && (
+                                        <a href={cv.file} download className={styles.emailBtn}>
+                                            Télécharger le CV
+                                        </a>
+                                    )}
                                     <div className={styles.socialLinks}>
                                         <SocialIcon
-                                            href="https://github.com/RamyNbl"
+                                            href={profile.socials.github}
                                             icon={<FiGithub />}
                                             ariaLabel="GitHub"
                                             networkType="github"
                                             className={styles.aboutSocialIcon}
                                         />
                                         <SocialIcon
-                                            href="https://www.linkedin.com/in/ramynebili/"
+                                            href={profile.socials.linkedin}
                                             icon={<FiLinkedin />}
                                             ariaLabel="LinkedIn"
                                             networkType="linkedin"
@@ -68,9 +75,10 @@ export default function AboutPage() {
 
                             <div className={styles.heroImageContainer}>
                                 <Image
-                                    src="/image/ramy-carre.png"
+                                    src={profile.images.portrait}
                                     alt="Portrait de Ramy Nebili"
                                     fill
+                                    sizes="(max-width: 992px) 100vw, 600px"
                                     className={styles.profileImage}
                                     priority
                                 />
@@ -258,7 +266,7 @@ export default function AboutPage() {
                                 </blockquote>
                                 <div className={styles.quoteAuthor}>
                                     <div className={styles.authorAvatar}>
-                                        <Image src="/image/ramy-miniature.jpeg" alt="Ramy Nebili" fill className={styles.avatarImg} />
+                                        <Image src={profile.images.miniature} alt="Ramy Nebili" fill sizes="60px" className={styles.avatarImg} />
                                     </div>
                                     <div className={styles.authorInfo}>
                                         <strong>Ramy Nebili</strong>

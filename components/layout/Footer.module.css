@@ -1,33 +1,28 @@
-/* components/layout/Footer.module.css */
 .footer {
-    background-color: var(--background);
-    color: var(--muted-text);
+    background-color: var(--bg);
+    color: var(--text-3);
     padding: 50px 0 40px;
-    /* J'ai remis un espace en haut (100px) ! */
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border);
     margin-top: auto;
     position: relative;
     overflow: hidden;
     z-index: 1;
 }
 
-/* --- BLOBS BACKGROUND --- */
 .blob1,
 .blob2 {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(var(--blob-blur));
     z-index: -1;
     pointer-events: none;
-    opacity: 0.3;
 }
 
 .blob1 {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(0, 113, 227, 0.4) 0%, transparent 70%);
-    /* Bleu Apple */
+    background: radial-gradient(circle, var(--blob-1) 0%, transparent 70%);
     top: -150px;
     left: -100px;
     animation: floatBlob 15s ease-in-out infinite alternate;
@@ -36,8 +31,7 @@
 .blob2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
-    /* Violet */
+    background: radial-gradient(circle, var(--blob-3) 0%, transparent 70%);
     bottom: -100px;
     right: -150px;
     animation: floatBlob 20s ease-in-out infinite alternate-reverse;
@@ -53,8 +47,6 @@
     }
 }
 
-
-/* --- LAYOUT & CENTERING --- */
 .content {
     display: flex;
     flex-direction: column;
@@ -74,8 +66,7 @@
 .section h3 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--foreground);
-    /* Blanc */
+    color: var(--text);
     margin-bottom: 20px;
     font-family: var(--font-heading);
     letter-spacing: -0.5px;
@@ -91,25 +82,23 @@
     transform: translateX(-50%);
     width: 30px;
     height: 2px;
-    background-color: var(--primary);
+    background-color: var(--accent);
     border-radius: 2px;
 }
 
 .bioText {
     font-size: 1.05rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.7);
-    /* Gris clair/blanc */
+    color: var(--text-2);
     margin-bottom: 30px;
 }
 
-/* --- GLASSMORPHISM CTA --- */
 .downloadBtn {
     position: relative;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--foreground);
+    border: 1px solid var(--border-2);
+    color: var(--text);
     padding: 14px 32px;
     border-radius: 50px;
     font-family: var(--font-body);
@@ -127,13 +116,10 @@
 .downloadBtn::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     border-radius: 50px;
     padding: 2px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), var(--primary), transparent);
+    background: linear-gradient(135deg, var(--border-strong), var(--accent), transparent);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -144,19 +130,16 @@
 }
 
 .downloadBtn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 25px rgba(0, 113, 227, 0.4);
-    /* Neon Glow */
+    background: var(--surface-hover);
+    box-shadow: 0 0 25px var(--accent-soft);
     transform: translateY(-4px);
-    color: #fff;
 }
 
 .downloadBtn:hover::before {
     opacity: 1;
-    background: linear-gradient(135deg, var(--primary), #00e5ff, var(--primary));
+    background: linear-gradient(135deg, var(--accent), #00e5ff, var(--accent));
 }
 
-/* --- NAVIGATION LINKS --- */
 .navLinks {
     display: flex;
     flex-wrap: wrap;
@@ -165,7 +148,7 @@
 }
 
 .link {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-2);
     text-decoration: none;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -173,15 +156,13 @@
 }
 
 .link:hover {
-    /* Gradient Dynamique */
-    background: linear-gradient(90deg, #ffffff, var(--primary));
+    background: linear-gradient(90deg, var(--text), var(--accent));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     transform: translateY(-2px);
 }
 
-/* --- SOCIALS --- */
 .socials {
     display: flex;
     gap: 25px;
@@ -195,19 +176,17 @@
     font-size: 1.6rem;
 }
 
-/* --- BOTTOM INFO --- */
 .bottom {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-4);
     padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 @media (max-width: 768px) {
-
     .content {
         gap: 50px;
     }

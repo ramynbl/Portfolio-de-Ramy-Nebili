@@ -1,47 +1,50 @@
-# Portfolio - Ramy Nebili
+# Portfolio — Ramy Nebili
 
-Bienvenue sur le dépôt de mon portfolio personnel. Ce projet met en avant mes compétences, mes projets récents et mon parcours en tant que Développeur Full Stack.
+Site vitrine : design, création et refonte de sites web, communication digitale.
+Next.js 16 (App Router) · React 19 · CSS Modules · Framer Motion · next-themes.
 
-## 🚀 Fonctionnalités
-- Présentation de mon profil et de mes compétences.
-- Vitrine de mes projets récents avec des détails techniques.
-- Section de contact intégrée.
-- Animations fluides et design moderne (Glassmorphism, dégradés).
+## Lancer
 
-## 🛠️ Stack Technique
-Ce projet a été développé avec les technologies suivantes :
-- **Framework :** [Next.js](https://nextjs.org/) (App Router)
-- **Librairie UI :** [React](https://react.dev/)
-- **Animations :** [Framer Motion](https://www.framer.com/motion/)
-- **Icônes :** [React Icons](https://react-icons.github.io/react-icons/)
-- **Styling :** CSS Modules (CSS natif)
+```bash
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm build      # build de production
+pnpm lint       # ESLint
+```
 
-## 📂 Structure du projet
-- `app/` : Contient les pages principales (Accueil, À propos, Projets, Layout général).
-- `components/` : Composants réutilisables (Header, Footer, Sections, etc.).
-- `public/` : Ressources statiques (images, icônes, CV).
+## Où vit quoi
 
-## 💻 Installation et Lancement local
+| Dossier | Rôle |
+|---|---|
+| `data/` | **Tout le contenu** (projets, profil, compétences, réglages). Futur remplacé par un CMS. |
+| `lib/content.js` | Point d'accès unique aux données. Les composants n'importent jamais `data/` directement. |
+| `lib/icons.js` | Résolution des icônes par clé texte (`'figma'` → composant). |
+| `app/` | Pages : `/`, `/about`, `/projects`, `/projects/[slug]`, 404, sitemap, robots, image OG. |
+| `components/layout/` | Header (capsule → sidebar), Footer. |
+| `components/sections/` | Sections de la home. |
+| `components/project/` | Page détail projet (en-tête, galerie, navigation). |
+| `components/ui/` | Briques : boutons sociaux, chips, toggle de thème, texte riche… |
+| `public/image/` | Médias optimisés servis (WebP, MP4 compressé). |
+| `public/projects/<slug>/` | Médias des pages projet. |
+| `public/cv/` | CV téléchargeables (liste dans `data/profile.js`). |
+| `assets-src/` | Sources brutes (PNG, .glb, .mov) — gitignoré, jamais servi. |
+| `scripts/optimize-media.mjs` | `pnpm media <dossier> <slug>` : images → WebP, vidéos → MP4 H.264 + poster. |
 
-Pour lancer le projet sur votre machine locale :
+## Thème
 
-1. **Cloner le dépôt :**
-   ```bash
-   git clone <url-du-repo>
-   cd portfolio
-   ```
+Design tokens dans `app/globals.css` (`--bg`, `--surface`, `--text`, `--accent`…).
+Deux thèmes : `[data-theme="dark"]` et `[data-theme="light"]`, pilotés par `next-themes`
+(préférence système par défaut, toggle dans le header). **Aucune couleur en dur dans les
+composants** : toujours une variable.
 
-2. **Installer les dépendances :**
-   ```bash
-   npm install
-   ```
+## Ajouter un projet
 
-3. **Lancer le serveur de développement :**
-   ```bash
-   npm run dev
-   ```
+1. Déposer les visuels bruts dans un dossier, puis `pnpm media ./mon-dossier mon-slug`.
+2. Ajouter une entrée dans `data/projects.js` (voir le schéma commenté en tête de fichier).
+3. `pnpm build` : la page `/projects/mon-slug` et le sitemap sont générés.
 
-4. Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour voir le résultat.
+## CMS (à venir)
 
-## 📄 Licence
-Ce projet est personnel et non destiné à un usage commercial sans autorisation préalable.
+Le site est prêt à brancher un CMS (Sanity, Payload, Strapi…) : seules les fonctions de
+`lib/content.js` changent, plus le rendu de `components/ui/RichText.jsx` si le texte riche
+devient structuré. Voir `docs/CMS.md`.

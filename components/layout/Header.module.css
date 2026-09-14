@@ -1,6 +1,4 @@
 .header {
-    background-color: transparent;
-    padding: 0;
     position: fixed;
     top: 20px;
     left: 50%;
@@ -9,30 +7,26 @@
     transform: translateX(-50%);
     z-index: 1000;
     border-radius: 50px;
-    /* Glassmorphism unifié */
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .header:hover {
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    background: var(--surface-2);
 }
 
-/* Sidebar state */
+/* --- Sidebar --- */
 .sidebar {
-    top: calc(50% - 150px);
+    top: calc(50% - 170px);
     left: 20px;
     width: 60px;
     transform: translateX(0);
     border-radius: 30px;
     padding: 30px 0;
-
-    /* Remove background and borders for the sidebar */
     background: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -45,7 +39,6 @@
     box-shadow: none;
 }
 
-/* Sidebar INNER structure */
 .sidebarContainer {
     display: flex;
     flex-direction: column;
@@ -66,7 +59,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: var(--text-4);
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
@@ -75,7 +68,7 @@
 
 .navDot:hover,
 .navDot.active {
-    background-color: #ffffff;
+    background-color: var(--text);
     transform: scale(1.2);
 }
 
@@ -85,8 +78,8 @@
     left: 25px;
     top: 50%;
     transform: translateY(-50%) translateX(-10px);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
+    background: var(--solid-bg);
+    color: var(--solid-text);
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.85rem;
@@ -110,19 +103,19 @@
     align-items: center;
 }
 
+/* --- Capsule --- */
 .navContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    /* Added padding inside the capsule */
 }
 
 .logo {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text);
     letter-spacing: -0.5px;
     flex: 1;
     display: flex;
@@ -136,24 +129,28 @@
 }
 
 .navLink {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-2);
     font-family: var(--font-heading);
     font-size: 0.95rem;
     font-weight: 500;
     transition: all 0.3s ease;
     padding: 8px 16px;
     border-radius: 20px;
+    display: inline-block;
 }
 
-.navLink:hover {
-    background: linear-gradient(90deg, #ffffff, var(--primary));
+.navLink:hover,
+.navLinkActive {
+    background: linear-gradient(90deg, var(--text), var(--accent));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.navLink:hover {
     transform: translateY(-2px);
 }
 
-/* On cache les réseaux sociaux sur mobile pour l'instant, on gérera ça plus tard */
 .socials {
     display: flex;
     gap: 15px;
@@ -166,6 +163,10 @@
     font-size: 1.2rem;
 }
 
+.themeToggle {
+    margin-left: 15px;
+}
+
 .rightSection {
     display: flex;
     align-items: center;
@@ -175,7 +176,10 @@
 
 .burgerBtn {
     display: none;
-    /* Hidden on desktop */
+}
+
+.mobileSocials {
+    display: none;
 }
 
 @media (max-width: 768px) {
@@ -183,23 +187,33 @@
         display: none;
     }
 
+    .socials {
+        display: none;
+    }
+
+    .themeToggle {
+        margin-left: 0;
+    }
+
     .sidebar {
-        /* Hide navbar completely on mobile when scrolling down */
         transform: translateY(-200%) translateX(-50%);
         opacity: 0;
         pointer-events: none;
+    }
+
+    .navContainer {
+        padding: 12px 20px;
     }
 
     .burgerBtn {
         display: block;
         background: none;
         border: none;
-        color: #ffffff;
+        color: var(--text);
         font-size: 1.5rem;
         cursor: pointer;
         z-index: 1001;
-        /* Above overlay */
-        margin-left: 20px;
+        margin-left: 16px;
     }
 
     .mobileMenu {
@@ -207,14 +221,14 @@
         top: 0;
         right: 0;
         width: 100%;
-        height: 100vh;
-        background-color: #000;
-        /* Solid black for mobile menu */
+        height: 100dvh;
+        background-color: var(--bg);
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 60px;
         z-index: 999;
-        /* Behind the header/burger but covering page */
         overflow-y: hidden;
     }
 
@@ -229,17 +243,21 @@
     .mobileNavLink {
         font-family: var(--font-heading);
         font-size: 2rem;
-        color: var(--foreground);
-        /* Fixed invisble text (was var(--background) on a black background) */
+        color: var(--text);
         text-decoration: none;
         font-weight: 700;
         transition: opacity 0.3s;
     }
 
     .mobileNavLink:hover {
-        background: linear-gradient(90deg, #ffffff, var(--primary));
+        background: linear-gradient(90deg, var(--text), var(--accent));
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+
+    .mobileSocials {
+        display: flex;
+        gap: 20px;
     }
 }

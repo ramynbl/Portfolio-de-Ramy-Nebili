@@ -2,10 +2,9 @@
     position: relative;
     padding: 100px 0;
     overflow: hidden;
-    background: #000;
+    background: var(--bg);
 }
 
-/* --- DYNAMIC BACKGROUND from Skills --- */
 .backgroundLayer {
     position: absolute;
     inset: 0;
@@ -24,7 +23,7 @@
     left: 20%;
     width: 50vw;
     height: 50vw;
-    background: radial-gradient(circle, rgba(50, 50, 200, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blob-1) 0%, transparent 70%);
     border-radius: 50%;
     animation: moveBlob1 20s infinite alternate ease-in-out;
     will-change: transform;
@@ -36,7 +35,7 @@
     right: 20%;
     width: 45vw;
     height: 45vw;
-    background: radial-gradient(circle, rgba(200, 50, 100, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blob-2) 0%, transparent 70%);
     border-radius: 50%;
     animation: moveBlob2 25s infinite alternate-reverse ease-in-out;
     will-change: transform;
@@ -48,7 +47,7 @@
     left: 50%;
     width: 60vw;
     height: 60vw;
-    background: radial-gradient(circle, rgba(100, 50, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blob-3) 0%, transparent 70%);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: pulseBlob 15s infinite ease-in-out;
@@ -56,37 +55,18 @@
 }
 
 @keyframes moveBlob1 {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(10%, 10%);
-    }
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(10%, 10%); }
 }
 
 @keyframes moveBlob2 {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(-10%, -10%);
-    }
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-10%, -10%); }
 }
 
 @keyframes pulseBlob {
-
-    0%,
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.5;
-    }
-
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 0.8;
-    }
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
 }
 
 .container {
@@ -110,13 +90,12 @@
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.1;
-    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5));
+    background: var(--title-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* Carousel Styles */
 .carouselWrapper {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
@@ -130,25 +109,21 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE and Edge */
     padding: 0 calc(50vw - var(--max-width) / 2 + 20px);
-    /* Align first card with container */
 }
 
 .carouselContainer::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari and Opera */
 }
 
 .projectCard {
     flex: 0 0 calc(33.333% - 20px);
     min-width: 350px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
     border-radius: 24px;
     overflow: hidden;
     scroll-snap-align: start;
@@ -159,7 +134,7 @@
 
 .projectCard:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--border-strong);
 }
 
 .imageContainer {
@@ -167,17 +142,25 @@
     width: 100%;
     height: 200px;
     overflow: hidden;
+    display: block;
+    background: var(--surface-2);
 }
 
 .projectImage {
     object-fit: cover;
     transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+}
+
+.projectCard:hover .projectImage {
+    transform: scale(1.04);
 }
 
 .placeholderImage {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    background: linear-gradient(135deg, var(--surface-2) 0%, transparent 100%);
 }
 
 .cardContent {
@@ -189,7 +172,7 @@
 
 .category {
     font-size: 0.85rem;
-    color: var(--light-text);
+    color: var(--text-3);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 8px;
@@ -198,57 +181,60 @@
 
 .projectTitle {
     font-size: 1.5rem;
-    color: var(--foreground);
+    color: var(--text);
     margin-bottom: 12px;
     font-weight: 600;
 }
 
 .description {
-    color: var(--light-text);
+    color: var(--text-3);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 0;
 }
 
-/* New Card Actions */
-.readMoreLink {
-    color: var(--light-text);
-    font-weight: 500;
-    margin-left: 5px;
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.2);
-    text-underline-offset: 3px;
-    transition: all 0.3s ease;
-}
-
-.readMoreLink:hover {
-    color: #fff;
-    text-decoration-color: #fff;
-}
-
 .cardActions {
     margin-top: auto;
-    /* Push to bottom */
     padding-top: 20px;
     display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .cardLinkLive {
     display: inline-flex;
     align-items: center;
-    color: #fff;
-    font-size: 1.1rem;
+    gap: 8px;
+    color: var(--text);
+    font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .cardLinkLive:hover {
-    color: var(--light-text);
+    color: var(--accent);
 }
 
+.cardLinkLive:hover .ctaIcon {
+    transform: translateX(4px);
+}
 
-/* CTA Styles */
+.cardLinkSecondary {
+    color: var(--text-3);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--border-strong);
+    text-underline-offset: 3px;
+    transition: color 0.3s ease;
+}
+
+.cardLinkSecondary:hover {
+    color: var(--text);
+}
+
 .ctaContainer {
     display: flex;
     justify-content: center;
@@ -260,8 +246,8 @@
     align-items: center;
     gap: 12px;
     padding: 16px 32px;
-    background: var(--foreground);
-    color: var(--background);
+    background: var(--solid-bg);
+    color: var(--solid-text);
     border-radius: 30px;
     font-size: 1.1rem;
     font-weight: 600;
@@ -271,8 +257,8 @@
 
 .ctaButton:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-    background: #e0e0e0;
+    box-shadow: 0 10px 20px var(--solid-shadow);
+    opacity: 0.92;
 }
 
 .ctaIcon {
@@ -284,11 +270,9 @@
     transform: translateX(5px);
 }
 
-/* RESPONSIVE */
 @media (max-width: 1200px) {
     .carouselContainer {
         padding: 0 40px;
-        /* Give some safe margin if max-width is exceeded */
     }
 }
 

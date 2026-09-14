@@ -1,0 +1,163 @@
+/**
+ * Projets. Chaque entrée reflète le futur document CMS « project ».
+ *
+ * Champs :
+ *  slug        identifiant d'URL (kebab-case) — /projects/<slug>
+ *  kind        'client' | 'product' | 'school' | 'personal'
+ *  category    libellé affiché sur les cartes
+ *  tagline     une phrase d'accroche
+ *  summary     2-3 phrases, **gras** autorisé (rendu par <RichText/>)
+ *  sections    0 à 3 blocs courts { heading, body } pour la page détail
+ *  cover       média principal { type: 'video'|'image', src, poster?, alt }
+ *  coverMobile média alternatif affiché sous 768 px (optionnel)
+ *  thumbnail   image pour les petites cartes (carrousel « Autres projets »)
+ *  gallery     [{ type, src, poster?, alt, caption?, span: 'full'|'half' }]
+ *  featured    affiché dans les 3 grandes cartes de la home
+ *  order       tri croissant
+ */
+export const projects = [
+    {
+        slug: 'wiki-learn',
+        title: 'Wiki.Learn',
+        client: null,
+        year: '2026',
+        kind: 'school',
+        category: 'Projet de groupe',
+        tagline: 'Transformer la navigation Wikipédia en aventure immersive.',
+        summary:
+            'Une plateforme d\'**apprentissage interactive** et **ludique** qui transforme la navigation sur **Wikipédia** en une **aventure immersive**. Une expérience **haute-fidélité** portée par des **animations fluides**, une **gestion d\'état réactive** et un **sound design dynamique**.',
+        role: 'UI design, direction artistique, développement front',
+        services: ['UI design', 'Direction artistique', 'Développement front'],
+        sections: [],
+        tools: ['Figma', 'Illustrator', 'Next.js', 'React', 'CSS modules', 'Zustand', 'Framer Motion', 'use-sound'],
+        cover: { type: 'video', src: '/image/wiki-learn.mp4', poster: null, alt: 'Aperçu animé de Wiki.Learn' },
+        coverMobile: { type: 'image', src: '/image/wiki-learn-mobile.webp', alt: 'Wiki.Learn sur mobile' },
+        thumbnail: { src: '/image/wiki-learn-mobile.webp', alt: 'Wiki.Learn' },
+        gallery: [],
+        links: { live: 'https://wiki-learn.vercel.app/', github: 'https://github.com/ramynbl/wiki-learn' },
+        featured: true,
+        order: 10,
+        theme: { accent: '#4facfe' },
+        orientation: 'right',
+    },
+    {
+        slug: 'study-ping',
+        title: 'Study Ping',
+        client: null,
+        year: '2025',
+        kind: 'personal',
+        category: 'Projet personnel',
+        tagline: 'Un bot Discord qui organise la vie étudiante.',
+        summary:
+            'Un bot Discord pensé pour améliorer ses études : rappels automatiques, commandes pratiques et petites automatisations utiles. Développé en Node.js pour répondre à des besoins personnels d\'organisation.',
+        role: 'Conception, développement, déploiement',
+        services: ['Automatisation', 'Développement'],
+        sections: [],
+        tools: ['Node.js', 'Discord.js', 'JavaScript', 'Node-Cron', 'Node-iCal', 'Day.js'],
+        cover: { type: 'image', src: '/image/bot.webp', alt: 'Interface du bot Study Ping' },
+        coverMobile: null,
+        thumbnail: { src: '/image/bot.webp', alt: 'Study Ping' },
+        gallery: [],
+        links: { live: null, github: 'https://github.com/ramynbl/hetic-bot' },
+        featured: true,
+        order: 20,
+        theme: { accent: '#5865F2' },
+        orientation: 'left',
+    },
+    {
+        slug: 'arktic',
+        title: 'Arktic Website',
+        client: 'Arktic (association étudiante)',
+        year: '2026',
+        kind: 'client',
+        category: 'Projet associatif',
+        tagline: 'Code, Climb, Chill : la vitrine d\'une asso tech & escalade.',
+        summary:
+            'Création de la plateforme web d\'Arktic, une association étudiante mêlant tech et escalade. Une vitrine moderne couplée à un système d\'inscription en temps réel pour gérer les événements sportifs.',
+        role: 'Design, développement full stack',
+        services: ['Site web', 'UI design', 'Développement'],
+        sections: [],
+        tools: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'MySQL', 'Drizzle ORM'],
+        cover: { type: 'image', src: '/image/arktic.webp', alt: 'Page d\'accueil du site Arktic' },
+        coverMobile: { type: 'image', src: '/image/arktic-mobile.jpg', alt: 'Site Arktic sur mobile' },
+        thumbnail: { src: '/image/arktic.webp', alt: 'Arktic' },
+        gallery: [],
+        links: { live: 'https://arktic.up.railway.app/', github: 'https://github.com/ramynbl/arktic' },
+        featured: true,
+        order: 30,
+        theme: { accent: '#ffffff' },
+        orientation: 'right',
+    },
+    {
+        slug: 'anime-finder',
+        title: 'Anime Finder',
+        client: null,
+        year: '2026',
+        kind: 'school',
+        category: 'Projet data & dev',
+        tagline: 'Un score éditorial pour dénicher les vraies pépites.',
+        summary:
+            'Une plateforme de recommandation qui dépasse la simple moyenne. L\'algorithme calcule un **score éditorial** basé sur la régularité et la stabilité des notes d\'épisodes, pour identifier les véritables pépites du catalogue.',
+        role: 'Analyse de données, interface, restitution',
+        services: ['Data', 'Interface web'],
+        sections: [],
+        tools: ['Python', 'Pandas', 'NumPy', 'FastAPI', 'Jupyter', 'Streamlit', 'JavaScript', 'HTML', 'CSS'],
+        cover: { type: 'video', src: '/image/anime.mp4', poster: '/image/anime-thumbnail.webp', alt: 'Aperçu animé d\'Anime Finder' },
+        coverMobile: { type: 'image', src: '/image/anime-mobile.jpg', alt: 'Anime Finder sur mobile' },
+        thumbnail: { src: '/image/anime-thumbnail.webp', alt: 'Anime Finder' },
+        gallery: [],
+        links: { live: 'https://projet-anime-data.vercel.app/', github: 'https://github.com/ramynbl/projet-anime-data' },
+        featured: false,
+        order: 40,
+        theme: { accent: '#4facfe' },
+        orientation: 'right',
+    },
+    {
+        slug: 'kevin-ai',
+        title: 'Kevin AI',
+        client: null,
+        year: '2025',
+        kind: 'personal',
+        category: 'Projet personnel',
+        tagline: 'Une IA sarcastique et dépressive, en glassmorphism.',
+        summary:
+            'Une application web mettant en scène une intelligence artificielle à la personnalité atypique. Interface de chat immersive aux tons sombres, prompt engineering via l\'API Google Gemini, mémoire contextuelle, effet « machine à écrire » et synthèse vocale.',
+        role: 'Concept, UI, développement',
+        services: ['Concept', 'UI design', 'Développement'],
+        sections: [],
+        tools: ['Node.js', 'Express', 'JavaScript', 'Tailwind CSS', 'Google Gemini API'],
+        cover: { type: 'video', src: '/image/kevin.mp4', poster: '/image/kevin.webp', alt: 'Aperçu animé de Kevin AI' },
+        coverMobile: null,
+        thumbnail: { src: '/image/kevin.webp', alt: 'Kevin AI' },
+        gallery: [],
+        links: { live: 'https://kevin-ai.up.railway.app/', github: 'https://github.com/ramynbl/kevin-ai' },
+        featured: false,
+        order: 50,
+        theme: { accent: '#ffffff' },
+        orientation: 'left',
+    },
+    {
+        slug: 'fitviz',
+        title: 'FitViz',
+        client: null,
+        year: '2026',
+        kind: 'product',
+        category: 'Projet IA / no code',
+        tagline: 'Un SaaS de virtual try-on entièrement généré par l\'IA.',
+        summary:
+            'Une plateforme SaaS de Virtual Try-On entièrement générée par l\'IA : de l\'architecture logicielle (Antigravity, Claude Code) aux assets visuels (Nano Banana, VEO) en passant par le contenu (ChatGPT). Une application interactive connectée aux APIs d\'IA les plus avancées.',
+        role: 'Direction de projet, prompt design, intégration',
+        services: ['Pilotage de projet', 'IA générative', 'Produit'],
+        sections: [],
+        tools: ['Antigravity', 'Claude Code', 'Next.js', 'Nano Banana', 'VEO', 'Replicate API', 'Hugging Face API', 'ChatGPT'],
+        cover: { type: 'image', src: '/image/fitviz.webp', alt: 'Interface de FitViz' },
+        coverMobile: null,
+        thumbnail: { src: '/image/fitviz.webp', alt: 'FitViz' },
+        gallery: [],
+        links: { live: 'https://fit-viz.vercel.app/', github: 'https://github.com/ramynbl/FitViz' },
+        featured: false,
+        order: 60,
+        theme: { accent: '#ffffff' },
+        orientation: 'right',
+    },
+];

@@ -2,17 +2,16 @@
     position: relative;
     padding: 100px 0;
     overflow: hidden;
-    background: var(--background);
+    background: var(--bg);
 }
 
-/* Background Blobs for consistency */
 .blob1,
 .blob2 {
     position: absolute;
     border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.15;
+    filter: blur(var(--blob-blur));
     z-index: 0;
+    pointer-events: none;
 }
 
 .blob1 {
@@ -20,7 +19,7 @@
     right: -10%;
     width: 600px;
     height: 600px;
-    background: #0a84ff;
+    background: radial-gradient(circle, var(--blob-3) 0%, transparent 70%);
 }
 
 .blob2 {
@@ -28,7 +27,7 @@
     left: -10%;
     width: 500px;
     height: 500px;
-    background: #5e5ce6;
+    background: radial-gradient(circle, var(--blob-1) 0%, transparent 70%);
 }
 
 .container {
@@ -39,7 +38,6 @@
     padding: 0 20px;
 }
 
-/* --- UPPER ROW : Grid 2 Columns --- */
 .upperRow {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -48,7 +46,6 @@
     align-items: start;
 }
 
-/* Left Column Styling */
 .titleSection {
     margin-bottom: 24px;
 }
@@ -58,15 +55,20 @@
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 16px;
-    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5));
+    background: var(--title-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+.arrow {
+    display: inline-block;
+    transform: rotate(-45deg);
+}
+
 .subText {
     font-size: 1.1rem;
-    color: var(--light-text);
+    color: var(--text-3);
     line-height: 1.6;
     margin-bottom: 40px;
     max-width: 90%;
@@ -85,7 +87,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    color: var(--light-text);
+    color: var(--text-2);
     font-size: 1rem;
 }
 
@@ -95,13 +97,13 @@
     justify-content: center;
     width: 24px;
     height: 24px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--surface-strong);
     border-radius: 50%;
-    color: var(--foreground);
+    color: var(--text);
     font-size: 0.8rem;
+    flex-shrink: 0;
 }
 
-/* Socials Links */
 .socialsContainer {
     display: flex;
     gap: 16px;
@@ -113,15 +115,15 @@
     font-size: 1.2rem;
 }
 
-/* Right Column - Form */
+/* --- Formulaire --- */
 .formContainer {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
     border-radius: 24px;
     padding: 40px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-lg);
 }
 
 .formGrid {
@@ -136,29 +138,38 @@
     flex-direction: column;
 }
 
+.honey {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
 .inputField,
 .textareaField {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface-2);
+    border: 1px solid var(--border-2);
     border-radius: 12px;
     padding: 16px 20px;
-    color: var(--foreground);
+    color: var(--text);
     font-size: 1rem;
     font-family: var(--font-body), sans-serif;
     outline: none;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .inputField::placeholder,
 .textareaField::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-4);
 }
 
 .inputField:focus,
 .textareaField:focus {
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+    border-color: var(--border-strong);
+    background: var(--surface-hover);
+    box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
 .fullWidth {
@@ -172,8 +183,8 @@
 
 .submitBtn {
     width: 100%;
-    background: var(--foreground);
-    color: var(--background);
+    background: var(--solid-bg);
+    color: var(--solid-text);
     border: none;
     border-radius: 12px;
     padding: 16px;
@@ -185,12 +196,11 @@
 
 .submitBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-    background: #e0e0e0;
+    box-shadow: 0 10px 20px var(--solid-shadow);
+    opacity: 0.92;
 }
 
-
-/* --- BOTTOM ROW : Grid 3 Cards --- */
+/* --- Cartes info --- */
 .bottomCards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -198,32 +208,33 @@
 }
 
 .infoCard {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 16px;
     transition: transform 0.3s ease, background 0.3s ease;
+    color: inherit;
 }
 
 .infoCard:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-hover);
     transform: translateY(-5px);
 }
 
 .cardIcon {
     width: 48px;
     height: 48px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-2);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--foreground);
+    color: var(--text);
     font-size: 1.2rem;
 }
 
@@ -231,16 +242,16 @@
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 8px;
-    color: var(--foreground);
+    color: var(--text);
 }
 
 .cardContent p {
     font-size: 0.95rem;
-    color: var(--light-text);
+    color: var(--text-3);
     line-height: 1.5;
+    word-break: break-word;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 968px) {
     .upperRow {
         grid-template-columns: 1fr;

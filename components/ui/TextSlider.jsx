@@ -34,8 +34,8 @@ export default function TextSlider({ words }) {
     }, [currentIndex, totalSlides]);
 
     return (
-        <div className={styles.wrapper}>
-            <div
+        <span className={styles.wrapper}>
+            <span
                 ref={sliderRef}
                 className={styles.slides}
                 style={{
@@ -50,7 +50,7 @@ export default function TextSlider({ words }) {
                         {word}
                     </span>
                 ))}
-            </div>
-        </div>
+            </span>
+        </span>
     );
 }
