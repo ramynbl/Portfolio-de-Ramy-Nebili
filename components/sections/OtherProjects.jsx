@@ -8,8 +8,19 @@ import { FaArrowRight } from 'react-icons/fa';
 import { plainText } from '../ui/RichText';
 import styles from './OtherProjects.module.css';
 
-/** Carrousel des projets non mis en avant. Reçoit les projets en props. */
+/**
+ * Carrousel des projets non mis en avant.
+ *
+ * Le test « liste vide » vit ici, avant tout hook : le carrousel mesure le
+ * scroll sur un ref, et un composant qui rend null n'attache jamais son ref,
+ * ce qui fait planter useScroll (« target ref is defined but not hydrated »).
+ */
 export default function OtherProjects({ projects }) {
+    if (!projects?.length) return null;
+    return <OtherProjectsCarousel projects={projects} />;
+}
+
+function OtherProjectsCarousel({ projects }) {
     const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -18,8 +29,6 @@ export default function OtherProjects({ projects }) {
 
     const yHeader = useTransform(scrollYProgress, [0, 1], [0, -100]);
     const yCards = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
-    if (!projects?.length) return null;
 
     return (
         <section id="other-projects" className={styles.section} ref={sectionRef}>
