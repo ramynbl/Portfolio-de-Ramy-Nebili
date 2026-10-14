@@ -24,10 +24,9 @@ export default async function Home() {
             <main>
                 <div id="home">
                     <Hero
-                        headline={profile.headline}
-                        avatar={profile.images.avatar}
-                        left={profile.hero.left}
-                        right={profile.hero.right}
+                        hero={profile.hero}
+                        photo={profile.images.portrait}
+                        name={profile.fullName}
                     />
                 </div>
 

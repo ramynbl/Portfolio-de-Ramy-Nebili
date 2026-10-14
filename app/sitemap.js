@@ -1,7 +1,7 @@
 import { getSiteSettings, getProjectSlugs } from '@/lib/content';
 
 export default async function sitemap() {
-    const [site, slugs] = await Promise.all([getSiteSettings(), getProjectSlugs()]);
+    const [site, slugs] = await Promise.all([getSiteSettings(), getProjectSlugs({ includeArchived: false })]);
     const now = new Date();
 
     return [

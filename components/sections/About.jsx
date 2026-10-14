@@ -3,12 +3,12 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
-import { FiDownload, FiMail, FiBriefcase, FiAward, FiCode } from 'react-icons/fi';
+import { FiDownload, FiMail, FiBriefcase, FiCompass, FiPenTool } from 'react-icons/fi';
 import SocialIcon from '../ui/SocialIcon';
 import RichText from '../ui/RichText';
 import styles from './About.module.css';
 
-const ICONS = { code: FiCode, briefcase: FiBriefcase, award: FiAward };
+const ICONS = { project: FiCompass, client: FiBriefcase, design: FiPenTool };
 
 /**
  * Teaser « À propos » de la home. Contenu réécrit à l'étape 2.
@@ -48,7 +48,7 @@ export default function About({ about, socials, cv }) {
                     <div className={styles.rightColumn}>
                         <div className={styles.experienceList}>
                             {about.highlights.map((item) => {
-                                const Icon = ICONS[item.icon] || FiAward;
+                                const Icon = ICONS[item.icon] || FiCompass;
                                 return (
                                     <div key={item.title} className={styles.experienceItem}>
                                         <div className={styles.expIcon}><Icon /></div>
