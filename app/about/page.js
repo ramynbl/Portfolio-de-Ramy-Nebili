@@ -48,7 +48,7 @@ export default async function AboutPage() {
                                             <FiDownload /> {cv.label}
                                         </a>
                                     )}
-                                    <Link href="/#contact" className={styles.btnSecondary}>
+                                    <Link href="/contact" className={styles.btnSecondary}>
                                         Me contacter
                                     </Link>
                                     <div className={styles.socials}>
@@ -224,7 +224,7 @@ export default async function AboutPage() {
                                 Réponse rapide, et je peux me déplacer.
                             </p>
                             <div className={styles.ctaActions}>
-                                <Link href="/#contact" className={styles.btnPrimary}>
+                                <Link href="/contact" className={styles.btnPrimary}>
                                     Me contacter <FiArrowRight />
                                 </Link>
                                 <Link href="/projects" className={styles.btnSecondary}>

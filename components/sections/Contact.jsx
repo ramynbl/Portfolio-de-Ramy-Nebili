@@ -3,6 +3,7 @@
 import { FaLinkedin, FaGithub, FaCheck, FaDownload } from 'react-icons/fa';
 import { FiMail, FiCalendar, FiMapPin } from 'react-icons/fi';
 import SocialIcon from '../ui/SocialIcon';
+import ContactForm from '../contact/ContactForm';
 import styles from './Contact.module.css';
 
 /**
@@ -47,30 +48,7 @@ export default function Contact({ contact, profile }) {
 
                     <div className={styles.rightCol}>
                         <div className={styles.formContainer}>
-                            <form action={`https://formsubmit.co/${profile.email}`} method="POST">
-                                <input type="hidden" name="_subject" value="Nouveau message depuis ton portfolio" />
-                                <input type="text" name="_honey" className={styles.honey} tabIndex={-1} autoComplete="off" />
-                                <input type="hidden" name="_captcha" value="true" />
-                                <input type="hidden" name="_template" value="table" />
-
-                                <div className={styles.formGrid}>
-                                    <div className={styles.inputGroup}>
-                                        <label htmlFor="contact-nom" className="visually-hidden">Nom</label>
-                                        <input id="contact-nom" type="text" name="nom" placeholder="Nom" required className={styles.inputField} autoComplete="name" />
-                                    </div>
-                                    <div className={styles.inputGroup}>
-                                        <label htmlFor="contact-email" className="visually-hidden">Email</label>
-                                        <input id="contact-email" type="email" name="email" placeholder="Email" required className={styles.inputField} autoComplete="email" />
-                                    </div>
-                                    <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
-                                        <label htmlFor="contact-message" className="visually-hidden">Message</label>
-                                        <textarea id="contact-message" name="message" placeholder="Message" required className={styles.textareaField}></textarea>
-                                    </div>
-                                </div>
-                                <button type="submit" className={styles.submitBtn}>
-                                    Envoyer le message
-                                </button>
-                            </form>
+                            <ContactForm email={profile.email} subjects={contact.subjects} />
                         </div>
                     </div>
                 </div>

@@ -98,7 +98,7 @@ export const projects = [
                 span: 'half',
             },
         ],
-        links: { live: 'https://focus-defence.de/', github: null },
+        links: { live: 'https://new.focus-defence.de/', github: null },
         featured: true,
         archived: false,
         order: 5,

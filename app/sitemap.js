@@ -8,6 +8,7 @@ export default async function sitemap() {
         { url: site.url, lastModified: now, changeFrequency: 'monthly', priority: 1 },
         { url: `${site.url}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
         { url: `${site.url}/projects`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+        { url: `${site.url}/contact`, lastModified: now, changeFrequency: 'yearly', priority: 0.8 },
         ...slugs.map((slug) => ({
             url: `${site.url}/projects/${slug}`,
             lastModified: now,

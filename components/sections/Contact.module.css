@@ -126,80 +126,6 @@
     box-shadow: var(--shadow-lg);
 }
 
-.formGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.inputGroup {
-    display: flex;
-    flex-direction: column;
-}
-
-.honey {
-    position: absolute;
-    left: -9999px;
-    opacity: 0;
-    height: 0;
-    width: 0;
-}
-
-.inputField,
-.textareaField {
-    background: var(--surface-2);
-    border: 1px solid var(--border-2);
-    border-radius: 12px;
-    padding: 16px 20px;
-    color: var(--text);
-    font-size: 1rem;
-    font-family: var(--font-body), sans-serif;
-    outline: none;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.inputField::placeholder,
-.textareaField::placeholder {
-    color: var(--text-4);
-}
-
-.inputField:focus,
-.textareaField:focus {
-    border-color: var(--border-strong);
-    background: var(--surface-hover);
-    box-shadow: 0 0 0 4px var(--accent-soft);
-}
-
-.fullWidth {
-    grid-column: 1 / -1;
-}
-
-.textareaField {
-    resize: vertical;
-    min-height: 150px;
-}
-
-.submitBtn {
-    width: 100%;
-    background: var(--solid-bg);
-    color: var(--solid-text);
-    border: none;
-    border-radius: 12px;
-    padding: 16px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.submitBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px var(--solid-shadow);
-    opacity: 0.92;
-}
-
 /* --- Cartes info --- */
 .bottomCards {
     display: grid;
@@ -265,13 +191,10 @@
     .subText {
         max-width: 100%;
     }
+
 }
 
 @media (max-width: 768px) {
-    .formGrid {
-        grid-template-columns: 1fr;
-    }
-
     .bottomCards {
         grid-template-columns: 1fr;
     }
@@ -283,4 +206,5 @@
     .formContainer {
         padding: 30px 20px;
     }
+
 }

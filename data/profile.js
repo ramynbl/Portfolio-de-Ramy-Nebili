@@ -123,6 +123,14 @@ export const profile = {
     contact: {
         intro:
             'Vous recrutez un alternant en marketing digital pour octobre 2026, ou vous avez un projet web à cadrer ? Écrivez-moi, je réponds rapidement.',
+        // Alimente la liste déroulante « Votre demande » du formulaire
+        subjects: [
+            'Proposition d\'alternance',
+            'Proposition de stage',
+            'Mission freelance',
+            'Refonte de site ou identité visuelle',
+            'Autre',
+        ],
         features: [
             'Disponible 2 ans, 3 semaines sur 4 en entreprise',
             'Profil hybride : marketing, UX et intégration web',

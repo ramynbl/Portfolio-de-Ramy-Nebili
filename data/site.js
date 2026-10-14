@@ -23,7 +23,7 @@ export const site = {
         { label: 'À propos', href: '/about' },
         { label: 'Projets', href: '/projects' },
         { label: 'Compétences', href: '/#skills' },
-        { label: 'Contact', href: '/#contact' },
+        { label: 'Contact', href: '/contact' },
     ],
     // Ancres observées sur la home pour la sidebar à points (id de section → lien)
     sidebarAnchors: [
