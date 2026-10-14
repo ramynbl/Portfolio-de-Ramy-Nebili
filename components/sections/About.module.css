@@ -1,8 +1,8 @@
 .aboutSection {
     position: relative;
     padding: 200px 20px;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--bg);
+    color: var(--text);
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -24,7 +24,7 @@
     font-weight: 800;
     text-align: center;
     margin-bottom: 50px;
-    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5));
+    background: var(--title-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -38,7 +38,6 @@
     align-items: start;
 }
 
-/* --- COLUMN LAYOUTS --- */
 .leftColumn {
     display: flex;
     flex-direction: column;
@@ -53,7 +52,7 @@
 
 .greeting {
     font-size: 1.2rem;
-    color: #fff;
+    color: var(--text);
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -62,12 +61,15 @@
 .bio {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: #e4e4e7;
+    color: var(--text-2);
     font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.highlight {
-    color: #fff;
+.bio strong {
+    color: var(--text);
     font-weight: 600;
 }
 
@@ -76,7 +78,6 @@
     flex-direction: column;
     gap: 16px;
     margin-top: -6px;
-    /* Align slightly upward if needed for absolute matching */
 }
 
 .experienceItem {
@@ -84,47 +85,47 @@
     align-items: flex-start;
     gap: 12px;
     padding: 16px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
 }
 
 .experienceItem:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: var(--surface-hover);
+    border-color: var(--border-strong);
     transform: translateX(10px);
 }
 
 .expIcon {
     width: 44px;
     height: 44px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-2);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: var(--text);
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .expContent h4 {
     font-size: 1rem;
     font-weight: 700;
     margin: 0 0 4px 0;
-    color: #fff;
+    color: var(--text);
 }
 
 .expContent p {
     font-size: 0.9rem;
     margin: 0;
-    color: #94a3b8;
+    color: var(--text-3);
 }
 
-/* --- CTA BUTTONS --- */
 .ctaContainer {
     margin-top: 20px;
     display: flex;
@@ -136,12 +137,12 @@
 .primaryBtn {
     padding: 14px 32px;
     border-radius: 50px;
-    background: #fff;
-    color: #000;
+    background: var(--solid-bg);
+    color: var(--solid-text);
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
     border: none;
     cursor: pointer;
     display: flex;
@@ -151,18 +152,18 @@
 
 .primaryBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px var(--solid-shadow);
 }
 
 .secondaryBtn {
     padding: 14px 32px;
     border-radius: 50px;
     background: transparent;
-    color: #fff;
+    color: var(--text);
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--border-strong);
     transition: all 0.2s;
     cursor: pointer;
     display: flex;
@@ -171,8 +172,8 @@
 }
 
 .secondaryBtn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #fff;
+    background: var(--surface-hover);
+    border-color: var(--text);
 }
 
 .rightCtaContainer {
@@ -181,6 +182,7 @@
     gap: 15px;
     flex-wrap: wrap;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .aboutSocialIcon {
@@ -189,7 +191,6 @@
     font-size: 1.2rem;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .contentWrapper {
         grid-template-columns: 1fr;
@@ -205,12 +206,17 @@
         text-align: left;
     }
 
-    .ctaContainer {
+    .ctaContainer,
+    .rightCtaContainer {
         justify-content: center;
     }
 }
 
 @media (max-width: 768px) {
+    .aboutSection {
+        padding: 120px 20px;
+    }
+
     .title {
         font-size: 3rem;
     }

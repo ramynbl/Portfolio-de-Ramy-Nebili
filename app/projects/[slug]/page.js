@@ -1,96 +1,55 @@
-'use client';
+import { notFound } from 'next/navigation';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import ProjectHero from '@/components/project/ProjectHero';
+import ProjectGallery from '@/components/project/ProjectGallery';
+import ProjectNav from '@/components/project/ProjectNav';
+import { getProjectBySlug, getProjectSlugs, getAdjacentProjects, getSiteSettings } from '@/lib/content';
+import { plainText } from '@/components/ui/RichText';
 
-import { use } from 'react';
-import Link from 'next/link';
-import { FiArrowLeft } from 'react-icons/fi';
-import { FaGithub } from 'react-icons/fa';
-import { MdConstruction } from 'react-icons/md';
-import { GiBarrier } from 'react-icons/gi';
-import { projectsData } from '../../../data/projectsData';
-import styles from './Construction.module.css';
+export async function generateStaticParams() {
+    const slugs = await getProjectSlugs();
+    return slugs.map((slug) => ({ slug }));
+}
 
-export default function ProjectPage({ params }) {
-    const { slug } = use(params);
-    const project = projectsData.find(p => p.id === slug);
+export async function generateMetadata({ params }) {
+    const { slug } = await params;
+    const [project, site] = await Promise.all([getProjectBySlug(slug), getSiteSettings()]);
+    if (!project) return { title: 'Projet introuvable' };
 
-    if (!project) {
-        return (
-            <div className={styles.main}>
-                <div className={styles.bgLayer}>
-                    <div className={styles.blob1} />
-                    <div className={styles.blob2} />
-                    <div className={styles.blob3} />
-                </div>
-                <div className={styles.container}>
-                    <h1 className={styles.projectTitle}>Projet introuvable</h1>
-                    <Link href="/projects" className={styles.backButton}>
-                        <FiArrowLeft /> Retour aux projets
-                    </Link>
-                </div>
-            </div>
-        );
-    }
+    const description = plainText(project.tagline || project.summary);
+    const image = project.thumbnail?.src || (project.cover?.type === 'image' ? project.cover.src : project.cover?.poster);
+
+    return {
+        title: project.title,
+        description,
+        alternates: { canonical: `${site.url}/projects/${project.slug}` },
+        openGraph: {
+            title: `${project.title} | ${site.name}`,
+            description,
+            url: `${site.url}/projects/${project.slug}`,
+            type: 'article',
+            images: image ? [{ url: image }] : undefined,
+        },
+    };
+}
+
+export default async function ProjectPage({ params }) {
+    const { slug } = await params;
+    const project = await getProjectBySlug(slug);
+    if (!project) notFound();
+
+    const { prev, next } = await getAdjacentProjects(slug);
 
     return (
-        <div className={styles.main}>
-            {/* Background identique à ProjectsIntro */}
-            <div className={styles.bgLayer}>
-                <div className={styles.blob1} />
-                <div className={styles.blob2} />
-                <div className={styles.blob3} />
-            </div>
-
-            {/* 404 géant en arrière-plan */}
-            <div className={styles.bigNumber} aria-hidden="true">404</div>
-
-            {/* Contenu centré par-dessus */}
-            <div className={styles.container}>
-
-                {/* Titre + sous-titre */}
-                <div className={styles.header}>
-                    <h1 className={styles.projectTitle}>{project.title}</h1>
-                    <div className={styles.subtitleRow}>
-                        <GiBarrier className={styles.barrierIcon} />
-                        <MdConstruction className={styles.constructionIcon} />
-                        <span className={styles.subtitle}>Page en cours de construction</span>
-                        <MdConstruction className={styles.constructionIcon} />
-                        <GiBarrier className={styles.barrierIcon} />
-                    </div>
-                    <p className={styles.description}>
-                        Revenez bientôt, ça vaut le coup d'œil !
-                    </p>
-                </div>
-
-                {/* CTAs Live View + GitHub */}
-                <div className={styles.ctaRow}>
-                    {project.links?.github && (
-                        <a
-                            href={project.links.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.socialLink}
-                            aria-label="Voir le code sur GitHub"
-                        >
-                            <FaGithub className={styles.socialIcon} />
-                        </a>
-                    )}
-                    {project.links?.live && (
-                        <a
-                            href={project.links.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.ctaButton}
-                        >
-                            Live view
-                        </a>
-                    )}
-                </div>
-
-                {/* Bouton retour — en dessous des CTAs */}
-                <Link href="/projects" className={styles.backButton}>
-                    <FiArrowLeft /> Retour aux projets
-                </Link>
-            </div>
-        </div>
+        <>
+            <Header />
+            <main>
+                <ProjectHero project={project} />
+                <ProjectGallery project={project} />
+                <ProjectNav prev={prev} next={next} />
+            </main>
+            <Footer />
+        </>
     );
 }

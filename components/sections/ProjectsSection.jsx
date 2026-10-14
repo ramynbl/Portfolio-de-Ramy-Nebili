@@ -1,24 +1,14 @@
-'use client';
-
-import { projectsData } from '../../data/projectsData';
 import ProjectCard from '../ui/ProjectCard';
 import styles from './ProjectsSection.module.css';
 
-export default function ProjectsSection({ limit }) {
-    const displayedProjects = limit ? projectsData.slice(0, limit) : projectsData;
-
+/** Empilement sticky de cartes projet plein écran. Reçoit les projets en props. */
+export default function ProjectsSection({ projects }) {
     return (
-        <section className={styles.projectsSection}>
+        <section className={styles.projectsSection} aria-label="Projets">
             <div className={styles.cardsWrapper}>
-                {displayedProjects.map((project, index) => {
-                    return (
-                        <ProjectCard
-                            key={project.id}
-                            index={index}
-                            project={project}
-                        />
-                    );
-                })}
+                {projects.map((project, index) => (
+                    <ProjectCard key={project.slug} index={index} project={project} />
+                ))}
             </div>
         </section>
     );

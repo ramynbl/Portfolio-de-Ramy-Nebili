@@ -1,5 +1,9 @@
 .projectsSection {
     position: relative;
     width: 100%;
-    /* Ensure no overflow:hidden here or on parents, otherwise sticky breaks */
+    /* Aucun overflow:hidden ici ni sur les parents : le sticky des cartes en dépend. */
+}
+
+.cardsWrapper {
+    position: relative;
 }

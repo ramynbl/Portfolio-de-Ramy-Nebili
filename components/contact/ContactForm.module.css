@@ -1,0 +1,118 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-2);
+}
+
+.field input,
+.field textarea,
+.select {
+    background: var(--surface-2);
+    border: 1px solid var(--border-2);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: var(--text);
+    font-size: 1rem;
+    font-family: var(--font-body), sans-serif;
+    outline: none;
+    transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    width: 100%;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--text-4);
+}
+
+.field input:focus,
+.field textarea:focus,
+.select:focus {
+    border-color: var(--border-strong);
+    background: var(--surface-hover);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Flèche personnalisée : le select natif est illisible sur fond sombre */
+.select {
+    appearance: none;
+    cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, var(--text-3) 50%),
+        linear-gradient(135deg, var(--text-3) 50%, transparent 50%);
+    background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 42px;
+}
+
+.select option {
+    background: var(--card-bg);
+    color: var(--text);
+}
+
+.submit {
+    width: 100%;
+    background: var(--solid-bg);
+    color: var(--solid-text);
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px var(--solid-shadow);
+}
+
+.submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* Honeypot : invisible pour un humain, rempli par les robots */
+.honey {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

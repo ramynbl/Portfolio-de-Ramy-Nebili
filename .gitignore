@@ -14,3 +14,5 @@ yarn-debug.log*
 yarn-error.log*
 avatar-2.glb
 avatar.glb
+# Sources brutes (3D, PSD, exports lourds) : jamais servies ni versionnées
+assets-src/

@@ -1,90 +1,69 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaGithub } from 'react-icons/fa';
 import GlassChip from './GlassChip';
+import RichText from './RichText';
 import styles from './ProjectCard.module.css';
 
-const ProjectCard = ({ project, index }) => {
+/** Rend un média { type, src, poster, alt } en fond de carte. */
+function Media({ media, className, priority, mobile = false }) {
+    if (!media) return null;
+    // Le média mobile est masqué en CSS sur desktop : on évite de lui réserver 100vw.
+    const sizes = mobile ? '(max-width: 768px) 100vw, 1px' : '(min-width: 769px) 100vw, 1px';
+    if (media.type === 'video') {
+        return (
+            <video
+                className={`${styles.bgAsset} ${className}`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload={priority ? 'auto' : 'metadata'}
+                poster={media.poster || undefined}
+                aria-label={media.alt}
+            >
+                <source src={media.src} type="video/mp4" />
+            </video>
+        );
+    }
+    return (
+        <div className={`${styles.bgAsset} ${className}`}>
+            <Image
+                src={media.src}
+                alt={media.alt || ''}
+                fill
+                sizes={sizes}
+                style={{ objectFit: 'cover' }}
+                priority={priority}
+            />
+        </div>
+    );
+}
+
+const ProjectCard = ({ project, index = 0 }) => {
     const isRight = project.orientation === 'right';
     const orientationClass = isRight ? styles.right : styles.left;
+    const hasMobile = Boolean(project.coverMobile);
+    const priority = index === 0;
 
     return (
-        <div className={`${styles.cardContainer} ${orientationClass}`}>
-
-            {project.video && (
-                <video
-                    className={`${styles.bgAsset} ${project.imageMobile || project.videoMobile ? styles.desktopOnly : ''}`}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                >
-                    {(!project.imageMobile && !project.videoMobile) ? (
-                        <source src={project.video} type="video/mp4" />
-                    ) : (
-                        <source src={project.video} media="(min-width: 769px)" type="video/mp4" />
-                    )}
-                </video>
-            )}
-
-            {project.videoMobile && (
-                <video
-                    className={`${styles.bgAsset} ${styles.mobileOnly}`}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                >
-                    <source src={project.videoMobile} media="(max-width: 768px)" type="video/mp4" />
-                </video>
-            )}
-
-            {project.image && (
-                <div className={`${styles.bgAsset} ${project.imageMobile || project.videoMobile ? styles.desktopOnly : ''}`}>
-                    <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                        priority
-                    />
-                </div>
-            )}
-
-            {project.imageMobile && (
-                <div className={`${styles.bgAsset} ${styles.mobileOnly}`}>
-                    <Image
-                        src={project.imageMobile}
-                        alt={project.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                        priority
-                    />
-                </div>
-            )}
+        <article className={`${styles.cardContainer} ${orientationClass}`}>
+            <Media media={project.cover} className={hasMobile ? styles.desktopOnly : ''} priority={priority} />
+            {hasMobile && <Media media={project.coverMobile} className={styles.mobileOnly} priority={priority} mobile />}
 
             <div className={styles.overlay}></div>
 
             <div className={styles.content}>
                 <div className={styles.textContent}>
                     <span className={styles.projectLabel}>{project.category}</span>
-                    <h2
-                        className={styles.title}
-                        style={{ backgroundImage: project.theme.gradient }}
-                    >
-                        {project.title}
-                    </h2>
-                    <div
-                        className={styles.description}
-                        dangerouslySetInnerHTML={{ __html: project.description }}
-                    />
+                    <h2 className={styles.title}>{project.title}</h2>
+                    <RichText text={project.summary} className={styles.description} />
 
                     <div className={styles.techStack}>
-                        {project.techStack.map((tech, i) => (
-                            <GlassChip key={i}>{tech}</GlassChip>
+                        {project.tools.map((tech) => (
+                            <GlassChip key={tech}>{tech}</GlassChip>
                         ))}
                     </div>
 
@@ -95,33 +74,25 @@ const ProjectCard = ({ project, index }) => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.socialLink}
-                                aria-label="Voir le code sur GitHub"
-                                style={{ '--hover-color': project.theme.accent }}
+                                aria-label={`Voir le code de ${project.title} sur GitHub`}
                             >
                                 <FaGithub className={styles.socialIcon} />
                             </a>
                         )}
 
                         {project.links.live && (
-                            <a
-                                href={project.links.live}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.ctaButton}
-                            >
-                                Live view
+                            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
+                                Voir le site
                             </a>
                         )}
 
-                        {project.links.details && (
-                            <Link href={project.links.details} className={styles.ctaButton}>
-                                En savoir plus
-                            </Link>
-                        )}
+                        <Link href={`/projects/${project.slug}`} className={`${styles.ctaButton} ${styles.ctaPrimary}`}>
+                            Découvrir
+                        </Link>
                     </div>
                 </div>
             </div>
-        </div>
+        </article>
     );
 };
 

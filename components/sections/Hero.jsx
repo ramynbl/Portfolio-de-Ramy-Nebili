@@ -3,64 +3,95 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import TextSlider from '../ui/TextSlider';
 import styles from './Hero.module.css';
 
-export default function Hero() {
+const fadeUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: (i = 0) => ({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: 'easeOut', delay: 0.1 + i * 0.1 },
+    }),
+};
+
+/**
+ * Hero éditorial de la home : une accroche, la disponibilité, deux CTA
+ * et le portrait. Un seul <h1>, lisible d'un coup d'œil par un recruteur.
+ */
+export default function Hero({ hero, photo, name }) {
     return (
         <section className={styles.hero}>
-            <div className={styles.backgroundLayer}>
+            <div className={styles.backgroundLayer} aria-hidden="true">
                 <div className={styles.blob1}></div>
                 <div className={styles.blob2}></div>
                 <div className={styles.blob3}></div>
             </div>
 
-            <motion.div
-                className={`${styles.split} ${styles.left}`}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            >
-                <h1 className={styles.title}>
-                    <TextSlider words={["Front-end", "Interface", "Visuel", "Intégrer"]} />
-                </h1>
-                <p className={styles.subtitle}>Expériences Utilisateurs & Interfaces Modernes</p>
-                <Link href="/about" className={`${styles.btnHero} ${styles.btnLeft}`}>En savoir plus</Link>
-            </motion.div>
+            <div className={styles.inner}>
+                <div className={styles.content}>
+                    <motion.span
+                        className={styles.eyebrow}
+                        variants={fadeUp} initial="hidden" animate="visible" custom={0}
+                    >
+                        {hero.eyebrow}
+                    </motion.span>
 
-            <motion.div
-                className={`${styles.split} ${styles.right}`}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            >
-                <h1 className={styles.title}>
-                    <TextSlider words={["< Coder >", "Innover", "Construire", "Automatiser"]} />
-                </h1>
-                <p className={styles.subtitle}>Développement Front-end & Back-end</p>
-                <div className={styles.buttonsGroup}>
-                    <Link href="/about" className={`${styles.btnHero} ${styles.btnLeft} ${styles.mobileOnlyBtn}`}>En savoir plus</Link>
-                    <Link href="/projects" className={`${styles.btnHero} ${styles.btnRight}`}>Mes Projets</Link>
+                    <motion.h1
+                        className={styles.title}
+                        variants={fadeUp} initial="hidden" animate="visible" custom={1}
+                    >
+                        {hero.title.map((line) => (
+                            <span key={line} className={styles.titleLine}>{line}</span>
+                        ))}
+                    </motion.h1>
+
+                    <motion.p
+                        className={styles.subtitle}
+                        variants={fadeUp} initial="hidden" animate="visible" custom={2}
+                    >
+                        {hero.subtitle}
+                    </motion.p>
+
+                    <motion.p
+                        className={styles.badge}
+                        variants={fadeUp} initial="hidden" animate="visible" custom={3}
+                    >
+                        <span className={styles.dot} aria-hidden="true"></span>
+                        {hero.badge}
+                    </motion.p>
+
+                    <motion.div
+                        className={styles.ctas}
+                        variants={fadeUp} initial="hidden" animate="visible" custom={4}
+                    >
+                        {hero.ctas.map((cta) => (
+                            <Link
+                                key={cta.href}
+                                href={cta.href}
+                                className={`${styles.btn} ${cta.variant === 'primary' ? styles.btnPrimary : styles.btnSecondary}`}
+                            >
+                                {cta.label}
+                            </Link>
+                        ))}
+                    </motion.div>
                 </div>
-            </motion.div>
 
-            <div className={styles.avatarContainer}>
                 <motion.div
-                    style={{ position: 'relative', width: '100%', height: '100%' }}
-                    initial={{ opacity: 0, scale: 0.8, y: 50 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                    className={styles.photoWrap}
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
                 >
                     <Image
-                        src="/image/avatar-2.png"
-                        alt="Ramy Nebili Avatar"
+                        src={photo}
+                        alt={`Portrait de ${name}`}
                         fill
-                        className={styles.avatarImage}
+                        sizes="(max-width: 900px) 70vw, 460px"
+                        className={styles.photo}
                         priority
                     />
                 </motion.div>
             </div>
-
         </section>
     );
 }
