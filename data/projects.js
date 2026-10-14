@@ -92,7 +92,7 @@ export const projects = [
             {
                 type: 'image',
                 src: '/projects/focus-defense/gallery-mobile.webp',
-                width: 390, height: 1500,
+                width: 1200, height: 760,
                 alt: 'Version mobile de la page d\'accueil',
                 caption: 'Chaque page a été reprise et vérifiée en version mobile.',
                 span: 'half',
@@ -177,7 +177,7 @@ export const projects = [
         thumbnail: { src: '/image/bot.webp', alt: 'Study Ping' },
         gallery: [],
         links: { live: null, github: 'https://github.com/ramynbl/hetic-bot' },
-        featured: false,
+        featured: true,
         archived: false,
         order: 30,
         theme: { accent: '#5865F2' },

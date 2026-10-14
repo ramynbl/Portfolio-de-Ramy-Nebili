@@ -1,278 +1,235 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiGithub, FiLinkedin, FiTarget, FiUsers, FiFilm, FiSmile } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiDownload, FiArrowRight } from 'react-icons/fi';
 import SocialIcon from '@/components/ui/SocialIcon';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import GlassChip from '@/components/ui/GlassChip';
+import { getIcon } from '@/lib/icons';
 import { getProfile } from '@/lib/content';
 import styles from './AboutPage.module.css';
 
 export const metadata = {
     title: 'À propos',
-    description: "Parcours, expertises et façon de travailler de Ramy Nebili : design, web et communication.",
+    description:
+        'Graphiste de formation, huit ans en relation client, aujourd\'hui en Bachelor Webmarketing & UX à HETIC. Je cherche une alternance en marketing digital dès octobre 2026.',
 };
 
-// ⚠️ Mise en page et contenu refondus à l'étape 4. Ici : tokens + données centralisées.
 export default async function AboutPage() {
     const profile = await getProfile();
     const cv = profile.cvs[0];
+    const { formation } = profile;
 
     return (
         <>
             <Header />
             <main className={styles.main}>
-                {/* Global Animated Background Blobs */}
-                <div className={styles.blob1}></div>
-                <div className={styles.blob2}></div>
-                <div className={styles.blob3}></div>
+                <div className={styles.blob1} aria-hidden="true"></div>
+                <div className={styles.blob2} aria-hidden="true"></div>
 
-                {/* Header Hero Section */}
-                <section className={styles.heroSection}>
+                {/* ---------- 1. HERO ---------- */}
+                <section className={styles.hero}>
                     <div className={styles.container}>
                         <div className={styles.heroGrid}>
                             <div className={styles.heroContent}>
-                                <span className={`${styles.overline} ${styles.gradientLight}`}>À Propos</span>
-                                <h1 className={`${styles.title} ${styles.gradientTitle}`}>La technique<br />au service du sens.</h1>
+                                <span className={styles.eyebrow}>À propos</span>
+                                <h1 className={styles.heroTitle}>
+                                    Je fais parler le marketing et le design la même langue.
+                                </h1>
+                                <p className={styles.heroLead}>
+                                    Graphiste de formation, huit ans passés au contact direct des clients,
+                                    aujourd&apos;hui en Bachelor Webmarketing &amp; UX. Je sais concevoir une interface,
+                                    écrire le message qui va avec et mesurer si ça fonctionne.
+                                </p>
 
-                                <div className={styles.heroText}>
-                                    <p>
-                                        Ce qui m’anime dans le développement web, ce n’est pas seulement le code. C’est <strong>l’impact</strong>.
-                                    </p>
-                                    <p>
-                                        Concevoir une <strong>solution à un besoin réel.</strong>
-                                        Optimiser chaque détail pour qu’un utilisateur puisse dire :
-                                        <strong>“Ton produit m’a vraiment aidé.”</strong>
-                                    </p>
-                                    <p>
-                                        Ancien <strong>graphiste</strong> et <strong>commercial</strong>, je combine <strong>vision produit</strong>, <strong>sens du design</strong> et <strong>rigueur technique</strong> pour construire des expériences <strong>utiles</strong>, <strong>performantes</strong> et <strong>cohérentes</strong> de A à Z.
-                                    </p>
-                                </div>
-
-                                <div className={styles.ctaGroup}>
+                                <div className={styles.heroCtas}>
                                     {cv && (
-                                        <a href={cv.file} download className={styles.emailBtn}>
-                                            Télécharger le CV
+                                        <a href={cv.file} download className={styles.btnPrimary}>
+                                            <FiDownload /> {cv.label}
                                         </a>
                                     )}
-                                    <div className={styles.socialLinks}>
-                                        <SocialIcon
-                                            href={profile.socials.github}
-                                            icon={<FiGithub />}
-                                            ariaLabel="GitHub"
-                                            networkType="github"
-                                            className={styles.aboutSocialIcon}
-                                        />
+                                    <Link href="/#contact" className={styles.btnSecondary}>
+                                        Me contacter
+                                    </Link>
+                                    <div className={styles.socials}>
                                         <SocialIcon
                                             href={profile.socials.linkedin}
                                             icon={<FiLinkedin />}
                                             ariaLabel="LinkedIn"
                                             networkType="linkedin"
-                                            className={styles.aboutSocialIcon}
+                                            className={styles.socialIcon}
+                                        />
+                                        <SocialIcon
+                                            href={profile.socials.github}
+                                            icon={<FiGithub />}
+                                            ariaLabel="GitHub"
+                                            networkType="github"
+                                            className={styles.socialIcon}
                                         />
                                     </div>
                                 </div>
                             </div>
 
-                            <div className={styles.heroImageContainer}>
+                            <div className={styles.portraitWrap}>
                                 <Image
                                     src={profile.images.portrait}
-                                    alt="Portrait de Ramy Nebili"
+                                    alt={`Portrait de ${profile.fullName}`}
                                     fill
-                                    sizes="(max-width: 992px) 100vw, 600px"
-                                    className={styles.profileImage}
+                                    sizes="(max-width: 900px) 70vw, 480px"
+                                    className={styles.portrait}
                                     priority
                                 />
                             </div>
                         </div>
+                    </div>
+                </section>
 
-                        {/* Objective Block */}
-                        <div className={`${styles.objectiveBlock} ${styles.glassCard}`}>
-                            <div className={styles.objectiveHeader}>
-                                <FiTarget className={styles.objectiveIcon} />
-                                <h3 className={`${styles.objectiveTitle} ${styles.gradientLight}`}>Objectif Actuel</h3>
+                {/* ---------- 2. OBJECTIF ALTERNANCE ---------- */}
+                <section className={styles.objective} aria-labelledby="objectif">
+                    <div className={styles.container}>
+                        <div className={styles.objectiveCard}>
+                            <div className={styles.objectiveMain}>
+                                <span className={styles.objectiveTag}>Je recherche</span>
+                                <h2 id="objectif" className={styles.objectiveTitle}>{formation.searching}</h2>
+                                <p className={styles.objectiveText}>
+                                    Pour accompagner mon {formation.diploma} à {formation.school}, qui prépare au{' '}
+                                    <strong>{formation.rncp}</strong>.
+                                </p>
                             </div>
-                            <p>
-                                Apprendre en continu. Je cherche activement une <strong>alternance</strong>, un <strong>stage</strong> ou des missions <strong>freelances</strong> pour monter en compétences sur React et Next.js.
+                            <dl className={styles.objectiveFacts}>
+                                <div>
+                                    <dt>Début</dt>
+                                    <dd>{formation.start}</dd>
+                                </div>
+                                <div>
+                                    <dt>Durée</dt>
+                                    <dd>{formation.duration}</dd>
+                                </div>
+                                <div>
+                                    <dt>Rythme</dt>
+                                    <dd>{formation.rhythm}</dd>
+                                </div>
+                                <div>
+                                    <dt>Lieu</dt>
+                                    <dd>{profile.location} et Île-de-France</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ---------- 3. CE QUE J'APPORTE ---------- */}
+                <section className={styles.strengths} aria-labelledby="apports">
+                    <div className={styles.container}>
+                        <span className={styles.eyebrow}>Mon profil</span>
+                        <h2 id="apports" className={styles.sectionTitle}>Trois métiers dans un seul profil</h2>
+                        <div className={styles.strengthGrid}>
+                            {profile.strengths.map((item) => {
+                                const Icon = getIcon(item.icon);
+                                return (
+                                    <article key={item.title} className={styles.strengthCard}>
+                                        <div className={styles.strengthIcon}>{Icon && <Icon />}</div>
+                                        <h3>{item.title}</h3>
+                                        <p>{item.text}</p>
+                                    </article>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ---------- 4. PARCOURS ---------- */}
+                <section className={styles.path} aria-labelledby="parcours">
+                    <div className={styles.container}>
+                        <span className={styles.eyebrow}>Parcours</span>
+                        <h2 id="parcours" className={styles.sectionTitle}>Du print au pixel, puis à la performance</h2>
+
+                        <ol className={styles.timeline}>
+                            {profile.timeline.map((item) => (
+                                <li
+                                    key={`${item.period}-${item.title}`}
+                                    className={`${styles.timelineItem} ${item.current ? styles.timelineCurrent : ''}`}
+                                >
+                                    <div className={styles.timelineMarker} aria-hidden="true">
+                                        <span className={item.kind === 'formation' ? styles.dotFormation : styles.dotExperience}></span>
+                                    </div>
+                                    <div className={styles.timelineBody}>
+                                        <div className={styles.timelineHead}>
+                                            <span className={styles.timelinePeriod}>{item.period}</span>
+                                            <div className={styles.timelineTags}>
+                                                {item.tags.map((tag) => (
+                                                    <span key={tag} className={styles.tag}>{tag}</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <h3 className={styles.timelineTitle}>{item.title}</h3>
+                                        <p className={styles.timelineOrg}>{item.org}</p>
+                                        <p className={styles.timelineText}>{item.text}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
+                </section>
+
+                {/* ---------- 5. EN FORMATION ---------- */}
+                <section className={styles.program} aria-labelledby="formation">
+                    <div className={styles.container}>
+                        <div className={styles.programGrid}>
+                            <div>
+                                <span className={styles.eyebrow}>En formation</span>
+                                <h2 id="formation" className={styles.sectionTitle}>Ce que j&apos;apprends cette année</h2>
+                                <p className={styles.programText}>
+                                    Le {formation.diploma} de {formation.school} couvre toute la chaîne :
+                                    attirer du trafic, le convertir, le mesurer et faire vivre une marque.
+                                    Un alternant qui arrive déjà avec ces notions, c&apos;est autant de temps gagné.
+                                </p>
+                            </div>
+                            <div className={styles.programChips}>
+                                {formation.program.map((item) => (
+                                    <GlassChip key={item}>{item}</GlassChip>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ---------- 6. CÔTÉ PERSO ---------- */}
+                <section className={styles.personal} aria-labelledby="perso">
+                    <div className={styles.container}>
+                        <span className={styles.eyebrow}>Hors écran</span>
+                        <h2 id="perso" className={styles.sectionTitle}>Côté perso</h2>
+                        <div className={styles.personalGrid}>
+                            {profile.personal.map((item) => {
+                                const Icon = getIcon(item.icon);
+                                return (
+                                    <article key={item.title} className={styles.personalCard}>
+                                        <div className={styles.personalIcon}>{Icon && <Icon />}</div>
+                                        <h3>{item.title}</h3>
+                                        <p>{item.text}</p>
+                                    </article>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ---------- 7. CTA FINAL ---------- */}
+                <section className={styles.finalCta}>
+                    <div className={styles.container}>
+                        <div className={styles.ctaCard}>
+                            <h2 className={styles.ctaTitle}>On se rencontre ?</h2>
+                            <p className={styles.ctaText}>
+                                Je suis disponible pour échanger sur une alternance, un stage ou une mission.
+                                Réponse rapide, et je peux me déplacer.
                             </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Resume / Experience & Education Section */}
-                <section className={styles.resumeSection}>
-                    <div className={styles.container}>
-                        <span className={`${styles.overline} ${styles.gradientLight}`}>EXPERIENCE & EDUCATION</span>
-                        <h2 className={`${styles.sectionTitle} ${styles.gradientTitle}`}>Mon Parcours</h2>
-
-                        <div className={styles.resumeGrid}>
-                            {/* Experience Column */}
-                            <div className={styles.resumeColumn}>
-                                <h3 className={styles.columnTitle}>Expérience</h3>
-
-                                <div className={styles.resumeList}>
-                                    <div className={`${styles.resumeItem} ${styles.glassCard}`}>
-                                        <div className={styles.itemHeader}>
-                                            <h4>Développeur Full Stack</h4>
-                                            <span className={styles.date}>2025 - Présent</span>
-                                        </div>
-                                        <p className={styles.itemCompany}>Projets : Anime Finder, Bot Discord, Kevin AI...</p>
-                                    </div>
-
-                                    <div className={`${styles.resumeItem} ${styles.glassCard}`}>
-                                        <div className={styles.itemHeader}>
-                                            <h4>Commercial & Manager</h4>
-                                            <span className={styles.date}>2021 - 2024</span>
-                                        </div>
-                                        <p className={styles.itemCompany}>COPYTOP</p>
-                                    </div>
-
-                                    <div className={`${styles.resumeItem} ${styles.glassCard}`}>
-                                        <div className={styles.itemHeader}>
-                                            <h4>Responsable Adjoint des stocks</h4>
-                                            <span className={styles.date}>2018 - 2021</span>
-                                        </div>
-                                        <p className={styles.itemCompany}>ZARA</p>
-                                    </div>
-
-                                    <div className={`${styles.resumeItem} ${styles.glassCard}`}>
-                                        <div className={styles.itemHeader}>
-                                            <h4>Graphiste Alternant</h4>
-                                            <span className={styles.date}>2013 - 2016</span>
-                                        </div>
-                                        <p className={styles.itemCompany}>De l'autre côté du Périph</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Education Column */}
-                            <div className={styles.resumeColumn}>
-                                <h3 className={styles.columnTitle}>Formation</h3>
-
-                                <div className={styles.resumeList}>
-                                    <div className={`${styles.resumeItem} ${styles.glassCard}`}>
-                                        <div className={styles.itemHeader}>
-                                            <h4>Bachelor Développement Web</h4>
-                                            <span className={styles.date}>2025 - En cours</span>
-                                        </div>
-                                        <p className={styles.itemCompany}>HETIC (Paris)</p>
-                                    </div>
-
-                                    <div className={`${styles.resumeItem} ${styles.glassCard}`}>
-                                        <div className={styles.itemHeader}>
-                                            <h4>Bac Pro Production Graphique</h4>
-                                            <span className={styles.date}>2013 - 2016</span>
-                                        </div>
-                                        <p className={styles.itemCompany}>Gobelins, l'école de l'image (Paris)</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Vision & Skills Section */}
-                <section className={styles.visionSection}>
-                    <div className={styles.container}>
-                        <span className={`${styles.overline} ${styles.gradientLight}`}>MY TOP</span>
-                        <h2 className={`${styles.sectionTitle} ${styles.gradientTitle}`}>Ma Vision.</h2>
-
-                        <div className={styles.visionGrid}>
-                            <div className={styles.visionText}>
-                                <p>
-                                    Un produit numérique n’est pas réussi parce qu’il est beau.
-                                    Il est réussi parce qu’il est <strong>utilisé</strong>.
-                                </p>
-                                <p>
-                                    Je crois à la <strong>technique au service du sens</strong>.
-                                    Chaque ligne de code doit répondre à un <strong>besoin réel</strong>.
-                                    Chaque choix d’interface doit <strong>simplifier une action</strong>.
-                                    Chaque optimisation doit <strong>améliorer l’expérience</strong>. <br></br>
-                                    Peu importe la stack.
-                                    Ce qui compte, c’est la <strong>valeur créée</strong>.
-                                </p>
-                                <p>
-                                    Mon parcours en <strong>management</strong> (organisation, gestion de projet et soft skills) me permet d’aborder sereinement la conduite d’un projet technique de <strong>A à Z</strong>, avec vision, méthode et exigence.
-                                </p>
-                                <p>
-                                    Ma plus grande fierté : le <strong>bot Discord de mon école</strong>.
-                                    Son automatisation aide quotidiennement les étudiants, et leurs retours de satisfaction donnent du sens à mon travail. <br></br>
-                                    Aujourd’hui, mon défi est de le <strong>refactoriser</strong> pour le rendre plus <strong>modulable</strong> et <strong>scalable</strong>, avec l’ambition de toucher une audience bien plus large.
-                                </p>
-                            </div>
-
-                            <div className={`${styles.skillsContainer}`}>
-                                <div className={`${styles.skillCategoryBlock} ${styles.glassCard}`}>
-                                    <h3 className={styles.skillCategoryTitle}>Stack actuelle</h3>
-                                    <div className={styles.chipContainer}>
-                                        <span className={styles.chip}>React / Next.js</span>
-                                        <span className={styles.chip}>Node.js / Express</span>
-                                        <span className={styles.chip}>JavaScript</span>
-                                        <span className={styles.chip}>Architecture REST</span>
-                                        <span className={styles.chip}>Gestion d’état</span>
-                                        <span className={styles.chip}>Optimisation performance</span>
-                                    </div>
-                                </div>
-
-                                <div className={`${styles.skillCategoryBlock} ${styles.glassCard}`}>
-                                    <h3 className={styles.skillCategoryTitle}>Focus 2026</h3>
-                                    <div className={styles.chipContainer}>
-                                        <span className={`${styles.chip} ${styles.chipFocus}`}>Maîtriser React/Next.js à fond</span>
-                                        <span className={`${styles.chip} ${styles.chipFocus}`}>TypeScript</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Soft Skills & Hobbies Grid */}
-                <section className={styles.hobbiesSection}>
-                    <div className={styles.container}>
-                        <div className={styles.hobbiesGrid}>
-                            {/* Objectif actuel has been fully moved up to the Hero section */}
-                            <div className={`${styles.hobbyBlock} ${styles.glassCard}`}>
-                                <div className={styles.hobbyIcon}><FiUsers /></div>
-                                <h3>Vie Associative</h3>
-                                <p>Membre actif et responsable événementiel au BDE d'HETIC, membre Magn'hetic et Hetic Alumni.</p>
-                            </div>
-                            <div className={`${styles.hobbyBlock} ${styles.glassCard}`}>
-                                <div className={styles.hobbyIcon}><FiFilm /></div>
-                                <h3>Passions</h3>
-                                <p>Cinéma, grand consommateur de séries, lecteur assidu de mangas... et je dessinais beaucoup !</p>
-                            </div>
-                            <div className={`${styles.hobbyBlock} ${styles.glassCard}`}>
-                                <div className={styles.hobbyIcon}><FiSmile /></div>
-                                <h3>Fun Fact</h3>
-                                <p>Malgré toute cette organisation, je ne sais pas faire mes lacets.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Footer / Quote Section */}
-                <section className={styles.quoteSection}>
-                    <div className={styles.container}>
-                        <div className={styles.quoteGrid}>
-                            <div className={styles.quoteCTA}>
-                                <h2>Besoin d'aide sur un projet ou recrutement ? Travaillons ensemble.</h2>
-                                <Link href="/#contact" className={styles.emailBtnLight}>
-                                    Être recontacté
+                            <div className={styles.ctaActions}>
+                                <Link href="/#contact" className={styles.btnPrimary}>
+                                    Me contacter <FiArrowRight />
                                 </Link>
-                            </div>
-                            <div className={`${styles.quoteBlock} ${styles.glassCard}`}>
-                                <span className={`${styles.overline} ${styles.gradientLight}`}>MA PHILOSOPHIE</span>
-                                <blockquote className={styles.quoteText}>
-                                    "Remember why you started."
-                                </blockquote>
-                                <div className={styles.quoteAuthor}>
-                                    <div className={styles.authorAvatar}>
-                                        <Image src={profile.images.miniature} alt="Ramy Nebili" fill sizes="60px" className={styles.avatarImg} />
-                                    </div>
-                                    <div className={styles.authorInfo}>
-                                        <strong>Ramy Nebili</strong>
-                                        <span>Développeur Full Stack</span>
-                                    </div>
-                                </div>
+                                <Link href="/projects" className={styles.btnSecondary}>
+                                    Voir mes projets
+                                </Link>
                             </div>
                         </div>
                     </div>

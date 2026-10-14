@@ -1,9 +1,47 @@
-# Portfolio — Ramy Nebili
+# Portfolio de Ramy Nebili
 
-Site vitrine : design, création et refonte de sites web, communication digitale.
-Next.js 16 (App Router) · React 19 · CSS Modules · Framer Motion · next-themes.
+Portfolio personnel orienté **recherche d'alternance en marketing digital**.
 
-## Lancer
+Ramy prépare le **Bachelor Webmarketing & UX** à HETIC (titre RNCP 39602, chef de
+projet digital) et recherche une alternance de 2 ans dès octobre 2026, au rythme
+d'une semaine d'école pour trois semaines en entreprise.
+
+## Stack
+
+- **Framework** : [Next.js 16](https://nextjs.org/) (App Router), React 19
+- **Animations** : [Framer Motion](https://www.framer.com/motion/)
+- **Icônes** : [React Icons](https://react-icons.github.io/react-icons/)
+- **Styles** : CSS Modules et variables CSS (thème sombre)
+- **Mesure** : Vercel Analytics et Speed Insights
+
+## Structure
+
+```
+app/          pages (accueil, à propos, projets, sitemap, robots, image OG)
+components/   sections, layout, UI et blocs de page projet
+data/         contenu éditorial : site, profil, projets, compétences
+lib/          content.js (accès aux contenus) et icons.js (icônes par clé)
+public/       médias, CV, visuels de projets
+scripts/      optimize-media.mjs (images en WebP, vidéos en MP4 web)
+```
+
+## Conventions
+
+**Tout le contenu éditorial vit dans `data/`.** Les composants reçoivent leurs
+données en props et n'importent jamais `data/` directement : ils passent par
+`lib/content.js`, qui est le point d'accès unique. Le jour où un CMS remplacera
+les fichiers statiques, seul le corps de ces fonctions change.
+
+**Aucune couleur en dur dans les CSS Modules.** Tout passe par les variables
+définies dans `app/globals.css`.
+
+**Aucun tiret cadratin** dans les contenus. On utilise deux-points, virgules,
+parenthèses ou points.
+
+Les projets portant `archived: true` disparaissent de l'accueil, de `/projects`
+et du sitemap, mais leur page reste accessible par lien direct.
+
+## Lancer le projet
 
 ```bash
 pnpm install
@@ -12,39 +50,15 @@ pnpm build      # build de production
 pnpm lint       # ESLint
 ```
 
-## Où vit quoi
+## Optimiser des médias
 
-| Dossier | Rôle |
-|---|---|
-| `data/` | **Tout le contenu** (projets, profil, compétences, réglages). Futur remplacé par un CMS. |
-| `lib/content.js` | Point d'accès unique aux données. Les composants n'importent jamais `data/` directement. |
-| `lib/icons.js` | Résolution des icônes par clé texte (`'figma'` → composant). |
-| `app/` | Pages : `/`, `/about`, `/projects`, `/projects/[slug]`, 404, sitemap, robots, image OG. |
-| `components/layout/` | Header (capsule → sidebar), Footer. |
-| `components/sections/` | Sections de la home. |
-| `components/project/` | Page détail projet (en-tête, galerie, navigation). |
-| `components/ui/` | Briques : boutons sociaux, chips, toggle de thème, texte riche… |
-| `public/image/` | Médias optimisés servis (WebP, MP4 compressé). |
-| `public/projects/<slug>/` | Médias des pages projet. |
-| `public/cv/` | CV téléchargeables (liste dans `data/profile.js`). |
-| `assets-src/` | Sources brutes (PNG, .glb, .mov) — gitignoré, jamais servi. |
-| `scripts/optimize-media.mjs` | `pnpm media <dossier> <slug>` : images → WebP, vidéos → MP4 H.264 + poster. |
+```bash
+pnpm media <dossier-source> <slug>
+```
 
-## Thème
+Convertit les images en WebP (1600 px max) et les vidéos en MP4 web avec poster,
+dans `public/projects/<slug>/`. Nécessite ffmpeg pour les vidéos.
 
-Design tokens dans `app/globals.css` (`--bg`, `--surface`, `--text`, `--accent`…).
-Deux thèmes : `[data-theme="dark"]` et `[data-theme="light"]`, pilotés par `next-themes`
-(préférence système par défaut, toggle dans le header). **Aucune couleur en dur dans les
-composants** : toujours une variable.
+## Licence
 
-## Ajouter un projet
-
-1. Déposer les visuels bruts dans un dossier, puis `pnpm media ./mon-dossier mon-slug`.
-2. Ajouter une entrée dans `data/projects.js` (voir le schéma commenté en tête de fichier).
-3. `pnpm build` : la page `/projects/mon-slug` et le sitemap sont générés.
-
-## CMS (à venir)
-
-Le site est prêt à brancher un CMS (Sanity, Payload, Strapi…) : seules les fonctions de
-`lib/content.js` changent, plus le rendu de `components/ui/RichText.jsx` si le texte riche
-devient structuré. Voir `docs/CMS.md`.
+Projet personnel, non destiné à un usage commercial sans autorisation préalable.
