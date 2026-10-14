@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaBars, FaTimes, FaDownload } from 'react-icons/fa';
 import SocialIcon from '../ui/SocialIcon';
-import ThemeToggle from '../ui/ThemeToggle';
 import styles from './Header.module.css';
 
 export default function HeaderClient({ nav, anchors, socials, cv }) {
@@ -102,7 +101,6 @@ export default function HeaderClient({ nav, anchors, socials, cv }) {
                             <div className={styles.socials}>
                                 {socialLinks(styles.headerSocialIcon)}
                             </div>
-                            <ThemeToggle className={styles.themeToggle} />
                             <button
                                 className={styles.burgerBtn}
                                 onClick={toggleMenu}
@@ -136,7 +134,6 @@ export default function HeaderClient({ nav, anchors, socials, cv }) {
 
                         <div className={styles.sidebarSocials}>
                             {socialLinks(styles.headerSocialIcon)}
-                            <ThemeToggle className={styles.themeToggle} />
                         </div>
                     </motion.div>
                 )}

@@ -1,11 +1,10 @@
 /* ============================================================
-   app/globals.css — Design tokens & thème
-   Le thème est piloté par next-themes via l'attribut data-theme
-   sur <html>. Les composants n'utilisent QUE ces variables.
+   app/globals.css : design tokens
+   Thème sombre unique. Les composants n'utilisent QUE ces variables,
+   jamais une couleur en dur.
    ============================================================ */
 
-:root,
-[data-theme="dark"] {
+:root {
     color-scheme: dark;
 
     /* --- Fonds --- */
@@ -61,58 +60,7 @@
 
     /* --- Média (overlay des cartes projet) --- */
     --media-overlay-rgb: 0, 0, 0;
-}
 
-[data-theme="light"] {
-    color-scheme: light;
-
-    --bg: #f6f2eb;
-    --bg-alt: #efeae1;
-    --bg-rgb: 246, 242, 235;
-
-    --surface: rgba(255, 255, 255, 0.5);
-    --surface-2: rgba(255, 255, 255, 0.65);
-    --surface-hover: rgba(255, 255, 255, 0.85);
-    --surface-strong: rgba(27, 25, 22, 0.08);
-    --card-bg: #fdfbf7;
-    --card-bg-hover: #ffffff;
-    --glass-highlight: rgba(255, 255, 255, 0.9);
-
-    --border: rgba(27, 25, 22, 0.1);
-    --border-2: rgba(27, 25, 22, 0.14);
-    --border-strong: rgba(27, 25, 22, 0.3);
-
-    --text: #1b1916;
-    --text-2: #4a453e;
-    --text-3: #6e675e;
-    --text-4: rgba(27, 25, 22, 0.45);
-    --text-rgb: 27, 25, 22;
-    --title-gradient: linear-gradient(180deg, #1b1916, rgba(27, 25, 22, 0.6));
-    --title-gradient-strong: linear-gradient(180deg, #1b1916 30%, rgba(27, 25, 22, 0.5) 100%);
-
-    --accent: #0a5fc2;
-    --accent-hover: #0071e3;
-    --accent-soft: rgba(10, 95, 194, 0.1);
-    --accent-2: #8b5cf6;
-
-    --solid-bg: #1b1916;
-    --solid-text: #f6f2eb;
-    --solid-shadow: rgba(27, 25, 22, 0.2);
-
-    --blob-1: rgba(214, 170, 140, 0.45);
-    --blob-2: rgba(196, 184, 232, 0.45);
-    --blob-3: rgba(160, 190, 225, 0.4);
-    --blob-blur: 90px;
-
-    --shadow-sm: 0 4px 10px rgba(27, 25, 22, 0.04);
-    --shadow-md: 0 10px 30px -5px rgba(27, 25, 22, 0.12);
-    --shadow-lg: 0 20px 40px rgba(27, 25, 22, 0.08);
-    --shadow-xl: 0 30px 60px -10px rgba(27, 25, 22, 0.18);
-
-    --media-overlay-rgb: 27, 25, 22;
-}
-
-:root {
     /* --- Spacing & layout --- */
     --max-width: 1200px;
     --header-height: 80px;

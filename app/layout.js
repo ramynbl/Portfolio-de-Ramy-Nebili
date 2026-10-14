@@ -50,7 +50,7 @@ export async function generateMetadata() {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="fr" className={`${lexend.variable} ${dmSans.variable}`} suppressHydrationWarning>
+        <html lang="fr" className={`${lexend.variable} ${dmSans.variable}`}>
             <body>
                 <Providers>
                     {children}

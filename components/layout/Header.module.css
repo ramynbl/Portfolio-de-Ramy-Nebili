@@ -163,10 +163,6 @@
     font-size: 1.2rem;
 }
 
-.themeToggle {
-    margin-left: 15px;
-}
-
 .rightSection {
     display: flex;
     align-items: center;
@@ -189,10 +185,6 @@
 
     .socials {
         display: none;
-    }
-
-    .themeToggle {
-        margin-left: 0;
     }
 
     .sidebar {
