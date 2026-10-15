@@ -109,20 +109,33 @@ export const projects = [
     },
 
     {
-        // Brouillon : visuels capturés automatiquement (pnpm capture stk),
-        // texte à compléter avec le pitch. Passer draft à false pour publier.
+        // Visuels capturés automatiquement depuis le site en ligne : pnpm capture stk
         slug: 'stk-ligne-organique',
         title: 'Ligne organique',
         client: 'STK Architecture',
         year: '2026',
         kind: 'client',
         category: 'Projet client, HETIC',
-        tagline: 'Un jeu de cartes pour faire comprendre le biomimétisme.',
+        tagline: 'Un jeu de cartes en ligne pour faire comprendre le biomimétisme.',
         summary:
-            'Une expérience interactive imaginée en groupe à HETIC pour **STK Architecture**, pensée pour faire comprendre le biomimétisme à ses clients, notamment pendant ses formations. Le joueur associe une carte de la nature à l\'innovation qu\'elle a inspirée : **21 paires** en **3 séquences**, des **indices** quand il bloque et des sons qui accompagnent chaque réussite.',
-        services: ['Expérience interactive', 'Gamification', 'UI design', 'Développement front'],
-        sections: [],
-        tools: ['Figma', 'React', 'Vite', 'Framer Motion'],
+            'Projet client mené en groupe à HETIC pour **STK Architecture**, une agence d\'architecture bio-inspirée. Le joueur associe une carte de la nature à l\'innovation qu\'elle a inspirée, et l\'explication ne s\'affiche qu\'une fois la bonne paire trouvée : **21 paires** en **3 séquences**, avec des **indices** quand il bloque.',
+        role: 'Tech lead front-end, organisation du sprint',
+        services: ['Gamification', 'Parcours utilisateur', 'Pilotage technique', 'Développement front'],
+        sections: [
+            {
+                heading: 'Le contexte',
+                body: 'STK utilisait déjà un jeu de cartes physique pour expliquer le biomimétisme à ses clients, à ses partenaires et en atelier. L\'agence voulait une version web, jouable partout sans transporter de cartes. Le cahier des charges fixait deux règles : un jeu fondé sur la relation entre deux cartes plutôt que sur la mémoire, et un univers sobre, à l\'image de l\'agence.',
+            },
+            {
+                heading: 'Ce que j\'ai fait',
+                body: 'J\'étais **tech lead front-end** de l\'équipe. J\'ai organisé le sprint final de deux jours, du planning aux priorités, et mis en place un circuit de **pull requests** pour intégrer le travail de chacun. Dans le jeu, j\'ai pris en charge la **logique** : l\'enchaînement des séquences, la validation des paires, les données des 21 paires et l\'intégration des sons.',
+            },
+            {
+                heading: 'Le résultat',
+                body: 'Une expérience jouable de bout en bout, en ligne pour la soutenance du 22 mai 2026 : accueil, prise en main en trois écrans, 21 paires et un écran de fin qui renvoie vers les projets de STK. Nous avons aussi fait évoluer la consigne « toutes les cartes visibles » vers un **parcours en trois séquences**, plus progressif pour un public dès 8 ans, et défendu ce choix en soutenance.',
+            },
+        ],
+        tools: ['Figma', 'React', 'Vite', 'Framer Motion', 'Vercel'],
         cover: {
             type: 'video',
             src: '/projects/stk-ligne-organique/lien-reussi.mp4',
@@ -198,12 +211,11 @@ export const projects = [
             },
         ],
         links: { live: 'https://stk-card-game.vercel.app/', github: 'https://github.com/ramynbl/stk-card-game' },
-        featured: false, // à décider à la publication
+        featured: true,
         archived: false,
-        draft: true,
         order: 8,
         theme: { accent: '#ffffff' },
-        orientation: 'left',
+        orientation: 'right',
     },
 
     {
@@ -229,7 +241,7 @@ export const projects = [
         archived: false,
         order: 10,
         theme: { accent: '#4facfe' },
-        orientation: 'right',
+        orientation: 'left',
     },
 
     {
