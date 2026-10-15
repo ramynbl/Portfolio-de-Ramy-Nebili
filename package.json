@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "media": "node scripts/optimize-media.mjs"
+    "media": "node scripts/optimize-media.mjs",
+    "capture": "node scripts/capture/run.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

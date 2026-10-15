@@ -51,9 +51,14 @@ for (const file of readdirSync(srcDir)) {
     } else if (VIDEO_EXT.has(lower)) {
         const out = join(outDir, `${base}.mp4`);
         const poster = join(outDir, `${base}-poster.jpg`);
+        // Sortie normalisée en plage limitée BT.709, déclarée dans le flux : une
+        // source en pleine plage (capture d'écran, images JPEG) serait sinon
+        // affichée trop claire par les navigateurs.
         execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', src,
-            '-vf', "scale='min(1920,iw)':-2", '-c:v', 'libx264', '-crf', '24', '-preset', 'slow',
-            '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-an', out]);
+            '-vf', "scale='min(1920,iw)':-2:out_color_matrix=bt709:out_range=limited,format=yuv420p",
+            '-c:v', 'libx264', '-crf', '24', '-preset', 'slow',
+            '-color_range', 'tv', '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
+            '-movflags', '+faststart', '-an', out]);
         execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-ss', '1', '-i', out, '-frames:v', '1', '-q:v', '3', poster]);
         console.log(`🎬 ${file} → ${base}.mp4 + poster  ${human(statSync(src).size)} → ${human(statSync(out).size)}`);
     } else {

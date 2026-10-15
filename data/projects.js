@@ -15,6 +15,8 @@
  *  featured    affiché dans les grandes cartes de la home
  *  archived    retiré de la home, de /projects et du sitemap.
  *              La page /projects/<slug> reste accessible par lien direct.
+ *  draft       même traitement qu'archived, pour un projet pas encore publié
+ *              (texte en cours). Les deux portent un noindex.
  *  order       tri croissant
  */
 export const projects = [
@@ -103,6 +105,104 @@ export const projects = [
         archived: false,
         order: 5,
         theme: { accent: '#7B2D5E' },
+        orientation: 'left',
+    },
+
+    {
+        // Brouillon : visuels capturés automatiquement (pnpm capture stk),
+        // texte à compléter avec le pitch. Passer draft à false pour publier.
+        slug: 'stk-ligne-organique',
+        title: 'Ligne organique',
+        client: 'STK Architecture',
+        year: '2026',
+        kind: 'client',
+        category: 'Projet client, HETIC',
+        tagline: 'Un jeu de cartes pour faire comprendre le biomimétisme.',
+        summary:
+            'Une expérience interactive imaginée en groupe à HETIC pour **STK Architecture**, pensée pour faire comprendre le biomimétisme à ses clients, notamment pendant ses formations. Le joueur associe une carte de la nature à l\'innovation qu\'elle a inspirée : **21 paires** en **3 séquences**, des **indices** quand il bloque et des sons qui accompagnent chaque réussite.',
+        services: ['Expérience interactive', 'Gamification', 'UI design', 'Développement front'],
+        sections: [],
+        tools: ['Figma', 'React', 'Vite', 'Framer Motion'],
+        cover: {
+            type: 'video',
+            src: '/projects/stk-ligne-organique/lien-reussi.mp4',
+            poster: '/projects/stk-ligne-organique/lien-reussi-poster.jpg',
+            alt: 'Une paire liée : aile de papillon et panneau solaire',
+        },
+        coverMobile: null,
+        thumbnail: { src: '/projects/stk-ligne-organique/lien-reussi.webp', alt: 'Ligne organique, le lien biomimétique' },
+        gallery: [
+            {
+                type: 'video',
+                src: '/projects/stk-ligne-organique/intro.mp4',
+                poster: '/projects/stk-ligne-organique/intro-poster.jpg',
+                alt: 'De l\'accueil au plateau de jeu',
+                caption: 'La ligne de cartes se dessine, puis trois écrans posent la règle du jeu.',
+                span: 'full',
+            },
+            {
+                type: 'image',
+                src: '/projects/stk-ligne-organique/accueil.webp',
+                width: 1600, height: 900,
+                alt: 'Écran d\'accueil de Ligne organique',
+                caption: 'L\'accueil et sa ligne de cartes.',
+                span: 'half',
+            },
+            {
+                type: 'image',
+                src: '/projects/stk-ligne-organique/onboarding-1.webp',
+                width: 1600, height: 900,
+                alt: 'Premier écran d\'introduction au biomimétisme',
+                caption: 'L\'onboarding commence par une définition du biomimétisme.',
+                span: 'half',
+            },
+            {
+                type: 'image',
+                src: '/projects/stk-ligne-organique/paire-indice.webp',
+                width: 1600, height: 900,
+                alt: 'Une paire sélectionnée avec ses deux indices ouverts',
+                caption: 'Chaque carte a son indice : il décrit sans donner la réponse.',
+                span: 'full',
+            },
+            {
+                type: 'video',
+                src: '/projects/stk-ligne-organique/lien-rate.mp4',
+                poster: '/projects/stk-ligne-organique/lien-rate-poster.jpg',
+                alt: 'Une mauvaise association',
+                caption: 'Mauvaise paire : les cartes se repoussent et une piste d\'observation remet sur la voie.',
+                span: 'full',
+            },
+            {
+                type: 'video',
+                src: '/projects/stk-ligne-organique/fin-de-sequence.mp4',
+                poster: '/projects/stk-ligne-organique/fin-de-sequence-poster.jpg',
+                alt: 'Dernière paire d\'une séquence et passage à la suivante',
+                caption: 'La dernière paire d\'une séquence ouvre la suivante.',
+                span: 'full',
+            },
+            {
+                type: 'image',
+                src: '/projects/stk-ligne-organique/transition.webp',
+                width: 1600, height: 900,
+                alt: 'Écran de transition vers la séquence 2',
+                caption: 'Trois séquences, vingt et une paires.',
+                span: 'half',
+            },
+            {
+                type: 'image',
+                src: '/projects/stk-ligne-organique/fin.webp',
+                width: 1600, height: 900,
+                alt: 'Écran de fin du parcours',
+                caption: 'La fin du parcours renvoie vers les projets de STK.',
+                span: 'half',
+            },
+        ],
+        links: { live: 'https://stk-card-game.vercel.app/', github: 'https://github.com/ramynbl/stk-card-game' },
+        featured: false, // à décider à la publication
+        archived: false,
+        draft: true,
+        order: 8,
+        theme: { accent: '#ffffff' },
         orientation: 'left',
     },
 

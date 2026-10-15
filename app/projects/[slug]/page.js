@@ -4,7 +4,7 @@ import Footer from '@/components/layout/Footer';
 import ProjectHero from '@/components/project/ProjectHero';
 import ProjectGallery from '@/components/project/ProjectGallery';
 import ProjectNav from '@/components/project/ProjectNav';
-import { getProjectBySlug, getProjectSlugs, getAdjacentProjects, getSiteSettings } from '@/lib/content';
+import { getProjectBySlug, getProjectSlugs, getAdjacentProjects, getSiteSettings, isListed } from '@/lib/content';
 import { plainText } from '@/components/ui/RichText';
 
 export async function generateStaticParams() {
@@ -23,6 +23,9 @@ export async function generateMetadata({ params }) {
     return {
         title: project.title,
         description,
+        // Archive ou brouillon : page consultable par son URL, mais pas indexée.
+        // Clé omise pour un projet listé, sinon elle écraserait celle du layout.
+        ...(isListed(project) ? {} : { robots: { index: false, follow: false } }),
         alternates: { canonical: `${site.url}/projects/${project.slug}` },
         openGraph: {
             title: `${project.title} | ${site.name}`,
